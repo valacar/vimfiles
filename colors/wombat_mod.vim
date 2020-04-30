@@ -2,9 +2,11 @@
 " Author:      valacar (valacar@users.noreply.github.com)
 " Webpage:     https://github.com/valacar/vimfiles/tree/master/colors
 " Description: Modification of the default Wombat color scheme
-" Last Change: 2020-04-25
+" Last Change: 2020-04-30
 
 hi clear
+
+set background=dark
 
 if exists('syntax_on')
   syntax reset
@@ -13,11 +15,11 @@ endif
 let colors_name = 'wombat_mod'
 
 if ($TERM =~? '256' || &t_Co >=? 256) || has('gui_running')
-  hi Normal guibg=#1c1c1c guifg=#cccccc gui=NONE ctermbg=234 ctermfg=251 cterm=NONE
+  hi Normal guibg=#1c1c1c guifg=#bcbcbc gui=NONE ctermbg=234 ctermfg=250 cterm=NONE
   hi NonText guibg=#111111 guifg=#777777 gui=NONE ctermbg=233 ctermfg=243 cterm=NONE
-  hi Cursor guibg=#cccccc guifg=#000000 gui=NONE ctermbg=251 ctermfg=0 cterm=NONE
+  hi Cursor guibg=#bcbcbc guifg=#000000 gui=NONE ctermbg=250 ctermfg=0 cterm=NONE
   hi CursorLine guibg=#222222 guifg=NONE gui=NONE ctermbg=235 ctermfg=NONE cterm=NONE
-  hi CursorLineNr guibg=#333333 guifg=#cccccc gui=NONE ctermbg=237 ctermfg=251 cterm=NONE
+  hi CursorLineNr guibg=#333333 guifg=#bcbcbc gui=NONE ctermbg=237 ctermfg=250 cterm=NONE
   hi Search guibg=#999999 guifg=#000000 gui=NONE ctermbg=247 ctermfg=0 cterm=NONE
   hi SpecialKey guibg=NONE guifg=#444444 gui=NONE ctermbg=NONE ctermfg=238 cterm=NONE
   hi Folded guibg=#384048 guifg=#a0a8b0 gui=NONE ctermbg=236 ctermfg=8 cterm=NONE
@@ -41,7 +43,7 @@ if ($TERM =~? '256' || &t_Co >=? 256) || has('gui_running')
   hi Pmenu guibg=#444444 guifg=#ffffff gui=NONE ctermbg=238 ctermfg=15 cterm=NONE
   hi PmenuSel guibg=#cae682 guifg=#000000 gui=NONE ctermbg=149 ctermfg=0 cterm=NONE
   hi PmenuSbar guibg=#333333 guifg=#ff0000 gui=NONE ctermbg=237 ctermfg=9 cterm=NONE
-  hi PmenuThumb guibg=#cccccc guifg=#ff0000 gui=NONE ctermbg=251 ctermfg=9 cterm=NONE
+  hi PmenuThumb guibg=#bcbcbc guifg=#ff0000 gui=NONE ctermbg=250 ctermfg=9 cterm=NONE
   hi Comment guibg=NONE guifg=#777777 gui=NONE ctermbg=NONE ctermfg=243 cterm=NONE
   hi Constant guibg=NONE guifg=#d28c83 gui=NONE ctermbg=NONE ctermfg=131 cterm=NONE
   hi Function guibg=NONE guifg=#cae682 gui=NONE ctermbg=NONE ctermfg=149 cterm=NONE
@@ -71,9 +73,17 @@ if ($TERM =~? '256' || &t_Co >=? 256) || has('gui_running')
   hi helpHyperTextEntry guibg=NONE guifg=#B984B1 gui=NONE ctermbg=NONE ctermfg=133 cterm=NONE
   hi helpOption guibg=NONE guifg=#ffcc99 gui=NONE ctermbg=NONE ctermfg=216 cterm=NONE
   hi helpStart guibg=NONE guifg=#b984b1 gui=NONE ctermbg=NONE ctermfg=97 cterm=NONE
+  hi helpExample guibg=NONE guifg=#8ac6f2 gui=NONE ctermbg=NONE ctermfg=111 cterm=NONE
+  hi helpSpecial guibg=NONE guifg=#ffcc99 gui=NONE ctermbg=NONE ctermfg=216 cterm=NONE
+  hi helpURL guibg=NONE guifg=#d28c83 gui=NONE ctermbg=NONE ctermfg=131 cterm=NONE
+  hi helpNotVi guibg=NONE guifg=#777777 gui=NONE ctermbg=NONE ctermfg=243 cterm=NONE
+  hi helpBacktick guibg=NONE guifg=#8ac6f2 gui=NONE ctermbg=NONE ctermfg=111 cterm=NONE
+  hi helpCommand guibg=NONE guifg=#8ac6f2 gui=NONE ctermbg=NONE ctermfg=111 cterm=NONE
   hi diffRemoved guibg=NONE guifg=#d28c83 gui=NONE ctermbg=NONE ctermfg=131 cterm=NONE
   hi diffSubname guibg=NONE guifg=#ffcc99 gui=NONE ctermbg=NONE ctermfg=216 cterm=NONE
   hi gitcommitBranch guibg=NONE guifg=#b984b1 gui=NONE ctermbg=NONE ctermfg=97 cterm=NONE
+  hi debugPC guibg=#263760 guifg=NONE gui=NONE ctermbg=25 ctermfg=NONE cterm=NONE
+  hi debugBreakpoint guibg=#660000 guifg=#bcbcbc gui=NONE ctermbg=88 ctermfg=250 cterm=NONE
   hi SpellBad guibg=NONE guifg=NONE gui=undercurl guisp=#ff3300 ctermbg=NONE ctermfg=NONE cterm=undercurl
   hi SpellCap guibg=NONE guifg=NONE gui=undercurl guisp=#0099ff ctermbg=NONE ctermfg=NONE cterm=undercurl
 
@@ -137,9 +147,17 @@ elseif &t_Co == 8 || &t_Co == 16
   hi helpHyperTextEntry ctermbg=NONE ctermfg=LightMagenta cterm=NONE
   hi helpOption ctermbg=NONE ctermfg=Brown cterm=NONE
   hi helpStart ctermbg=NONE ctermfg=LightMagenta cterm=NONE
+  hi helpExample ctermbg=NONE ctermfg=LightBlue cterm=NONE
+  hi helpSpecial ctermbg=NONE ctermfg=Brown cterm=NONE
+  hi helpURL ctermbg=NONE ctermfg=LightRed cterm=NONE
+  hi helpNotVi ctermbg=NONE ctermfg=DarkGray cterm=NONE
+  hi helpBacktick ctermbg=NONE ctermfg=LightBlue cterm=NONE
+  hi helpCommand ctermbg=NONE ctermfg=LightBlue cterm=NONE
   hi diffRemoved ctermbg=NONE ctermfg=LightRed cterm=NONE
   hi diffSubname ctermbg=NONE ctermfg=Brown cterm=NONE
   hi gitcommitBranch ctermbg=NONE ctermfg=LightMagenta cterm=NONE
+  hi debugPC ctermbg=DarkBlue ctermfg=NONE cterm=NONE
+  hi debugBreakpoint ctermbg=DarkRed ctermfg=Gray cterm=NONE
   hi SpellBad ctermbg=NONE ctermfg=NONE cterm=undercurl
   hi SpellCap ctermbg=NONE ctermfg=NONE cterm=undercurl
 endif
