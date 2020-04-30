@@ -3,9 +3,9 @@
 augroup file_tweaks
   autocmd!
 
-  " auto restart compton compositor after saving
-  autocmd BufWritePost compton.conf
-        \ :call system('pkill compton;compton --daemon')
+  " auto restart picom compositor after saving
+  autocmd BufWritePost picom.conf
+        \ :call system('pkill picom;picom --daemon')
 
   " auto reload .Xresources after saving
   autocmd BufWritePost .Xresources
