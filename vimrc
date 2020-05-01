@@ -338,8 +338,9 @@ command! SynStack call myfunc#SynStack()
 " Note: if something goes wrong, reload colorscheme with :Transparent!
 if ! has('gui_running')
   command! -bang Transparent
-        \ highlight Normal guibg=NONE | highlight NonText guibg=NONE |
-        \ if !empty('<bang>') | execute "colorscheme" g:colors_name | endif
+        \ for s:grp in ['Normal', 'NonText', 'LineNr', 'SignColumn'] |
+        \ execute 'highlight' s:grp 'ctermbg=NONE guibg=NONE' | endfor |
+        \ if !empty('<bang>') | execute 'colorscheme' g:colors_name | endif
 endif
 
 " Make a banner around a line, as seen in the section dividers in this vimrc
