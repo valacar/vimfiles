@@ -726,8 +726,8 @@ endif
 
 augroup vimrc
   autocmd!
-  autocmd BufWritePost $MYVIMRC,~/.vim/vimrc :call myfunc#ReloadConfig($MYVIMRC)
-  autocmd BufWritePost $MYGVIMRC,~/.vim/gvimrc :call myfunc#ReloadConfig($MYGVIMRC)
+  autocmd BufWritePost $MYVIMRC,$MYGVIMRC,~/.vim/vimrc,~/.vim/gvimrc
+        \ call myfunc#ReloadConfig('<afile>')
 
 " reload color scheme after writing
   autocmd BufWritePost */.vim/colors/*.vim :exe 'colo' expand("<afile>:t:r")
