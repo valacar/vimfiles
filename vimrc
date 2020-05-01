@@ -639,6 +639,7 @@ if &runtimepath =~# 'vim-startify'
         \ {44: '~/.vim/vimrc'},
         \ {45: '~/.vim/gvimrc'},
         \ {55: '~/.vim/colors/wombat_mod.vim'},
+        \ {56: '~/.vim/vim-rnb/wombat_mod.erb'},
         \ {66: '~/.vim/plugin'},
         \ ]
   if $SHELL =~# 'bash$'
