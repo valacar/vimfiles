@@ -658,6 +658,7 @@ if &runtimepath =~# 'vim-startify'
         \ '^/run/media/',
         \ '\\bundle\\.*\\doc\\.*\.txt$',
         \ 'COMMIT_EDITMSG',
+        \ 'MERGE_MSG',
         \ 'vimrc$',
         \ ]
   " let g:startify_update_oldfiles = 1
@@ -742,7 +743,7 @@ augroup vimrc
         \ nnoremap <silent> <buffer> <Up> :let @/ = '^" :: '<cr>Nzt
 
 " enable spell-check when doing a git commit
-  autocmd BufReadPost COMMIT_EDITMSG setlocal spell
+  autocmd BufReadPost COMMIT_EDITMSG,MERGE_MSG setlocal spell
 
 " Remove quickfix lines ending in ^M
 " TODO: is this problem related to 'makeencoding' when encoding=utf-8 in Win32?
