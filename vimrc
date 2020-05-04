@@ -537,6 +537,17 @@ endfunction
 onoremap q i"
 onoremap Q i'
 
+" text object for numbers (ints and floats)
+" cn, dn, yn, vn
+function! VisualNumber()
+	let start = search('\d\([^0-9\.]\|$\)', 'cW', line('.'))
+  if !start | return | endif
+	normal! v
+	call search('\(^\|[^0-9\.]\d\)', 'becW', line('.'))
+endfunction
+xnoremap n :<C-u>call VisualNumber()<CR>
+onoremap n :<C-u>normal vn<CR>
+
 "===============================================================================
 " :: Leader Key Mappings
 "===============================================================================
