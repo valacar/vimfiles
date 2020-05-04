@@ -356,9 +356,9 @@ command! -bang Modeline setlocal modeline | edit<bang> | setlocal modeline<
 
 " TODO: make this toggle, and restore filetype, and buftype
 command! HexView
-      \ silent! exe '%!xxd' | setlocal filetype=xxd | setlocal buftype=nofile |
-      \ setlocal cursorline |
-      \ %s/^/\=(line('.')%17==0?"\n":'')/g | 1
+      \ silent! exe '%!xxd -g1' |
+      \ setlocal filetype=xxd buftype=nofile cursorline nowrap |
+      \ keeppat %s/^/\=(line('.')%17==0?"\n":'')/g | 1
 
 " Quick move settings and highlighting (qmv from renameutils)
 " qmv -f single-column -oseparate
