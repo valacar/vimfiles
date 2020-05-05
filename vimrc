@@ -275,25 +275,21 @@ command! RTP call map(split(&rtp, ','),
       \ {_,path -> execute('echo'.
       \ string(substitute(tr(path,'\','/'), $HOME, '~', '')), '')})
 
-" FIXME: For the swap commands below, using a visual selection only affect the
-" first line of a multi-line selection.
-
-" command! -range TestVis execute <range>
-"       \ ? 'echo "visual"'
-"       \ : 'echo "not visual"'
-
-" Swap single and double quotes within selection
-" command! SwapQuotes :call setline('.', tr(getline('.'), "\"'", "'\""))
+" Swap single and double quotes within selection, or current line
+" WARNING: might use previous selection (gv) when nothing selected
 command! -range SwapQuotes
-      \ keeppatterns s/\%V[\'\"]/\=tr(submatch(0), "'\"", "\"'")/g
+      \ let vis = <range> ? '\%V' : '' |
+      \ execute 'keeppat <line1>,<line2>s/' . vis .
+      \         '[\''\"]/\=tr(submatch(0), "''\"", "\"''")/g'
 " "test quotes" 'test quotes' "test quotes" 'test quotes'
 
-" Swap '/' and '\' within selection
-" command! SwapSlashes :call setline('.', tr(getline('.'), "/\\", "\\/"))
+" Swap '/' and '\' within selection, or current line
+" WARNING: might use previous selection (gv) when nothing selected
 command! -range SwapSlashes
-      \ keeppatterns s_\%V[/\\]_\=tr(submatch(0), "/\\", "\\/")_g
-" \slash\ /slash/
-
+      \ let vis = <range> ? '\%V' : '' |
+      \ execute 'keeppat <line1>,<line2>s_' . vis .
+      \         '[/\\]_\=tr(submatch(0), "/\\", "\\/")_g'
+" /test/slash/test/slash/
 
 command! PasteJavascript :setf javascript | normal "+P
 command! PasteCSS :setf css | normal "+P
