@@ -356,16 +356,6 @@ command! HexView
       \ setlocal filetype=xxd buftype=nofile cursorline nowrap |
       \ keeppat %s/^/\=(line('.')%17==0?"\n":'')/g | 1
 
-" Quick move settings and highlighting (qmv from renameutils)
-" qmv -f single-column -oseparate
-command! Qmv
-      \ setlocal tabstop=8 softtabstop=8 shiftwidth=8 nowrap number |
-      \ syntax clear |
-      \ syntax match Oddlines "^.*$" contains=ALL nextgroup=Evenlines skipnl |
-      \ syntax match Evenlines "^.*$" contains=ALL nextgroup=Oddlines skipnl |
-      \ highlight Oddlines ctermfg=darkgray ctermbg=NONE |
-      \ highlight Evenlines ctermfg=gray ctermbg=NONE
-
 "===============================================================================
 " :: Copy/Paste with system clipboard
 "===============================================================================
