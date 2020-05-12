@@ -138,16 +138,16 @@ endif
 " set colorcolumn=+1     " highlight 'textwidth' column
 
 if has('unix')
-  " The following is from archlinux.vim (which I removed from /usr/share/vim)
+  " The following is based on archlinux.vim (which I removed from /usr/share/vim)
   " It makes backup, swap, and undo directories in ~/.cache/vim/
   if exists('$XDG_CACHE_HOME')
-    let &g:directory=$XDG_CACHE_HOME
+    let s:homecache = $XDG_CACHE_HOME
   else
-    let &g:directory=$HOME . '/.cache'
+    let s:homecache = $HOME . '/.cache'
   endif
-  let &g:undodir=&g:directory . '/vim/undo//'
-  let &g:backupdir=&g:directory . '/vim/backup//'
-  let &g:directory.='/vim/swap//'
+  let &g:directory = s:homecache . '/vim/swap//'
+  let &g:backupdir = s:homecache . '/vim/backup//'
+  let &g:undodir   = s:homecache . '/vim/undo//'
   if ! isdirectory(expand(&g:directory))
     silent! call mkdir(expand(&g:directory), 'p', 0700)
   endif
@@ -158,7 +158,6 @@ if has('unix')
     silent! call mkdir(expand(&g:undodir), 'p', 0700)
   endif
 
-  "TODO: add this for Windows too?
   " .viminfo: directories to ignore
   let s:ignored_dirs = [
         \ '/tmp/',
@@ -169,19 +168,22 @@ if has('unix')
       let &viminfo .= ',r' . s:dir
     endif
   endfor
-elseif has('win32')
-  silent! call mkdir($HOME . '/vimfiles/.backups', 'p')
-  silent! call mkdir($HOME . '/vimfiles/.swaps', 'p')
-  silent! call mkdir($HOME . '/vimfiles/.views', 'p')
 
-  " create backups (:help backup-table)
-  set backupdir=$HOME/vimfiles/.backups,.
+  " move viminfo to ~/.cache/vim/ (note: this option must be at the end)
+  let &viminfo .= ',n' . s:homecache . '/vim/.viminfo'
+elseif has('win32')
+  silent! call mkdir($HOME . '/vimfiles/.swaps', 'p')
+  silent! call mkdir($HOME . '/vimfiles/.backups', 'p')
+  silent! call mkdir($HOME . '/vimfiles/.undos', 'p')
 
   " keep .swp files in a subdirectory of vim's files (// = unique filename)
   set directory=$HOME/vimfiles/.swaps//,.
 
+  " create backups (:help backup-table)
+  set backupdir=$HOME/vimfiles/.backups,.
+
   " Where :mkview and :loadview stores/loads its files
-  set viewdir=$HOME/vimfiles/.views
+  set undodir=$HOME/vimfiles/.undos//
 
   " Don't keep DVD drive files in the viminfo file
   set viminfo+=rE:
