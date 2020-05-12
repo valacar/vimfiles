@@ -16,14 +16,8 @@ if executable('black')
   endif
 endif
 
-" nnoremap <buffer> <silent> <LocalLeader>r :update<CR>:!start cmd /c python "%" & pause<CR>
-nnoremap <buffer> <silent> <LocalLeader>r :update<CR>:!python "%"<CR>
+nnoremap <buffer> <silent> <LocalLeader>r :update<bar>make<bar>bot cwindow<CR>
 
-" Note: the stock python ftplugin doesn't have this b:undo_ftplugin var for some reason,
-" so I guess we need to check if it exists, in case that changes.
-let s:undo = 'setlocal tabstop< softtabstop< shiftwidth< expandtab< autoindent< smarttab< formatoptions< formatprg<'
-if exists('b:undo_ftplugin')
-  let b:undo_ftplugin = b:undo_ftplugin . '| ' . s:undo
-else
-  let b:undo_ftplugin = s:undo
-endif
+compiler python
+
+let b:undo_ftplugin .= ' | setlocal tabstop< softtabstop< shiftwidth< expandtab< autoindent< smarttab< formatoptions< formatprg< makeprg< errorformat<'
