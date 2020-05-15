@@ -12,9 +12,11 @@ setlocal formatoptions-=c       " don't auto-wrap comments and insert comment le
 setlocal formatoptions-=o       " don't insert comment leader when pressing o or O
 setlocal formatoptions-=r       " don't insert comment leader when pressing <Enter>
 
-nnoremap <buffer> <silent> <LocalLeader>r :update<CR>:!start cmd /c ruby "%" & pause<CR>
+nnoremap <buffer> <silent> <LocalLeader>r :update<bar>make<bar>bot cwindow<CR>
 
-setlocal makeprg=ruby\ %
+compiler ruby
+
+setlocal formatprg=rufo
 
 iabbrev <buffer> elseif elsif
 
