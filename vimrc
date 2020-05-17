@@ -506,8 +506,9 @@ vnoremap <silent> # :<C-U>
 xnoremap p pgvy
 xnoremap P Pgvy
 
-" Space: Indent with a space in visual block (Ctrl-v) mode
-vnoremap <Space> I<Space><Esc>gv
+" L, H: Indent/Unindent with a space in visual block (Ctrl-v) mode
+vnoremap L I<Space><Esc>gv
+vnoremap H xgv
 
 " @: Run macro on selected lines only
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
