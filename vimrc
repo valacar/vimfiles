@@ -822,3 +822,8 @@ endif
 " let g:airline_powerline_fonts = 1
 " let g:airline#extensions#wordcount#enabled = 0
 
+
+" Alt-8: change word under cursor; '.' to repeat, n or N to skip
+nnoremap <A-8> *g``cgn
+" same as above, but without word boundaries
+nnoremap g<A-8> g*g``cgn
