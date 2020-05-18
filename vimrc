@@ -489,18 +489,17 @@ xnoremap <A-j> g`}
 " Alt-k: Move to next paragraph (upward) in visual mode
 xnoremap <A-k> g`{
 
-" Search visual selected text forward (*) and backward (#)
-vnoremap <silent> * :<C-U>
-      \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-      \gvy/<C-R><C-R>=substitute(
-      \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-      \gV:call setreg('"', old_reg, old_regtype)<CR>
+function! s:setSearch()
+  let l:v = visualmode()
+  let l:old_t = @t
+  silent exe 'normal! `<' . l:v . '`>"ty'
+  let @/ = substitute(escape(@t, '\/.*$^~[]'), "\n", '\\n', 'g')
+  let @t = l:old_t
+endfunction
 
-vnoremap <silent> # :<C-U>
-      \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-      \gvy?<C-R><C-R>=substitute(
-      \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-      \gV:call setreg('"', old_reg, old_regtype)<CR>
+" Search visual selected text forward (*) and backward (#)
+vnoremap <silent> * :call <SID>setSearch()<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :call <SID>setSearch()<CR>?<C-R>=@/<CR><CR>
 
 " p: Keep unnamed register (") when pasting in visual mode
 xnoremap p pgvy
