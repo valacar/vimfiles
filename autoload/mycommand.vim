@@ -133,3 +133,41 @@ function! mycommand#ToggleMenu() abort
     set guioptions+=m
   endif
 endfunction
+
+" Open Vim's changelog using curl (in a scratch buffer)
+function! mycommand#VimChangelog() abort
+  let l:ver = v:version / 100 . '.' . v:version % 100
+  let l:patch = v:versionlong[-4:]
+  let l:longver = l:ver . '.' . l:patch
+  let l:uri = 'ftp://ftp.vim.org/pub/vim/patches/' . l:ver . '/README;type=A'
+
+  silent new vim-changelog [Scratch]
+  setlocal buftype=nofile bufhidden=hide noswapfile cursorline
+  echo 'Loading Vim Changelog. Please wait...'
+  execute '0read !curl --silent' l:uri
+
+  " Delete header
+  silent 2,/Individual/delete
+
+  " Add a blank line every 100 versions
+  silent global/\d\+\.\d\+\.[0-9][1-9]00/normal O
+
+  " Search for the version of Vim we're currently using
+  let l:ver_line = search(l:longver, 'n')
+  if l:ver_line
+    " Highlight the current version
+    call matchaddpos('DiffAdd', [l:ver_line])
+
+    " Jump to searched line
+    execute l:ver_line
+    normal! zt
+
+    " Create mark 'm', so we can jump back
+    mark m
+  endif
+
+  " Highlight 'size' column as a comment
+  syntax match Comment /^\s*\zs\d\+/
+  " Highlight table header
+  syntax keyword Identifier SIZE NAME FIXES
+endfunction
