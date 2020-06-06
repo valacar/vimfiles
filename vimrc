@@ -760,23 +760,24 @@ augroup END
 if &term ==# 'xterm-256color'
       \ || &term ==# 'rxvt-unicode-256color'
       \ || &term ==# 'st-256color'
-  " SI = start insert, EI = end insert, SR = start replace
-  " 6 = vertical bar, 5 = vertical bar blinking
-  let &t_SI = "\e[5 q"
   " 2 = block cursor
+  " 4 = underline cursor, 3 = underline blinking
+  " 6 = vertical bar, 5 = vertical bar blinking
+  " SI = start insert, EI = end insert, SR = start replace
+  let &t_SI = "\e[5 q"
   let &t_EI = "\e[2 q"
+  let &t_SR = "\e[3 q"
+  " start and end termcap mode
   let &t_ti .= "\e[2 q"
   let &t_te .= "\e[0 q"
-  " 4 = underline cursor, 3 = underline blinking
-  let &t_SR = "\e[3 q"
 endif
 
 if &term ==# 'linux'
   " TODO: find out why these don't work
-  " ?2c = underline, ?4c = half block, ?6c = full block
+  " ?2c = underline, ?3c = quarter block, ?6c = full block
   let &t_SI = "\e[?2c"
   let &t_EI = "\e[?6c"
-  let &t_SR = "\e[?4c"
+  let &t_SR = "\e[?3c"
 endif
 
 if &term ==# 'st-256color'
@@ -788,10 +789,10 @@ endif
 " Mode dependent cursor for mintty
 " https://github.com/mintty/mintty/wiki/Tips#mode-dependent-cursor-in-vim
 if $MSYSCON==?'mintty.exe'
-  let &t_ti .= "\e[1 q"
-  let &t_te .= "\e[0 q"
   let &t_SI = "\e[5 q"
   let &t_EI = "\e[1 q"
+  let &t_ti .= "\e[1 q"
+  let &t_te .= "\e[0 q"
 endif
 
 "===============================================================================
