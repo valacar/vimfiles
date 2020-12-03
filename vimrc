@@ -109,8 +109,8 @@ set guioptions+=d
 "    
 "    
 "    
-set statusline=%f\ %m%r%1*%<
-set statusline+=%{&paste?'[PASTE]':''}
+set statusline=%f%m%r%<
+set statusline+=%{&paste?'\ [PASTE]\ ':''}
 set statusline+=%=
 set statusline+=%{&ft==''?'':&ft.':'}
 set statusline+=\%{&fileencoding?&fileencoding:&encoding}:%{&fileformat}
