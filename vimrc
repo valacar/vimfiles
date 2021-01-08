@@ -825,6 +825,6 @@ endif
 
 
 " Alt-8: change word under cursor; '.' to repeat, n or N to skip
-nnoremap <A-8> *g``cgn
+nnoremap <A-8> *Ncgn
 " same as above, but without word boundaries
-nnoremap g<A-8> g*g``cgn
+nnoremap g<A-8> g*Ncgn
