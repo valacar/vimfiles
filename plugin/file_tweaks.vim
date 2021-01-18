@@ -24,6 +24,13 @@ augroup file_tweaks
         \ syntax match Comment /^\[.\{-}\]/ |
         \ vimgrep /(\(EE\|WW\)/ % | cwindow | wincmd p
 
+  " Simple syntax highlighting for xsession-errors
+  " and show warnings/errors in quickfix window
+  autocmd BufRead .xsession-errors,.xsession-errors.old
+        \ syntax match ErrorMsg /\c\(error\|fail\(ed\|ure\|\)\|abort\|fatal\)/ |
+        \ syntax match WarningMsg /\c\(warn\(ing\|\)\|not found\|invalid\|incomplete\|unable to\|denied\|timed\? out\)/ |
+        \ syntax match Identifier /(.\{-}:\d\+)/
+
   " Simple syntax highlighting for Zathura pdf reader config
   autocmd BufRead,BufNewFile zathurarc
         \ syntax match Keyword "\v^\s*\zs(set|map|include)" |
