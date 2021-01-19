@@ -65,7 +65,7 @@ set ruler              " show row,columns in status line
 set laststatus=2       " always show status line
 set history=200        " more command and search history (default: 50)
 
-if &lines >= 33 || has('gui_running')
+if &lines > 37 || has('gui_running')
   set cmdheight=2      " command line size (>1 reduces 'Press ENTER' prompts)
 endif
 
