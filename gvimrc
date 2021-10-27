@@ -2,7 +2,9 @@ if has('gui_gtk2') || has('gui_gtk3')
   " set guifont=Gohu\ GohuFont\ 10
   " set guifont=Monospace\ 10
   " set guifont=xos4\ Terminus\ Bold\ 12
-  set guifont=TerminusMod\ Medium\ 12
+  " set guifont=TerminusMod\ Medium\ 12
+  " set guifont=Droid\ Sans\ Mono\ 11
+  set guifont=JetBrains\ Mono\ 11
   " se guifont=GohuFont\ Unicode\ 14
 elseif has('x11') " Athena
   " Note: use xlsfont and/or xfontsel to find a font
