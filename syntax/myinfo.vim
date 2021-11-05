@@ -2,8 +2,7 @@
 "
 " Warning: I have no idea what this should look like!
 "          I'm just trying to make it easier for me to read .info files on
-"          Windows without access to man or groff or whatever Linux users
-"          typically use to view them.
+"          Windows without access to GNU info
 
 if version < 600
   syntax clear
