@@ -1,6 +1,5 @@
 " C 'after' ftplugin settings
 
-setlocal formatprg=astyle        " Artistic Style (edit ~/.astylerc to change options)
 setlocal nowrap                  " no word wrapping
 setlocal textwidth=0             " don't break long lines
 setlocal cindent                 " enable C program indenting
@@ -15,45 +14,41 @@ setlocal complete-=i             " remove includes from tab completion (very slo
 
 compiler gcc                     " set errorformat option
 
-" Astyle: use linux line endings unless win/dos format
-" Note: This doesn't work properly with dos files (turns 0D0A into OD0D0A)
-" TODO: get rid of this or figure out why the bug is occurring
-" if &fileformat == 'dos'
-"   setlocal formatprg+=\ --lineend=windows
-" else
-"   setlocal formatprg+=\ --lineend=linux
-" endif
-
-" Astyle: change tabs and spaces option based on Vim settings
-if &expandtab
-  let &l:formatprg .= ' --indent=spaces=' . &l:tabstop
+" Mapping to run current file as an executable. The file's extension is stripped (on linux)
+" or replaced with '.exe (on Windows)
+if has('win32')
+  nnoremap <buffer> <silent> <LocalLeader>r !start cmd /c "%:p:r:s,$,.exe," & pause<CR>
 else
-  let &l:formatprg .= ' --indent=tab=' . &l:tabstop
+  nnoremap <buffer> <silent> <LocalLeader>r !%:p:r<CR>
 endif
 
-" DISABLED: this needs to be project specific (leaving here for reference though)
-" setlocal tags+=~/vimfiles/tags/SDL2
+" Mapping to build with :make and open/close quickfix depending on whether errors are found
+nnoremap <buffer> <silent> <LocalLeader>b :update <bar> make <bar> botright cwindow<CR>
 
-" Run current file as an EXE (assuming it exists)
-nnoremap <buffer> <silent> <LocalLeader>r :update<CR>:!start cmd /c "%:p:r:s,$,.exe," & pause<CR>
-
-" Build with :make and open/close quickfix depending on whether errors are found
-nnoremap <buffer> <silent> <LocalLeader>b :update<CR>:make<CR>:botright cwindow<CR>
-
-" Build with :make silently and open/close quickfix depending on whether errors are found
-" nnoremap <buffer> <silent> <LocalLeader>b :silent make<CR>:redraw!<CR>:cwindow<CR>
-
-" Toggle spell checking
+" Mapping to toggle spell checking
 nnoremap <buffer> <silent> <LocalLeader>s :setlocal spell!<CR>
 
-if executable('ctags')
-  "TODO: will '.' be what :cd reports?  Maybe use %:p:h but we're using -R, so I dunno.
-  nnoremap <buffer> <silent> <LocalLeader>c :!start ctags -R .<CR>:redraw!<CR>
+" Artistic Style code formatting (edit ~/.astylerc to change options)
+if executable('astyle')
+  setlocal formatprg=astyle
+  " Change tabs and spaces option based on Vim settings.
+  if &expandtab
+    let &l:formatprg .= ' --indent=spaces=' . &l:tabstop
+  else
+    let &l:formatprg .= ' --indent=tab=' . &l:tabstop
+  endif
 endif
 
-if exists(':SyntasticCheck')
-  nnoremap <buffer> <silent> <F11> :SyntasticCheck <bar> lwin<cr>
+" Mapping to create ctags
+if executable('ctags')
+  "TODO: will '.' be what :cd reports?  Maybe use %:p:h but we're using -R, so I dunno.
+  if has ('win32')
+    nnoremap <buffer> <silent> <LocalLeader>c :!start ctags -R . <bar> redraw!<CR>
+  else
+    nnoremap <buffer> <silent> <LocalLeader>c :!ctags -R .<CR>
+  endif
 endif
 
 " allow vim to undo our settings when/if the file type changes
-let b:undo_ftplugin .= ' | setlocal formatprg< wrap< cindent< textwidth< formatoptions< autowrite< cinoptions< commentstring< path< tags<'
+let b:undo_ftplugin .= ' | setlocal formatprg< wrap< cindent< textwidth< formatoptions< '
+                   \ . 'autowrite< cinoptions< commentstring< complete<'
