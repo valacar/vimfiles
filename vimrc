@@ -399,10 +399,6 @@ nnoremap <A-k> g'{zz
 " nnoremap Y y$:echomsg strlen(@0)." character(s) yanked"<CR>
 nnoremap Y y$
 
-" Alt-PageUp/Down: Cycle between buffers
-nnoremap <silent> <A-PageUp> :bnext<CR>
-nnoremap <silent> <A-PageDown> :bprevious<CR>
-
 " Alt-1,2,3: switch to specific tabs
 nnoremap <A-1> 1gt
 nnoremap <A-2> 2gt
@@ -832,3 +828,8 @@ endif
 nnoremap <A-8> *Ncgn
 " same as above, but without word boundaries
 nnoremap g<A-8> g*Ncgn
+
+
+" Space-Space: Cycle between buffers
+nnoremap <silent> <Space><Space> :bnext<CR>
+nnoremap <silent> <S-Space><S-Space> :bprevious<CR>
