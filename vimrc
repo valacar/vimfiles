@@ -799,10 +799,15 @@ endif
 " :: Temporary/Experimental junk
 "===============================================================================
 
-" add Alt-key support in linux terminals
+" Add Alt-key support in linux terminals
+" Note: these are specific to only the keys I need (except <A-F1>,
+" which I can't figure out)
 if has('linux') && !has('gui_running')
-  for s:letter in split('jkbcva\123tTnNq', '\zs')
-    execute "map <nowait> \e" . s:letter . ' <A-' . s:letter . '>'
+  for s:key in split('v:V:c:C:a:j:k:1:2:3:t:T:n:N:b:B:8:\', ':')
+    execute "map <nowait> \e" . s:key '<A-' . s:key . '>'
+  endfor
+  for s:key in split('v:v:'':0', ':')
+    execute "map! <nowait> \e" . s:key '<A-' . s:key . '>'
   endfor
 endif
 
