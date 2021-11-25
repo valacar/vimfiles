@@ -102,6 +102,7 @@ set dictionary=~/.vim/dictionary/mywords.txt
 set thesaurus=~/.vim/thesaurus/thesaurus.txt
 
 set diffopt+=algorithm:patience " use a nicer (but slower) diff algorithm
+set diffopt+=context:99999      " don't use folding in diff mode
 
 set mouse=nvi          " enable mouse in most modes
 set guioptions=Mci     " disable GUI, no menus.vim, console dialogs, use icon
