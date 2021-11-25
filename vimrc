@@ -39,7 +39,8 @@ set fileformats=unix,dos " prefer unix line endings when editing new buffer
 
 " Show current working directory in title
 set title
-set titlestring=%{v:progname}:\ %{substitute(getcwd(),escape($HOME,'\\'),'~','')}
+let &titlestring =
+      \ '%{v:progname}: %{substitute(getcwd(), escape($HOME, "\\"), "~", "")}'
 
 set shortmess+=I       " disable Vim's intro screen
 set shortmess-=S       " show search count, .e.g. [1/5]
@@ -141,7 +142,7 @@ endif
 
 if !has('nvim')
   if has('unix')
-    " The following is based on archlinux.vim (which I removed from /usr/share/vim)
+    " The following is based on archlinux.vim (which I removed)
     " It makes backup, swap, and undo directories in ~/.cache/vim/
     if exists('$XDG_CACHE_HOME')
       let s:homecache = $XDG_CACHE_HOME
@@ -462,12 +463,16 @@ nnoremap [A :first<CR>
 " 'smart' home, because I don't like pressing shift-6 (^)
 nnoremap <expr> 0 (col('.') == 1) ? '^' : '0'
 
+" --: comment line with vim-commentary
+" Note: nnoremap and vnoremap don't work in this case
+if &runtimepath =~# 'vim-commentary'
+  nmap -- gcc
+  vmap -- gc
+endif
+
 "===============================================================================
 " :: Insert Mode Mappings
 "===============================================================================
-
-" Ctrl-u: undo in insert mode
-inoremap <C-U> <C-G>u<C-U>
 
 " jj: exit insert mode
 inoremap jj <Esc>
@@ -532,10 +537,10 @@ onoremap Q i'
 " text object for numbers (ints and floats)
 " cn, dn, yn, vn
 function! VisualNumber()
-	let start = search('\d\([^0-9\.]\|$\)', 'cW', line('.'))
+  let start = search('\d\([^0-9\.]\|$\)', 'cW', line('.'))
   if !start | return | endif
-	normal! v
-	call search('\(^\|[^0-9\.]\d\)', 'becW', line('.'))
+  normal! v
+  call search('\(^\|[^0-9\.]\d\)', 'becW', line('.'))
 endfunction
 xnoremap n :<C-u>call VisualNumber()<CR>
 onoremap n :<C-u>normal vn<CR>
@@ -618,7 +623,7 @@ inoreabbrev opposit opposite
 inoreabbrev hexidecimal hexadecimal
 inoreabbrev occuring occurring
 
-" sometimes I type :man when I mean :help
+" Autocorrect :man to :help
 cnoreabbrev man <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'help' : 'man')<CR>
 
 "===============================================================================
@@ -814,24 +819,6 @@ if has('linux') && !has('gui_running')
     execute "map! <nowait> \e" . s:key '<A-' . s:key . '>'
   endfor
 endif
-
-" --: comment line with vim-commentary
-" Note: nnoremap and vnoremap don't work in this case
-if &runtimepath =~# 'vim-commentary'
-  nmap -- gcc
-  vmap -- gc
-endif
-
-" " Note: these can actually match Alt keys too, i.e. <Esc>w is Alt-w
-" nnoremap <Esc>ww <C-w><C-w>
-" " The following maps <C-w>x to <Esc>wx (where x is letter in the split())
-" for s:escKey in split('hjklHJKLnsvcor', '\zs')
-"   execute 'nnoremap <Esc>w' . s:escKey ' <C-w>' . s:escKey
-" endfor
-
-" let g:airline_powerline_fonts = 1
-" let g:airline#extensions#wordcount#enabled = 0
-
 
 " Alt-8: change word under cursor; '.' to repeat, n or N to skip
 nnoremap <A-8> *Ncgn
