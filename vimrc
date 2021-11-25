@@ -477,12 +477,6 @@ endif
 " jj: exit insert mode
 inoremap jj <Esc>
 
-" Alt-0: paste register 0
-inoremap <A-0> <C-r>0
-
-" Alt-': paste register "
-inoremap <A-'> <C-r>"
-
 "===============================================================================
 " :: Visual Mode Mappings
 "===============================================================================
@@ -815,7 +809,7 @@ if has('linux') && !has('gui_running')
   for s:key in split('v:V:c:C:a:j:k:1:2:3:t:T:n:N:b:B:8:\', ':')
     execute "map <nowait> \e" . s:key '<A-' . s:key . '>'
   endfor
-  for s:key in split('v:v:'':0', ':')
+  for s:key in split('v:V', ':')
     execute "map! <nowait> \e" . s:key '<A-' . s:key . '>'
   endfor
 endif
