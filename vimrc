@@ -422,7 +422,7 @@ nnoremap <expr> gV (&modified) ? '`[v`]zz' : ''
 " section jumping with scroll adjustment
 nnoremap ]] ]]zt
 nnoremap [[ [[zt
-nnoremap [] []z!&!<
+nnoremap [] []zb
 nnoremap ][ ][zb
 
 " Alt-n and Alt-N to navigate quickfix results
