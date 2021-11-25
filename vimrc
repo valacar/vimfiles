@@ -252,9 +252,8 @@ command! DiffOrig
       \ vertical new | set buftype=nofile | read ++edit # | 0d_ |
       \ diffthis | wincmd p | diffthis
 
-" Enable/Disable diff between currently visible windows
-command! DiffOn windo diffthis
-command! DiffOff windo diffoff
+" Toggle diff between currently visible windows
+command! Diff execute 'windo diff' . (&diff ? 'off' : 'this')
 
 " Make visible windows scroll together
 command! ScrollLock windo set scrollbind!
