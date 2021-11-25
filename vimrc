@@ -265,11 +265,15 @@ command! TT execute &bg == 'dark'
 
 command! FontSelect set guifont=*
 
+command! Hitab execute !exists('b:hiTab')
+      \ ? 'let b:hiTab = matchadd("Error", "\\t") | set list'
+      \ : 'call matchdelete(b:hiTab) | unlet b:hiTab| set nolist'
+
+command! Hitrailingwhitespace execute !exists('b:hiTrail')
+      \ ? 'let b:hiTrail = matchadd("Error", "\\s\\+$") | set list'
+      \ : 'call matchdelete(b:hiTrail) | unlet b:hiTrail| set nolist'
+
 command! Hitest source $VIMRUNTIME/syntax/hitest.vim
-" TODO: make these toggle, and also track their returned ID number
-command! Hitab call matchadd('ErrorMsg', '\t')
-command! Hitrailingwhitespace call matchadd('ErrorMsg', '\s\+$')
-command! Hiclear call clearmatches()
 
 command! Hi80 execute 'setlocal colorcolumn=' . (&l:cc == '' ? '80' : '')
 command! Hi88 execute 'setlocal colorcolumn=' . (&l:cc == '' ? '88' : '')
