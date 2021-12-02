@@ -513,11 +513,8 @@ vnoremap L I<Space><Esc>gv
 vnoremap H xgv
 
 " @: Run macro on selected lines only
-xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
-function! ExecuteMacroOverVisualRange()
-  echo '@'.getcmdline()
-  execute ":'<,'>normal @".nr2char(getchar())
-endfunction
+xnoremap @ :<C-u>echo '@' . getcmdline()
+      \ <bar> execute ":'<,'>normal! @" . nr2char(getchar())<CR>
 
 "===============================================================================
 " :: Operator Pending Mappings
