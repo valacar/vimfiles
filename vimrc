@@ -625,8 +625,9 @@ cnoreabbrev man <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'help' : 'man')<CR>
 " nnoremap <Leader>E :exe 'Lexplore' expand('%:p:h')<CR>
 " more settings -> :h netrw-browser-options
 let g:netrw_winsize=50
-let g:netrw_liststyle=3
+let g:netrw_liststyle=0
 let g:netrw_banner=0
+let g:netrw_special_syntax=1
 
 if &runtimepath =~# 'vim-startify'
   nnoremap <Leader>s :Startify<cr>
