@@ -29,8 +29,8 @@ if executable('node')
   "WARN: these apply to the whole file
   "TODO: make these work for selections (at least line based)
   "FIXME: these shouldn't be for javascript files only!
-  command! -buffer DecodeURIComponent :call execute(':%!node ' . expand('$HOME') . '/vimfiles/after/ftplugin/javascript/decodeURIComponent.js')
-  command! -buffer JsonParse :call execute(':%!node ' . expand('$HOME') . '/vimfiles/after/ftplugin/javascript/jsonparse.js')
+  command! -buffer DecodeURIComponent call execute(':%!node ' . expand('$HOME') . '/vimfiles/after/ftplugin/javascript/decodeURIComponent.js')
+  command! -buffer JsonParse call execute(':%!node ' . expand('$HOME') . '/vimfiles/after/ftplugin/javascript/jsonparse.js')
 endif
 
 " allow vim to undo our settings when/if the file type changes

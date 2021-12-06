@@ -30,7 +30,7 @@ nnoremap <buffer> k k0W
 nnoremap <buffer> gg gg0W
 nnoremap <buffer> G G0W
 
-let b:undo_ftplugin = 'setl tabstop< softtabstop< shiftwidth< wrap< number< cursorline<'
+let b:undo_ftplugin = 'setlocal tabstop< softtabstop< shiftwidth< wrap< number< cursorline<'
 
 let &cpoptions = s:cpo_save
 unlet s:cpo_save

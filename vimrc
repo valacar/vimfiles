@@ -302,15 +302,15 @@ command! -range SwapSlashes
       \         '[/\\]_\=tr(submatch(0), "/\\", "\\/")_g'
 " /test/slash/test/slash/
 
-command! PasteJavascript :setf javascript | normal "+P
-command! PasteCSS :setf css | normal "+P
-command! PasteHTML :setf html | normal "+P
-command! PasteJSON :setf json | normal "+PgqG``
+command! PasteJavascript setfiletype javascript | normal! "+P
+command! PasteCSS setfiletype css | normal! "+P
+command! PasteHTML setfiletype html | normal! "+P
+command! PasteJSON setfiletype json | normal! "+PgqG``
 
-command! ClearSearchHistory call histdel('/')|nohls
+command! ClearSearchHistory call histdel('/') | nohlsearch
 command! ClearCommandHistory call histdel(':')
 command! ClearLetterRegisters
-      \ for r in range(97,122)|call setreg(nr2char(r),[])|endfor
+      \ for r in range(97,122) | call setreg(nr2char(r),[]) | endfor
 
 " Reload file as UTF-16LE
 command! ReloadAsUnicode16 edit ++enc=utf-16le
@@ -318,7 +318,7 @@ command! ReloadAsUnicode16 edit ++enc=utf-16le
 command! ReloadAsCodePage437 edit ++enc=cp437
 
 " Save with sudo and re-edit
-command! SudoSave :execute 'w !sudo tee % > /dev/null' | :edit!
+command! SudoSave execute 'write !sudo tee % > /dev/null' | edit!
 
 " Redirect :global results to a scratch buffer. Accepts pattern, otherwise
 " uses last search. e.g. :Filter red\|blue
@@ -363,7 +363,7 @@ command! -bang Modeline setlocal modeline | edit<bang> | setlocal modeline<
 
 " TODO: make this toggle, and restore filetype, and buftype
 command! HexView
-      \ silent! exe '%!xxd -g1' |
+      \ silent! execute '%!xxd -g1' |
       \ setlocal filetype=xxd buftype=nofile cursorline nowrap |
       \ keeppat %s/^/\=(line('.')%17==0?"\n":'')/g | 1
 
@@ -495,7 +495,7 @@ xnoremap <A-k> g`{
 function! s:setSearch()
   let l:v = visualmode()
   let l:old_t = @t
-  silent exe 'normal! `<' . l:v . '`>"ty'
+  silent execute 'normal! `<' . l:v . '`>"ty'
   let @/ = substitute(escape(@t, '\/.*$^~[]'), "\n", '\\n', 'g')
   let @t = l:old_t
 endfunction
@@ -534,7 +534,7 @@ function! VisualNumber()
   call search('\(^\|[^0-9\.]\d\)', 'becW', line('.'))
 endfunction
 xnoremap n :<C-u>call VisualNumber()<CR>
-onoremap n :<C-u>normal vn<CR>
+onoremap n :<C-u>normal! vn<CR>
 
 "===============================================================================
 " :: Leader Key Mappings
@@ -622,7 +622,7 @@ cnoreabbrev man <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'help' : 'man')<CR>
 "===============================================================================
 
 " nnoremap <Leader>e :Lexplore<CR>
-" nnoremap <Leader>E :exe 'Lexplore' expand('%:p:h')<CR>
+" nnoremap <Leader>E :execute 'Lexplore' expand('%:p:h')<CR>
 " more settings -> :h netrw-browser-options
 let g:netrw_winsize=50
 let g:netrw_liststyle=0
@@ -731,7 +731,7 @@ augroup vimrc
         \ call myfunc#ReloadConfig('<afile>')
 
 " reload color scheme after writing
-  autocmd BufWritePost */.vim/colors/*.vim :exe 'colo' expand("<afile>:t:r")
+  autocmd BufWritePost */.vim/colors/*.vim :execute 'colo' expand("<afile>:t:r")
 
 " change insert mode cursor color (Note: must add iCursor to 'guicursor')
   highlight iCursor guibg=#ff0000
@@ -750,7 +750,7 @@ augroup vimrc
 " TODO: maybe test if w:quickfix_title == 'make' since I've only
 "       seen it occur with 'make' so far
 "   autocmd BufReadPost quickfix setlocal modifiable
-"                            \ | silent! exe 'g/^/s/\%x0d$//g'
+"                            \ | silent! execute 'g/^/s/\%x0d$//g'
 "                            \ | setlocal nomodifiable
 augroup END
 

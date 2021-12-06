@@ -1,6 +1,6 @@
 function! myfunc#ReloadConfig(filename) abort
-  exec 'source' a:filename
-  exec 'source' '~/.vim/after/ftplugin/vim.vim'
+  execute 'source' a:filename
+  execute 'source' '~/.vim/after/ftplugin/vim.vim'
 endfunction
 
 " Show syntax highlighting groups for what's under the cursor
