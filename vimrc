@@ -337,7 +337,7 @@ command! CopyFilename  let @+ = expand('%:p:t')
 command! CopyPath      let @+ = expand('%:p')
 
 command! -nargs=+ -bang Grep execute 'silent grep <args>' | redraw! |
-      \ if empty('<bang>') | cwindow | endif
+      \ if <bang>0 | cwindow | endif
 
 command! SynStack call myfunc#SynStack()
 
@@ -347,7 +347,7 @@ if ! has('gui_running')
   command! -bang Transparent
         \ for s:grp in ['Normal', 'NonText', 'LineNr', 'SignColumn'] |
         \ execute 'highlight' s:grp 'ctermbg=NONE guibg=NONE' | endfor |
-        \ if !empty('<bang>') | execute 'colorscheme' g:colors_name | endif
+        \ if <bang>0 | execute 'colorscheme' g:colors_name | endif
 endif
 
 " Make a banner around a line, as seen in the section dividers in this vimrc
