@@ -1,7 +1,7 @@
 " ftdetect for Dwarf Fortress txt files.
 " syntax files at https://github.com/kazimuth/dwarffortress.vim
 
-au BufRead,BufNewFile */dwarf_fortress*/*.txt,*/df_linux/*.txt
+autocmd BufRead,BufNewFile */dwarf_fortress*/*.txt,*/df_linux/*.txt
       \ call s:DwarfFortressDetect() |
       \ hi link dfTokenStart String |
       \ hi link dfTokenEnd String |

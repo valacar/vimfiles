@@ -1,8 +1,8 @@
 " Simplified C syntax highlighting
 
-if version < 600
+if v:version < 600
   syntax clear
-elseif exists("b:current_syntax")
+elseif exists('b:current_syntax')
   finish
 endif
 
@@ -18,7 +18,7 @@ syn keyword mycKeyword if else do while for switch case return goto break contin
 syn keyword mycKeyword struct union enum typedef
 syn keyword mycKeyword ifdef ifndef define undef endif include error
 
-let b:current_syntax = "myC"
+let b:current_syntax = 'myC'
 
 hi default mycString guifg=#f0d0bb
 hi default mycKeyword guifg=#ffffff gui=bold

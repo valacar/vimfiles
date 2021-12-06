@@ -1,10 +1,10 @@
-if exists("b:did_ftplugin")
+if exists('b:did_ftplugin')
   finish
 endif
 let b:did_ftplugin = 1
 
-let s:cpo_save = &cpo
-set cpo&vim
+let s:cpo_save = &cpoptions
+set cpoptions&vim
 
 
 setlocal tabstop=8
@@ -15,7 +15,7 @@ setlocal comments=:;
 setlocal commentstring=;\ %s
 
 
-let b:undo_ftplugin = "setl comments< commentstring< tabstop< shiftwidth< expandtab<"
+let b:undo_ftplugin = 'setlocal comments< commentstring< tabstop< shiftwidth< expandtab<'
 
-let &cpo = s:cpo_save
+let &cpoptions = s:cpo_save
 unlet s:cpo_save

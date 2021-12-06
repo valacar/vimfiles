@@ -1,5 +1,5 @@
 " Ad-hoc file type for qmv (dual column mode)
-" Quick Move is from renameutils 
+" Quick Move is from renameutils
 " https://www.nongnu.org/renameutils/
 
 " Expecting outfrom from:

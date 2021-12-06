@@ -2,9 +2,9 @@
 " The main focus is on the declaration block, with properties in one color, and values one color.
 " Selectors are ignored because I don't care to distinguish things like classes, id's and tags.
 
-if version < 600
+if v:version < 600
   syntax clear
-elseif exists("b:current_syntax")
+elseif exists('b:current_syntax')
   finish
 endif
 
@@ -19,7 +19,7 @@ syn region mycssDefinition contains=mycssImportant,mycssProperty,mycssComment ma
 " Comment
 syn region mycssComment start="/\*" end="\*/" contains=@Spell fold
 
-let b:current_syntax = "myCSS"
+let b:current_syntax = 'myCSS'
 
 syn sync minlines=10
 

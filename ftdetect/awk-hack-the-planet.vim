@@ -9,8 +9,8 @@
 "    Presentation https://youtu.be/43BNFcOdBlY
 "    Exercises https://youtu.be/4UGLsRYDfo8
 
-au BufRead,BufNewFile */Projects/awk/awk-hack-the-planet/*.awk
+autocmd BufRead,BufNewFile */Projects/awk/awk-hack-the-planet/*.awk
       \ nmap <buffer> <LocalLeader>r :update<bar>!clear;awk -f % payroll.tsv<CR>
 
-au BufRead,BufNewFile */Projects/awk/awk-hack-the-planet/payroll.tsv
+autocmd BufRead,BufNewFile */Projects/awk/awk-hack-the-planet/payroll.tsv
       \ setlocal tabstop=19

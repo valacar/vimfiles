@@ -8,7 +8,7 @@ function! mycommand#FixWhitespace(line1,line2) abort
   execute ':' . a:line1 . ',' . a:line2 . 's/\s\+$//e'
   let charDiff = charCount - wordcount()['chars']
   if charCount > 0
-    echo printf('%d whitespace character%s removed', 
+    echo printf('%d whitespace character%s removed',
           \ charDiff, charDiff != 1 ? 's' : '')
   endif
   call setpos('.', l:save_cursor)
@@ -150,7 +150,7 @@ function! mycommand#VimChangelog() abort
   silent 2,/Individual/delete
 
   " Add a blank line every 100 versions
-  silent global/\d\+\.\d\+\.[0-9][1-9]00/normal O
+  silent global/\d\+\.\d\+\.[0-9][1-9]00/normal! O
 
   " Search for the version of Vim we're currently using
   let l:ver_line = search(l:longver, 'n')

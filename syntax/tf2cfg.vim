@@ -3,9 +3,9 @@
 " Maintainer: David Vazgenovich Shakaryan <dvshakaryan@gmail.com>
 " Last Change: 2013-04-17
 
-if version < 600
+if v:version < 600
 	syntax clear
-elseif exists("b:current_syntax")
+elseif exists('b:current_syntax')
 	finish
 endif
 
@@ -76,4 +76,4 @@ hi def link tf2Bind Keyword
 hi def link tf2BindCont Keyword
 hi def link tf2BindKey Identifier
 
-let b:currentsyntax = "tf2cfg"
+let b:currentsyntax = 'tf2cfg'

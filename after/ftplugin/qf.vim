@@ -10,13 +10,13 @@ setlocal statusline=%t%{exists('w:quickfix_title')?\ '\ '.w:quickfix_title\ :\ '
 " TODO: make this work for location lists too
 nnoremap <silent> <buffer> <nowait> <Esc> :cclose<CR>
 nnoremap <silent> <buffer> q :cclose<CR>
-nnoremap <silent> <buffer> Q 
+nnoremap <silent> <buffer> Q
       \ :try <bar> cclose <bar> catch /E444/ <bar> quit! <bar> endtry<CR>
 
 " filter quickfix with :Cfilter[!] /{pat}/
 if !exists(':Cfilter')
   " runtime! pack/dist/opt/cfilter/plugin/cfilter.vim
-  packadd cfilter       
+  packadd cfilter
 endif
 
 " allow vim to undo our settings when/if the file type changes

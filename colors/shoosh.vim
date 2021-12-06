@@ -2,17 +2,17 @@ set background=dark
 
 hi clear
 
-if exists("syntax_on")
+if exists('syntax_on')
   syntax reset
 endif
 
-let colors_name = "shoosh"
+let colors_name = 'shoosh'
 
 " comment
 hi Normal       guifg=#cccccc guibg=#131313 gui=none
 hi Cursor       guifg=NONE guibg=#339933 gui=none
 hi CursorColumn guifg=NONE guibg=#161616 gui=none
-hi CursorLine   guifg=NONE guibg=#161616 gui=none 
+hi CursorLine   guifg=NONE guibg=#161616 gui=none
 hi Visual       guifg=#ffffff guibg=#555555 gui=none
 
 hi Comment      guifg=#666666 guibg=NONE gui=none

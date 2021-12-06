@@ -4,9 +4,9 @@
 "          I'm just trying to make it easier for me to read .info files on
 "          Windows without access to GNU info
 
-if version < 600
+if v:version < 600
   syntax clear
-elseif exists("b:current_syntax")
+elseif exists('b:current_syntax')
   finish
 endif
 
@@ -39,7 +39,7 @@ hi infoNote guifg=#999999 guibg=NONE
 hi default infoSectionFooter guifg=#666666 guibg=NONE
 hi default infoBold guifg=#ffffff guibg=NONE gui=bold
 
-let b:current_syntax = "myinfo"
+let b:current_syntax = 'myinfo'
 
 " TODO: put these in ftplugin folder
 setlocal conceallevel=2

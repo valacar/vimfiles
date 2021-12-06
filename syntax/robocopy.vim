@@ -1,13 +1,13 @@
 " RoboCopy job file syntax by Valacar
 " (quick, dirty, and hardly any testing done)
 
-if version < 600
+if v:version < 600
   syntax clear
-elseif exists("b:current_syntax")
+elseif exists('b:current_syntax')
   finish
 endif
 
-let b:current_syntax = "robocopy"
+let b:current_syntax = 'robocopy'
 
 " TODO: add keywords for valid switches?
 syntax region roboSwitchLine start="\s*\/[A-Za-z]" end="$" contains=roboComment,roboSwitchOption oneline

@@ -1,15 +1,16 @@
 " vim:tabstop=2:shiftwidth=2:expandtab:foldmethod=marker:textwidth=79
 " Zimwiki syntax file
 " Author: Sören König <soeren-koenig@freenet.de>
+scriptencoding utf-8
 
 " Quit if syntax file is already loaded
-if version < 600
+if v:version < 600
   syntax clear
-elseif exists("b:current_syntax")
+elseif exists('b:current_syntax')
   finish
 endif
 
-if version < 508
+if v:version < 508
   command! -nargs=+ HiLink highlight link <args>
   command! -nargs=+ Hi highlight <args>
 else
@@ -86,7 +87,7 @@ syntax match ZimwikiUnderline #\c<u>.\{-}</u># contains=ZimwikiHTMLTag
 syntax sync fromstart
 
 "highlighting for diverse groups
-if &background == 'light'
+if &background ==# 'light'
   Hi ZimwikiHeader1 guifg=#aa5858 gui=bold ctermfg=DarkRed   term=bold cterm=bold
   Hi ZimwikiHeader2 guifg=#507030 gui=bold ctermfg=DarkGreen term=bold cterm=bold
   Hi ZimwikiHeader3 guifg=#1030a0 gui=bold ctermfg=DarkBlue  term=bold cterm=bold
@@ -117,6 +118,6 @@ HiLink ZimwikiTodo Todo
 HiLink ZimwikiComment Comment
 HiLink ZimwikiHTMLtag SpecialKey
 
-let b:current_syntax = "zimwiki"
+let b:current_syntax = 'zimwiki'
 
 delcommand HiLink

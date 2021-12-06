@@ -12,7 +12,7 @@ function! MyEslintGetCommand(buffer) abort
     \   . ' -f unix --stdin'
 endfunction
 
-if exists("*ale#linter#Define")
+if exists('*ale#linter#Define')
   call ale#linter#Define('javascript', {
   \   'name': 'my-eslint',
   \   'output_stream': 'both',

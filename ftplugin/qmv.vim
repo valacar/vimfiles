@@ -1,5 +1,5 @@
 " Ad-hoc file type for qmv (single column mode)
-" Quick Move is from renameutils 
+" Quick Move is from renameutils
 " https://www.nongnu.org/renameutils/
 
 " Expecting output from:
@@ -30,7 +30,7 @@ nnoremap <buffer> j :+3<CR>
 nnoremap <buffer> k :-3<CR>
 nnoremap <buffer> gg :2<CR>
 
-let b:undo_ftplugin = 'setl tabstop< softtabstop< shiftwidth< wrap< number<'
+let b:undo_ftplugin = 'setlocal tabstop< softtabstop< shiftwidth< wrap< number<'
 
 let &cpoptions = s:cpo_save
 unlet s:cpo_save
