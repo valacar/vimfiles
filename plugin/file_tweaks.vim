@@ -27,8 +27,8 @@ augroup file_tweaks
   " Simple syntax highlighting for xsession-errors
   " and show warnings/errors in quickfix window
   autocmd BufRead .xsession-errors,.xsession-errors.old
-        \ syntax match ErrorMsg /\c\(error\|fail\(ed\|ure\|\)\|abort\|fatal\)/ |
-        \ syntax match WarningMsg /\c\(warn\(ing\|\)\|not found\|invalid\|incomplete\|unable to\|denied\|timed\? out\)/ |
+        \ syntax match ErrorMsg /\v\c(error|fail(ed|ure|)|abort|fatal|crash)/ |
+        \ syntax match WarningMsg /\v\c(warn(ing|)|not found|invalid|incomplete|unable to|denied|timed? out|missing|unknown|(does not|doesn't) exist)/ |
         \ syntax match Identifier /(.\{-}:\d\+)/
 
   " Simple syntax highlighting for Zathura pdf reader config
