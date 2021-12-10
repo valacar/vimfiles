@@ -19,7 +19,7 @@ compiler gcc                     " set errorformat option
 if has('win32')
   nnoremap <buffer> <silent> <LocalLeader>r !start cmd /c "%:p:r:s,$,.exe," & pause<CR>
 else
-  nnoremap <buffer> <silent> <LocalLeader>r !%:p:r<CR>
+  nnoremap <buffer> <silent> <LocalLeader>r :!%:p:r<CR>
 endif
 
 " Mapping to build with :make and open/close quickfix depending on whether errors are found
