@@ -446,6 +446,10 @@ nnoremap <A-b> :ls<CR>:b<Space>
 " Alt-Shift-B: view and switch buffers (including hidden)
 nnoremap <A-S-b> :ls!<CR>:b<Space>
 
+if &runtimepath =~# 'fzf.vim'
+  nnoremap <A-b> :Buffers<CR>
+end
+
 " Shift-Enter: un-join line (opposite of J)
 nnoremap <S-Enter> i<CR><Esc>
 
@@ -726,6 +730,11 @@ if &runtimepath =~# '/ale'
   let g:ale_type_map = {
         \'flake8': {'ES': 'WS'},
         \}
+endif
+
+if &runtimepath =~# 'fzf.vim'
+  command! -bar -bang Help
+        \ call fzf#vim#helptags(<bang>0)
 endif
 
 "===============================================================================
