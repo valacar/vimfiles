@@ -311,6 +311,10 @@ command! PasteCSS setfiletype css | normal! "+P
 command! PasteHTML setfiletype html | normal! "+P
 command! PasteJSON setfiletype json | normal! "+PgqG``
 
+command! PasteBookmarklet
+      \ setfiletype javascript |
+      \ normal! "+P`[v`]:DecodeURIComponent<CR>gvgq
+
 command! ClearSearchHistory call histdel('/') | nohlsearch
 command! ClearCommandHistory call histdel(':')
 command! ClearLetterRegisters

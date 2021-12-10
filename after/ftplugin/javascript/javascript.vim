@@ -25,12 +25,11 @@ if exists(':ReloadFirefox')
         \ :ReloadFirefox<CR>
 endif
 
-if executable('node')
-  "WARN: these apply to the whole file
-  "TODO: make these work for selections (at least line based)
-  "FIXME: these shouldn't be for javascript files only!
-  command! -buffer DecodeURIComponent call execute(':%!node ' . expand('$HOME') . '/vimfiles/after/ftplugin/javascript/decodeURIComponent.js')
-  command! -buffer JsonParse call execute(':%!node ' . expand('$HOME') . '/vimfiles/after/ftplugin/javascript/jsonparse.js')
+if executable('python3')
+  " I mainly use this command to decode javascript bookmarklets.
+  " It converts things like %20 to a space character
+  " Note: must be used with a visual selection
+  command! -buffer -range DecodeURIComponent :<line1>,<line2>!python3 ~/.vim/after/ftplugin/javascript/decodeURIComponent.py
 endif
 
 " allow vim to undo our settings when/if the file type changes
