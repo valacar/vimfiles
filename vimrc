@@ -387,7 +387,7 @@ cnoremap <A-v> <C-r>+
 
 " Alt-c: Copy using system clipboard (in normal mode and visual)
 nnoremap <A-c> "+y
-vnoremap <A-c> "+y
+xnoremap <A-c> "+y
 nnoremap <A-S-c> "+y$
 
 " copy whole file to system clipboard
@@ -471,10 +471,10 @@ nnoremap [A :first<CR>
 nnoremap <expr> 0 (col('.') == 1) ? '^' : '0'
 
 " --: comment line with vim-commentary
-" Note: nnoremap and vnoremap don't work in this case
+" Note: nnoremap and xnoremap don't work in this case
 if &runtimepath =~# 'vim-commentary'
   nmap -- gcc
-  vmap -- gc
+  xmap -- gc
 endif
 
 "===============================================================================
@@ -508,16 +508,16 @@ function! s:setSearch()
 endfunction
 
 " Search visual selected text forward (*) and backward (#)
-vnoremap <silent> * :call <SID>setSearch()<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :call <SID>setSearch()<CR>?<C-R>=@/<CR><CR>
+xnoremap <silent> * :call <SID>setSearch()<CR>/<C-R>=@/<CR><CR>
+xnoremap <silent> # :call <SID>setSearch()<CR>?<C-R>=@/<CR><CR>
 
 " p: Keep unnamed register (") when pasting in visual mode
 xnoremap p pgvy
 xnoremap P Pgvy
 
 " L, H: Indent/Unindent with a space in visual block (Ctrl-v) mode
-vnoremap L I<Space><Esc>gv
-vnoremap H xgv
+xnoremap L I<Space><Esc>gv
+xnoremap H xgv
 
 " @: Run macro on selected lines only
 xnoremap @ :<C-u>echo '@' . getcmdline()
