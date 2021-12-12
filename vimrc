@@ -73,7 +73,8 @@ if &lines > 37 || has('gui_running')
 endif
 
 if ! has('gui_running')
-  set ttimeoutlen=100  " lessen delay when pressing escape in terminal
+  set ttimeout          " time out for key codes
+  set ttimeoutlen=100   " wait up to 100ms after Esc for special key
 endif
 
 set infercase          " change case when completing a word
