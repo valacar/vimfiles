@@ -62,6 +62,7 @@ set hidden             " allow changing buffer without saving it first
 set nofoldenable       " disable folding by default (:help fold-commands)
 set scrolloff=4        " vertical scrolling margin (top and bottom)
 set sidescrolloff=5    " horizontal scrolling margin
+set sidescroll=1       " scroll 1 char when scrolling horizontally (when nowrap)
 set ruler              " show row,columns in status line
 set laststatus=2       " always show status line
 set history=200        " more command and search history (default: 50)
