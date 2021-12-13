@@ -195,6 +195,9 @@ if !has('nvim')
     " Don't keep DVD drive files in the viminfo file
     set viminfo+=rE:
   endif
+else
+  " Don't save backups to the current dir with NeoVim
+  set backupdir-=.
 endif
 
 set backup
