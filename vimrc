@@ -742,8 +742,10 @@ if &runtimepath =~# '/ale'
 endif
 
 if &runtimepath =~# 'fzf.vim'
+  let $FZF_DEFAULT_COMMAND = 'fd --type f --ignore-file ~/.config/fd/vim-ignore'
   command! -bar -bang Help
         \ call fzf#vim#helptags(<bang>0)
+
 endif
 
 "===============================================================================
