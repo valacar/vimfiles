@@ -43,13 +43,13 @@
 " opened in a new window
 "
 " ****************** Do not modify after this line ************************
-if exists('loaded_scratch') || &cp
+if exists('loaded_scratch') || &compatible
     finish
 endif
 let loaded_scratch=1
 
 " Scratch buffer name
-let ScratchBufferName = "__Scratch__"
+let ScratchBufferName = '__Scratch__'
 
 " ScratchBufferOpen
 " Open the scratch buffer
@@ -67,9 +67,9 @@ function! s:ScratchBufferOpen(new_win)
     if scr_bufnum == -1
         " open a new scratch buffer
         if split_win
-            exe "new " . g:ScratchBufferName
+            exe 'new ' . g:ScratchBufferName
         else
-            exe "edit " . g:ScratchBufferName
+            exe 'edit ' . g:ScratchBufferName
         endif
     else
         " Scratch buffer is already created. Check whether it is open
@@ -79,14 +79,14 @@ function! s:ScratchBufferOpen(new_win)
             " Jump to the window which has the scratch buffer if we are not
             " already in that window
             if winnr() != scr_winnum
-                exe scr_winnum . "wincmd w"
+                exe scr_winnum . 'wincmd w'
             endif
         else
             " Create a new scratch buffer
             if split_win
-                exe "split +buffer" . scr_bufnum
+                exe 'split +buffer' . scr_bufnum
             else
-                exe "buffer " . scr_bufnum
+                exe 'buffer ' . scr_bufnum
             endif
         endif
     endif
@@ -101,7 +101,10 @@ function! s:ScratchMarkBuffer()
     setlocal buflisted
 endfunction
 
-autocmd BufNewFile __Scratch__ call s:ScratchMarkBuffer()
+augroup scratch_plugin
+  autocmd!
+  autocmd BufNewFile __Scratch__ call s:ScratchMarkBuffer()
+augroup END
 
 " Command to edit the scratch buffer in the current window
 command! -nargs=0 Scratch call s:ScratchBufferOpen(0)

@@ -1,4 +1,4 @@
-function! redir#Redir(cmd)
+function! redir#Redir(cmd) abort
   redir => output
   execute a:cmd
   redir END
