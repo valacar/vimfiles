@@ -2,7 +2,7 @@
 " Author:      valacar (valacar@users.noreply.github.com)
 " Webpage:     https://github.com/valacar/vimfiles/tree/master/colors
 " Description: Modification of the default Wombat color scheme
-" Last Change: 2021-11-24
+" Last Change: 2021-12-18
 
 hi clear
 
@@ -82,8 +82,8 @@ if ($TERM =~? '256' || &t_Co >= 256) || has('gui_running')
     hi gitcommitBranch ctermbg=NONE ctermfg=97 cterm=NONE guibg=NONE guifg=#b984b1 gui=NONE
     hi debugPC ctermbg=25 ctermfg=NONE cterm=NONE guibg=#263760 guifg=NONE gui=NONE
     hi debugBreakpoint ctermbg=88 ctermfg=250 cterm=NONE guibg=#660000 guifg=#bcbcbc gui=NONE
-    hi SpellBad ctermbg=124 ctermfg=15 cterm=undercurl guibg=#ff3300 guifg=#ffffff gui=undercurl guisp=#ff3300
-    hi SpellCap ctermbg=33 ctermfg=15 cterm=undercurl guibg=#0099ff guifg=#ffffff gui=undercurl guisp=#0099ff
+    hi SpellBad ctermbg=124 ctermfg=15 cterm=undercurl guibg=#660000 guifg=#ffffff gui=undercurl guisp=#ff0000
+    hi SpellCap ctermbg=33 ctermfg=15 cterm=undercurl guibg=#004d80 guifg=#ffffff gui=undercurl guisp=#56bcff
 
 elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     set t_Co=16
