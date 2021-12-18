@@ -453,10 +453,6 @@ nnoremap <A-b> :ls<CR>:b<Space>
 " Alt-Shift-B: view and switch buffers (including hidden)
 nnoremap <A-S-b> :ls!<CR>:b<Space>
 
-if &runtimepath =~# 'fzf.vim'
-  nnoremap <A-b> :Buffers<CR>
-end
-
 " Shift-Enter: un-join line (opposite of J)
 nnoremap <S-Enter> i<CR><Esc>
 
@@ -483,10 +479,8 @@ nnoremap <expr> 0 (col('.') == 1) ? '^' : '0'
 
 " --: comment line with vim-commentary
 " Note: nnoremap and xnoremap don't work in this case
-if &runtimepath =~# 'vim-commentary'
-  nmap -- gcc
-  xmap -- gc
-endif
+nmap -- <Plug>CommentaryLine
+xmap -- <Plug>Commentary
 
 "===============================================================================
 " :: Insert Mode Mappings
@@ -590,15 +584,11 @@ nnoremap <silent> <F4> :set wrap! wrap?<CR>
 nnoremap <silent> <F5> :set list! list?<CR>
 
 " F8, Shift-F8: jump to next/previous error
-if &runtimepath =~# 'ale'
-  nmap <silent> <F8> <Plug>(ale_next_wrap)
-  nmap <silent> <S-F8> <Plug>(ale_previous_wrap)
-endif
+nmap <silent> <F8> <Plug>(ale_next_wrap)
+nmap <silent> <S-F8> <Plug>(ale_previous_wrap)
 
 " F12: toggle tag bar
-if &runtimepath =~# 'tagbar'
-  nnoremap <silent> <F12> :TagbarToggle<CR>
-endif
+nnoremap <silent> <F12> :TagbarToggle<CR>
 
 "===============================================================================
 " :: Abbreviations
@@ -639,68 +629,94 @@ cnoreabbrev man <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'help' : 'man')<CR>
 " :: Plugin settings
 "===============================================================================
 
-" nnoremap <Leader>e :Lexplore<CR>
-" nnoremap <Leader>E :execute 'Lexplore' expand('%:p:h')<CR>
+" --- vim-startify ---
+nnoremap <Leader>s :Startify<cr>
+let g:startify_session_sort = 1
+let g:startify_files_number = 10
+let g:startify_padding_left = 3
+let g:startify_mapping_nowait = 0
+let g:startify_disable_at_vimenter = 1
+let g:startify_custom_header = []
+let g:startify_bookmarks = [
+      \ {22: '~/.vim/'},
+      \ {33: '~/.vim/after/ftplugin'},
+      \ {44: '~/.vim/vimrc'},
+      \ {45: '~/.vim/gvimrc'},
+      \ {55: '~/.vim/colors/wombat_mod.vim'},
+      \ {56: '~/.vim/vim-rnb/wombat_mod.erb'},
+      \ {66: '~/.vim/plugin'},
+      \ ]
+if $SHELL =~# 'bash$'
+  call extend(g:startify_bookmarks, [
+        \ {77: '~/.bashrc'},
+        \ {88: '~/.profile'},
+        \ ])
+endif
+let g:startify_session_autoload = 1
+let g:startify_skiplist = [
+      \ '^/usr/share/vim/',
+      \ '^/usr/local/share/vim/',
+      \ '^/run/media/',
+      \ '^/tmp/',
+      \ '/.vim/pack/',
+      \ 'COMMIT_EDITMSG',
+      \ 'MERGE_MSG',
+      \ 'vimrc$',
+      \ ]
+
+" --- vim-mucomplete ---
+let g:mucomplete#chains = {}
+let g:mucomplete#chains.default = ['c-n']
+let g:mucomplete#chains.c = ['c-n']
+let g:mucomplete#chains.html = ['omni', 'c-n']
+let g:mucomplete#chains.css = ['omni', 'c-n']
+let g:mucomplete#chains.javascript = ['omni', 'c-n']
+let g:mucomplete#chains.vimwiki = ['omni', 'c-n']
+
+" --- tagbar ---
+let g:tagbar_zoomwidth = 0
+let g:tagbar_compact = 1
+if &encoding ==# 'utf-8'
+  let g:tagbar_iconchars = ["\u25b6", "\u25bc"]
+endif
+
+" --- ale ---
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_delay = 1500
+let g:ale_linters = {
+      \'javascript': ['my-eslint'],
+      \'html': ['tidy', 'htmlhint'],
+      \}
+let g:ale_fixers = {
+      \'javascript': ['eslint']
+      \}
+let g:ale_type_map = {
+      \'flake8': {'ES': 'WS'},
+      \}
+
+" --- fzf.vim ---
+let $FZF_DEFAULT_COMMAND = 'fd --type f --ignore-file ~/.config/fd/vim-ignore'
+command! -bar -bang Help
+      \ call fzf#vim#helptags(<bang>0)
+
+" --- netrw ---
 " more settings -> :h netrw-browser-options
 let g:netrw_winsize=50
 let g:netrw_liststyle=0
 let g:netrw_banner=0
 let g:netrw_special_syntax=1
 
-if &runtimepath =~# 'vim-startify'
-  nnoremap <Leader>s :Startify<cr>
+" --- syntax settings ---
+" don't try to detect errors
+let g:sh_no_error = 1
+let g:vimsyntax_noerror = 0
 
-  let g:startify_disable_at_vimenter = 1
-  let g:startify_custom_header = []
-  let g:startify_bookmarks = [
-        \ {22: '~/.vim/'},
-        \ {33: '~/.vim/after/ftplugin'},
-        \ {44: '~/.vim/vimrc'},
-        \ {45: '~/.vim/gvimrc'},
-        \ {55: '~/.vim/colors/wombat_mod.vim'},
-        \ {56: '~/.vim/vim-rnb/wombat_mod.erb'},
-        \ {66: '~/.vim/plugin'},
-        \ ]
-  if $SHELL =~# 'bash$'
-    call extend(g:startify_bookmarks, [
-          \ {77: '~/.bashrc'},
-          \ {88: '~/.profile'},
-          \ ])
-  endif
-  let g:startify_session_autoload = 1
-  let g:startify_skiplist = [
-        \ '\\vim\\doc\\.*\.txt$',
-        \ '^/usr/share/vim/',
-        \ '^/usr/local/share/vim/',
-        \ '/bundle/.*/doc/',
-        \ '^/run/media/',
-        \ '\\bundle\\.*\\doc\\.*\.txt$',
-        \ 'COMMIT_EDITMSG',
-        \ 'MERGE_MSG',
-        \ 'vimrc$',
-        \ ]
-  " let g:startify_update_oldfiles = 1
-  let g:startify_session_sort = 1
-  let g:startify_files_number = 10
-  let g:startify_padding_left = 3
-  let g:startify_mapping_nowait = 0
-endif
-
-if &runtimepath =~# 'vim-mucomplete'
-  let g:mucomplete#chains = {}
-  let g:mucomplete#chains.default = ['c-n']
-  let g:mucomplete#chains.autohotkey = ['user', 'c-n']
-  let g:mucomplete#chains.c = ['c-n']
-  let g:mucomplete#chains.html = ['omni', 'c-n']
-  let g:mucomplete#chains.css = ['omni', 'c-n']
-  let g:mucomplete#chains.javascript = ['omni', 'c-n']
-  let g:mucomplete#chains.vimwiki = ['omni', 'c-n']
-endif
-
-" Disable some built-in plugins
+" --- Disable built-in plugins ---
 let g:loaded_getscriptPlugin = 1
 let g:loaded_gzip = 1
 let g:loaded_logiPat = 1
+let g:loaded_matchparen = 1
 let g:loaded_rrhelper = 1
 let g:loaded_spellfile_plugin = 1
 let g:loaded_tarPlugin = 1
@@ -708,43 +724,6 @@ let g:loaded_tar = 1
 let g:loaded_vimballPlugin= 1
 let g:loaded_vimball = 1
 let g:loaded_zipPlugin= 1
-
-" sh syntax: too many "errors" when using $() instead of backticks
-let g:sh_no_error = 1
-
-" vim syntax: don't highlight "errors"
-let g:vimsyntax_noerror = 0
-
-if &runtimepath =~# 'tagbar'
-  let g:tagbar_zoomwidth = 0
-  let g:tagbar_compact = 1
-  if &encoding ==# 'utf-8'
-    let g:tagbar_iconchars = ["\u25b6", "\u25bc"]
-  endif
-endif
-
-if &runtimepath =~# '/ale'
-  let g:ale_lint_on_text_changed = 'normal'
-  let g:ale_lint_on_insert_leave = 1
-  let g:ale_lint_delay = 1500
-  let g:ale_linters = {
-        \'javascript': ['my-eslint'],
-        \'html': ['tidy', 'htmlhint'],
-        \}
-  let g:ale_fixers = {
-        \'javascript': ['eslint']
-        \}
-  let g:ale_type_map = {
-        \'flake8': {'ES': 'WS'},
-        \}
-endif
-
-if &runtimepath =~# 'fzf.vim'
-  let $FZF_DEFAULT_COMMAND = 'fd --type f --ignore-file ~/.config/fd/vim-ignore'
-  command! -bar -bang Help
-        \ call fzf#vim#helptags(<bang>0)
-
-endif
 
 "===============================================================================
 " :: Auto commands
@@ -769,6 +748,12 @@ augroup vimrc
 
 " enable spell-check when doing a git commit
   autocmd BufReadPost COMMIT_EDITMSG,MERGE_MSG setlocal spell
+
+" Alt-b: if fzf.vim Buffers command is available, use it
+  autocmd VimEnter *
+        \   if exists(':Buffers')
+        \ |   nnoremap <A-b> :Buffers<CR>
+        \ | endif
 
 " Remove quickfix lines ending in ^M
 " TODO: is this problem related to 'makeencoding' when encoding=utf-8 in Win32?
