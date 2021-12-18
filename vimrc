@@ -779,25 +779,19 @@ if &term ==# 'xterm-256color'
   " start and end termcap mode
   let &t_ti .= "\e[2 q"
   let &t_te .= "\e[0 q"
-endif
-
-if &term ==# 'linux'
+elseif &term ==# 'linux'
   " TODO: find out why these don't work
   " ?2c = underline, ?3c = quarter block, ?6c = full block
   let &t_SI = "\e[?2c"
   let &t_EI = "\e[?6c"
   let &t_SR = "\e[?3c"
-endif
-
-if &term ==# 'st-256color'
+elseif &term ==# 'st-256color'
   " enable true color support
   let &t_8f = "\e[38;2;%lu;%lu;%lum"
   let &t_8b = "\e[48;2;%lu;%lu;%lum"
-endif
-
-" Mode dependent cursor for mintty
-" https://github.com/mintty/mintty/wiki/Tips#mode-dependent-cursor-in-vim
-if $MSYSCON==?'mintty.exe'
+elseif $MSYSCON==?'mintty.exe'
+  " Mode dependent cursor for mintty
+  " https://github.com/mintty/mintty/wiki/Tips#mode-dependent-cursor-in-vim
   let &t_SI = "\e[5 q"
   let &t_EI = "\e[1 q"
   let &t_ti .= "\e[1 q"
