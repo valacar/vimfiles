@@ -697,8 +697,6 @@ let g:ale_type_map = {
 
 " --- fzf.vim ---
 let $FZF_DEFAULT_COMMAND = 'fd --type f --ignore-file ~/.config/fd/vim-ignore'
-command! -bar -bang Help
-      \ call fzf#vim#helptags(<bang>0)
 
 " --- netrw ---
 " more settings -> :h netrw-browser-options
