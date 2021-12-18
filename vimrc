@@ -1,8 +1,6 @@
 set encoding=utf-8     " set Vim's internal character encoding
 scriptencoding utf-8   " vim docs recommend doing this after 'encoding' option
 
-silent! execute pathogen#infect()
-
 " enable true-color in terminals that support it
 " TODO: find something more generic than testing all these
 if has('termguicolors') &&
