@@ -1,16 +1,6 @@
 set encoding=utf-8     " set Vim's internal character encoding
 scriptencoding utf-8   " vim docs recommend doing this after 'encoding' option
 
-" enable true-color in terminals that support it
-" TODO: find something more generic than testing all these
-if has('termguicolors') &&
-      \ ($COLORTERM ==# 'truecolor' || has('vcon') ||
-      \ $MSYSCON ==? 'mintty.exe') ||
-      \ &term ==# 'st-256color' ||
-      \ &term ==# 'xterm-256color'
-  set termguicolors
-endif
-
 set tabstop=4          " how many columns a tab counts for
 set shiftwidth=4       " spaces to use for <<, >>, and auto indenting
 set softtabstop=4      " treat spaces like tabs when backspacing
@@ -20,25 +10,7 @@ set autoindent         " copy indent from current line when starting a new line
 set smartindent        " indent after line ending in '{' (and some other cases)
 set breakindent        " word wrap indents to same number of spaces
 
-" characters to show when 'list' options is enabled
-if has('multi_byte') && &encoding ==# 'utf-8'
-  let &listchars = "tab:\u00bb ,space:\u00b7,trail:\u25cf"
-  let &listchars .= ",extends:\u203a,precedes:\u2039,nbsp:+"
-  " let &listchars .= ",eol:\u21b5"
-  let &fillchars = 'vert:░,stl: ,stlnc: ,fold:-,diff:-'
-else
-  let &listchars = 'tab:> ,space:.,trail:.'
-  let &listchars .= ',extends:>,precedes:<,nbsp:+'
-  " let &listchars .= ",eol:$"
-  let &fillchars = 'vert:|,stl: ,stlnc: ,fold:-,diff:-'
-endif
-
 set fileformats=unix,dos " prefer unix line endings when editing new buffer
-
-" Show current working directory in title
-set title
-let &titlestring =
-      \ '%{v:progname}: %{substitute(getcwd(), escape($HOME, "\\"), "~", "")}'
 
 set shortmess+=I       " disable Vim's intro screen
 set shortmess-=S       " show search count, .e.g. [1/5]
@@ -51,7 +23,7 @@ set suffixes+=/        " show directories after files in wildmenu
 
 set showcmd            " show (partial) key commands on last line of screen
 set incsearch          " incremental searching
-" set hlsearch           " highlight when searching (F3 toggles it)
+set nohlsearch         " disable highlighting when searching (F3 toggles it)
 
 set ignorecase         " ignore case when searching (Note: use \C to match case)
 set smartcase          " override 'ignorecase' if upper case character used
@@ -66,15 +38,6 @@ set laststatus=2       " always show status line
 set history=200        " more command and search history (default: 50)
 
 set splitbelow         " create new window below when splitting
-
-if &lines > 37 || has('gui_running')
-  set cmdheight=2      " command line size (>1 reduces 'Press ENTER' prompts)
-endif
-
-if ! has('gui_running')
-  set ttimeout          " time out for key codes
-  set ttimeoutlen=100   " wait up to 100ms after Esc for special key
-endif
 
 set infercase          " change case when completing a word
 set complete=.,i,t,b   " <C-p> and <C-n> keyword completion settings
@@ -108,6 +71,23 @@ set mouse=nvi          " enable mouse in most modes
 set guioptions=Mci     " disable GUI, no menus.vim, console dialogs, use icon
 set guioptions+=d
 
+set synmaxcol=256      " limit highlighting to X columns
+
+set nomodeline         " too much of a security risk (use :Modeline if needed)
+set nomodelineexpr     " in case modeline is turned on, don't use expressions
+
+" set number             " show line numbers
+" set relativenumber     " relative line numbers (e.g. 5k to go up 5 lines)
+
+" set cursorline         " highlight current line in each buffer
+" set cursorcolumn       " highlight current column
+" set colorcolumn=+1     " highlight 'textwidth' column
+
+" Show current working directory in title
+set title
+let &titlestring =
+      \ '%{v:progname}: %{substitute(getcwd(), escape($HOME, "\\"), "~", "")}'
+
 " █▓▒░  ░▒▓█
 " ▊▋▌▍▎ ▎▍▌▋▊ ▚▚
 "    
@@ -120,11 +100,6 @@ set statusline+=%{&ft==''?'':&ft.':'}
 set statusline+=\%{&fileencoding?&fileencoding:&encoding}:%{&fileformat}
 set statusline+=\ %13(%l/%-5L%)
 
-set synmaxcol=256      " limit highlighting to X columns
-
-set nomodeline         " too much of a security risk (use :Modeline if needed)
-set nomodelineexpr     " in case modeline is turned on, don't use expressions
-
 set grepprg=grep\ -rnH\ --exclude-dir=.git\ --exclude='*.swp'\ --exclude=tags
 set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m
 if executable('rg')
@@ -132,16 +107,42 @@ if executable('rg')
   set grepformat=%f:%l:%c:%m
 endif
 
-" set sessionoptions+=localoptions
+if &lines > 37 || has('gui_running')
+  set cmdheight=2      " command line size (>1 reduces 'Press ENTER' prompts)
+endif
 
-" set number             " show line numbers (globally)
-" set relativenumber     " relative line numbers (ex: 5k to go up 5)
+if ! has('gui_running')
+  set ttimeout          " time out for key codes
+  set ttimeoutlen=100   " wait up to 100ms after Esc for special key
+endif
 
-" set cursorline         " highlight current line in each buffer
-" set cursorcolumn       " highlight current column
-" set colorcolumn=+1     " highlight 'textwidth' column
+" Delete old backup, and backup current file
+set backup
+set writebackup
 
-if !has('nvim')
+" characters to show when 'list' options is enabled
+if has('multi_byte') && &encoding ==# 'utf-8'
+  let &listchars = "tab:\u00bb ,space:\u00b7,trail:\u25cf"
+  let &listchars .= ",extends:\u203a,precedes:\u2039,nbsp:+"
+  " let &listchars .= ",eol:\u21b5"
+  let &fillchars = 'vert:░,stl: ,stlnc: ,fold:-,diff:-'
+else
+  let &listchars = 'tab:> ,space:.,trail:.'
+  let &listchars .= ',extends:>,precedes:<,nbsp:+'
+  " let &listchars .= ",eol:$"
+  let &fillchars = 'vert:|,stl: ,stlnc: ,fold:-,diff:-'
+endif
+
+" enable true-color in terminals that support it
+if has('termguicolors') &&
+      \ ($COLORTERM ==# 'truecolor' || has('vcon')
+      \ || $MSYSCON ==? 'mintty.exe')
+      \ || &term ==# 'st-256color'
+      \ || &term ==# 'xterm-256color'
+  set termguicolors
+endif
+
+if ! has('nvim')
   if has('unix')
     " The following is based on archlinux.vim (which I removed)
     " It makes backup, swap, and undo directories in ~/.cache/vim/
@@ -198,10 +199,7 @@ else
   set backupdir-=.
 endif
 
-set backup
-set writebackup
-
-if !exists('g:syntax_on')
+if ! exists('g:syntax_on')
   syntax enable
 endif
 
@@ -238,7 +236,7 @@ packadd! matchit       " better matching with % key
 " :: Commands
 "===============================================================================
 
-" Note: other commands are in ~/.vim/plugin/commands
+" Note: more complex commands are in ~/.vim/plugin/commands
 " Redir, FixWhiteSpace, Dos2Unix, and more
 
 " reduce sequence of blank lines into just one
@@ -754,12 +752,10 @@ augroup vimrc
         \ | endif
 
 " Remove quickfix lines ending in ^M
-" TODO: is this problem related to 'makeencoding' when encoding=utf-8 in Win32?
-" TODO: maybe test if w:quickfix_title == 'make' since I've only
-"       seen it occur with 'make' so far
 "   autocmd BufReadPost quickfix setlocal modifiable
-"                            \ | silent! execute 'g/^/s/\%x0d$//g'
-"                            \ | setlocal nomodifiable
+"         \ | silent! execute 'g/^/s/\%x0d$//g'
+"         \ | setlocal nomodifiable
+
 augroup END
 
 "===============================================================================
@@ -802,23 +798,10 @@ endif
 " :: Temporary/Experimental junk
 "===============================================================================
 
-" Add Alt-key support in linux terminals
-" Note: these are specific to only the keys I need (except <A-F1>,
-" which I can't figure out)
-if has('linux') && !has('gui_running')
-  for s:key in split('v:V:c:C:a:j:k:1:2:3:t:T:n:N:b:B:8:\', ':')
-    execute "map <nowait> \e" . s:key '<A-' . s:key . '>'
-  endfor
-  for s:key in split('v:V', ':')
-    execute "map! <nowait> \e" . s:key '<A-' . s:key . '>'
-  endfor
-endif
-
 " Alt-8: change word under cursor; '.' to repeat, n or N to skip
 nnoremap <A-8> *Ncgn
 " same as above, but without word boundaries
 nnoremap g<A-8> g*Ncgn
-
 
 " Space-Space: Cycle between buffers
 nnoremap <silent> <Space><Space> :bnext<CR>
