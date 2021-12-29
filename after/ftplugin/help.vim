@@ -1,24 +1,46 @@
 " Enter key follows a hyperlink tag in :help
 nnoremap <buffer> <CR> <c-]>
 
-" go back a page with Backspace or extra mouse buttons
-nnoremap <buffer> <X2Mouse> <c-o>
-nnoremap <buffer> <X1Mouse> <c-t>
-nnoremap <buffer> <BS> <c-t>
+" Backspace or Mouse4 to navigate tags backwards, Mouse5 to go forward
+nnoremap <buffer> <BS> :pop<CR>
+nnoremap <buffer> <X1Mouse> :pop<CR>
+nnoremap <buffer> <X2Mouse> :tag<CR>
 
-" close help window with just 'q'
+" Press q to close help window
 nnoremap <buffer> q <C-w>c
 
-" search for 'option' links
-nnoremap <buffer> o /\<'\a\{2,\}'<CR>
-nnoremap <buffer> O ?\<'\a\{2,\}'<CR>
+" Determine if we're on a syntax highlighted match called helpExample
+" Note: string used by search()'s {skip} argument
+function! s:isHelpExample()
+  return 'synIDattr(synID(line("."), col("."), 0), "name") =~? "helpExample"'
+endfunction
 
-" search for |subject| links
-nnoremap <buffer> s /\|\S\{2,\}\|<CR>
-nnoremap <buffer> S ?\|\S\{2,\}\|<CR>
+" TODO: make a function to dynamically create these mappings
 
-" search for either 'option' or |subject| links (FIXME: doesn't work properly)
-nnoremap <buffer> x /\<\(['\|]\)[^'\|\t ]\{2,\}\1\><CR>
-nnoremap <buffer> X ?\<\(['\|]\)[^'\|\t ]\{2,\}\1\><CR>
+" search for 'option'
+nnoremap <buffer> <silent> o
+      \ :call search("'[a-z]\\{2,\\}'", 'W', 0, 0, <SID>isHelpExample())<CR>
+nnoremap <buffer> <silent> O
+      \ :call search("'[a-z]\\{2,\\}'", 'Wb', 0, 0, <SID>isHelpExample())<CR>
 
-" TODO: add a search for *topic* (helpstar)
+" search for *starlink*
+nnoremap <buffer> <silent> s
+      \ :call search('\v\*\S{2,}\*', 'W', 0, 0, <SID>isHelpExample())<CR>
+nnoremap <buffer> <silent> S
+      \ :call search('\v\*\S{2,}\*', 'Wb', 0, 0, <SID>isHelpExample())<CR>
+
+" search for |pipelink|
+nnoremap <buffer> <silent> x
+      \ :call search('\v\\|\S{2,}\\|', 'W', 0, 0, <SID>isHelpExample())<CR>
+nnoremap <buffer> <silent> X
+      \ :call search('\v\\|\S{2,}\\|', 'Wb', 0, 0, <SID>isHelpExample())<CR>
+
+" search for 'option' or |pipelink| or *starlink*
+nnoremap <buffer> <silent> <TAB>
+      \ :call search('\v([\|''*])\S{2,}\1', 'W', 0, 0, <SID>isHelpExample())<CR>
+nnoremap <buffer> <silent> <S-TAB>
+      \ :call search('\v([\|''*])\S{2,}\1', 'Wb', 0, 0, <SID>isHelpExample())<CR>
+
+" search for headers/divider lines
+nnoremap <buffer> <silent> ]] :call search('\v^[=-]{3,}.*[=-]{3,}', 'W')<CR>
+nnoremap <buffer> <silent> [[ :call search('\v^[=-]{3,}.*[=-]{3,}', 'Wb')<CR>
