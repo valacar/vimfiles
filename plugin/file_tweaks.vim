@@ -51,4 +51,9 @@ augroup file_tweaks
   autocmd BufRead,BufNewFile */Projects/awk/awk-hack-the-planet/payroll.tsv
         \ setlocal tabstop=19
 
+  " auto restart tmux after saving
+  autocmd BufWritePost .tmux.conf
+        \ :call system('tmux source-file ~/.tmux.conf')
+
+
 augroup END
