@@ -5,7 +5,7 @@
 function! mycommand#FixWhitespace(line1,line2) abort
   let l:save_cursor = getpos('.')
   let charCount = wordcount()['chars']
-  execute ':' . a:line1 . ',' . a:line2 . 's/\s\+$//e'
+  execute ':keeppatterns' a:line1 . ',' . a:line2 . 's/\s\+$//e'
   let charDiff = charCount - wordcount()['chars']
   if charCount > 0
     echo printf('%d whitespace character%s removed',
