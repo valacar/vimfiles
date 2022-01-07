@@ -15,27 +15,6 @@ function! mycommand#FixWhitespace(line1,line2) abort
 endfunction
 
 
-" Get rid of those ending ^M characters
-" TODO: this is dumb; run !dos2unix or use :%s instead
-function! mycommand#Dos2Unix() abort
-  let _s=@/
-  let l = line('.')
-  let c = col('.')
-  try
-    set fileformat=unix
-    write!
-    " %s/\%x0d$//e
-  catch /E32:/
-    echom 'Sorry, first save the file.'
-  catch /E21:/
-    echom 'Read only file'
-
-  endtry
-  let @/=_s
-  call cursor(l, c)
-endfunction
-
-
 " Redirect a command to a scratch buffer
 " updated from https://gist.github.com/romainl/eae0a260ab9c135390c30cd370c20cd7
 function! mycommand#Redir(cmd) abort
@@ -107,6 +86,7 @@ function! mycommand#Stab() abort
   call mycommand#SummarizeTabs()
 endfunction
 
+
 " View current tab settings
 function! mycommand#SummarizeTabs() abort
   try
@@ -133,6 +113,7 @@ function! mycommand#ToggleMenu() abort
     set guioptions+=m
   endif
 endfunction
+
 
 " Open Vim's changelog using curl (in a scratch buffer)
 function! mycommand#VimChangelog() abort
