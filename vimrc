@@ -706,7 +706,9 @@ let g:netrw_special_syntax=1
 " --- syntax settings ---
 " don't try to detect errors
 let g:sh_no_error = 1
-let g:vimsyntax_noerror = 0
+let g:vimsyntax_noerror = 1
+let g:c_no_curly_error = 1
+let g:c_no_bracket_error = 1
 
 " --- Disable built-in plugins ---
 let g:loaded_getscriptPlugin = 1
