@@ -2,7 +2,7 @@
 " Author:      valacar (valacar@users.noreply.github.com)
 " Webpage:     https://github.com/valacar/vimfiles/tree/master/colors
 " Description: Modification of the default Wombat color scheme
-" Last Change: 2021-12-18
+" Last Change: 2022-01-10
 
 hi clear
 
@@ -84,6 +84,8 @@ if ($TERM =~? '256' || &t_Co >= 256) || has('gui_running')
     hi debugBreakpoint ctermbg=88 ctermfg=250 cterm=NONE guibg=#660000 guifg=#bcbcbc gui=NONE
     hi SpellBad ctermbg=124 ctermfg=15 cterm=undercurl guibg=#660000 guifg=#ffffff gui=undercurl guisp=#ff0000
     hi SpellCap ctermbg=33 ctermfg=15 cterm=undercurl guibg=#004d80 guifg=#ffffff gui=undercurl guisp=#56bcff
+    hi Directory ctermbg=NONE ctermfg=80 cterm=NONE guibg=NONE guifg=#55D4CB gui=NONE
+    hi qfLineNr ctermbg=NONE ctermfg=226 cterm=NONE guibg=NONE guifg=#dddd77 gui=NONE
 
 elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     set t_Co=16
@@ -159,6 +161,8 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi debugBreakpoint ctermbg=DarkRed ctermfg=Gray cterm=NONE
     hi SpellBad ctermbg=DarkRed ctermfg=White cterm=undercurl
     hi SpellCap ctermbg=DarkBlue ctermfg=White cterm=undercurl
+    hi Directory ctermbg=NONE ctermfg=LightCyan cterm=NONE
+    hi qfLineNr ctermbg=NONE ctermfg=Yellow cterm=NONE
 endif
 
 hi link TagbarSignature Comment
