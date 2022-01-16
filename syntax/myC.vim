@@ -6,9 +6,10 @@ elseif exists('b:current_syntax')
   finish
 endif
 
-syntax match mycOperator /[()!;,=+=&{}<>\[\]*%./\-]/
+syntax match mycOperator /[()!;,=+=&{}<>\[\]*%./\-|~]/
 
 syn region mycString start=+\(L\|u\|u8\|U\|R\|LR\|u8R\|uR\|UR\)\="+ skip=+\\\\\|\\"+ end=+"+ extend
+syn match	mycCharacter "'[^']*'"
 
 syn region mycCommentMulti start="/\*" end="\*/" contains=cTodo
 syn region mycCommentSingle start="//" skip="\\$" end="$" keepend contains=cTodo
@@ -20,10 +21,13 @@ syn keyword mycKeyword ifdef ifndef define undef endif include error
 
 let b:current_syntax = 'myC'
 
-hi default mycString guifg=#f0d0bb
-hi default mycKeyword guifg=#ffffff gui=bold
-hi default mycOperator guifg=#aaaaaa
+" TODO: move these to a colorscheme file
+" Best with dark background and medium gray text
+" e.g. guibg=#1c1c1c guifg=bcbcbc
+hi default mycString guifg=Bisque
+hi default mycCharacter guifg=Bisque
+hi default mycKeyword guifg=LightGrey gui=bold
+hi default mycOperator guifg=LightBlue
 hi default mycComment guifg=#666666
 hi default link mycCommentMulti mycComment
 hi default link mycCommentSingle mycComment
-
