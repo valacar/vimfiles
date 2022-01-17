@@ -788,13 +788,22 @@ elseif &term ==# 'st-256color'
   " enable true color support
   let &t_8f = "\e[38;2;%lu;%lu;%lum"
   let &t_8b = "\e[48;2;%lu;%lu;%lum"
-elseif $MSYSCON==?'mintty.exe'
+elseif $MSYSCON ==? 'mintty.exe'
   " Mode dependent cursor for mintty
   " https://github.com/mintty/mintty/wiki/Tips#mode-dependent-cursor-in-vim
   let &t_SI = "\e[5 q"
   let &t_EI = "\e[1 q"
   let &t_ti .= "\e[1 q"
   let &t_te .= "\e[0 q"
+endif
+
+if &term ==# 'xterm-kitty'
+  " Remove background erase in kitty
+  let &t_ut=''
+  " Change cursor shape
+  let &t_SI = "\e[5 q"
+  let &t_EI = "\e[2 q"
+  let &t_SR = "\e[3 q"
 endif
 
 " Add Alt-key support in linux terminals
