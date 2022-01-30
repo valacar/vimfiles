@@ -772,9 +772,9 @@ if &term ==# 'xterm-256color'
   " 6 = vertical bar, 5 = vertical bar blinking
   " SI = start insert, EI = end insert, SR = start replace
   " \e]12;...\a (OSC 12) changes cursor color
-  let &t_SI = "\e[5 q\e]12;rgb:ff/0/0\a"
-  let &t_EI = "\e[2 q\e]12;rgb:ff/ff/ff\a"
-  let &t_SR = "\e[3 q\e]12;rgb:ff/0/0\a"
+  let &t_SI = "\e[5 q"
+  let &t_EI = "\e[2 q"
+  let &t_SR = "\e[3 q"
   " start and end termcap mode
   let &t_ti .= "\e[2 q"
   let &t_te .= "\e[0 q"
