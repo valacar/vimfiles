@@ -20,4 +20,6 @@ nnoremap <buffer> <silent> <LocalLeader>r :update<bar>make<bar>bot cwindow<CR>
 
 compiler python
 
+let b:ale_python_flake8_options = '--max-line-length=88'
+
 let b:undo_ftplugin .= ' | setlocal tabstop< softtabstop< shiftwidth< expandtab< autoindent< smarttab< formatoptions< formatprg< makeprg< errorformat<'
