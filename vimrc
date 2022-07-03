@@ -10,6 +10,8 @@ set autoindent         " copy indent from current line when starting a new line
 set smartindent        " indent after line ending in '{' (and some other cases)
 set breakindent        " word wrap indents to same number of spaces
 
+set linebreak          " don't chop words in half when wrapping is on
+
 set fileformats=unix,dos " prefer unix line endings when editing new buffer
 
 set shortmess+=I       " disable Vim's intro screen
@@ -126,11 +128,13 @@ if has('multi_byte') && &encoding ==# 'utf-8'
   let &listchars .= ",extends:\u203a,precedes:\u2039,nbsp:+"
   " let &listchars .= ",eol:\u21b5"
   let &fillchars = 'vert:░,stl: ,stlnc: ,fold:-,diff:-'
+  let &showbreak = '↪ '
 else
   let &listchars = 'tab:> ,space:.,trail:.'
   let &listchars .= ',extends:>,precedes:<,nbsp:+'
   " let &listchars .= ",eol:$"
   let &fillchars = 'vert:|,stl: ,stlnc: ,fold:-,diff:-'
+  let &showbreak = '> '
 endif
 
 " enable true-color in terminals that support it
