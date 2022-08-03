@@ -500,6 +500,10 @@ xnoremap > >gv
 " < to unindent
 xnoremap < <gv
 
+" Space / Shift-Space: indent/unindent with a space in visual block mode
+vnoremap <expr> <Space>   (mode() == "\<C-V>") ? 'I<Space><Esc>gv' : ''
+vnoremap <expr> <S-Space> (mode() == "\<C-V>") ? '"_xgv' : ''
+
 " Alt-j: Move to next paragraph (downward) in visual mode
 xnoremap <A-j> g`}
 
@@ -521,10 +525,6 @@ xnoremap <silent> # :call <SID>setSearch()<CR>?<C-R>=@/<CR><CR>
 " p: Keep unnamed register (") when pasting in visual mode
 xnoremap p pgvy
 xnoremap P Pgvy
-
-" L, H: Indent/Unindent with a space in visual block (Ctrl-v) mode
-xnoremap L I<Space><Esc>gv
-xnoremap H xgv
 
 " @: Run macro on selected lines only
 xnoremap @ :<C-u>echo '@' . getcmdline()
