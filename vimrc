@@ -88,7 +88,7 @@ set nomodelineexpr     " in case modeline is turned on, don't use expressions
 " Show current working directory in title
 set title
 let &titlestring =
-      \ '%{v:progname}: %{substitute(getcwd(), escape($HOME, "\\"), "~", "")}'
+      \ '%{v:progname}: %{substitute(g:cwd, escape($HOME, "\\"), "~", "")}'
 
 " █▓▒░  ░▒▓█
 " ▊▋▌▍▎ ▎▍▌▋▊ ▚▚
@@ -756,6 +756,10 @@ augroup vimrc
         \   if exists(':Buffers')
         \ |   nnoremap <A-b> :Buffers<CR>
         \ | endif
+
+" Keep track for working directory changes for titlestring
+  let g:cwd = getcwd()
+  autocmd DirChanged * let g:cwd = expand("<afile>")
 
 " Remove quickfix lines ending in ^M
 "   autocmd BufReadPost quickfix setlocal modifiable
