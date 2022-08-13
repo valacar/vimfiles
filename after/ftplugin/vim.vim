@@ -22,5 +22,10 @@ call matchadd('Todo', '\v" \zs(TODO|Note|FIXME|IMPORTANT|BUG|XXX)\ze: ')
 highlight link vimCommentTitle vimComment
 highlight link vimCommentString vimComment
 
+" vint linter goes to 100% usages with vim9script, so I'll just disable ALE for the buffer
+if exists(':ALEDisableBuffer') && getline(1) =~# '^vim9script'
+  ALEDisableBuffer
+endif
+
 " allow vim to undo our settings when/if the file type changes
 let b:undo_ftplugin = b:undo_ftplugin . ' | setlocal wrap< formatoptions< spellfile< fileformat<'
