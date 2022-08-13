@@ -9,8 +9,8 @@ set expandtab          " convert new tabs to spaces
 set autoindent         " copy indent from current line when starting a new line
 set smartindent        " indent after line ending in '{' (and some other cases)
 set breakindent        " word wrap indents to same number of spaces
-
 set linebreak          " don't chop words in half when wrapping is on
+set nojoinspaces       " use only one space after joining sentences.
 
 set fileformats=unix,dos " prefer unix line endings when editing new buffer
 
@@ -23,7 +23,6 @@ set wildignore=*.o,*.bin,*.so,*.dll,*.exe
 set wildignore+=*.jpg,*.png,*.gif,*.bmp,*.tga
 set suffixes+=/        " show directories after files in wildmenu
 
-set showcmd            " show (partial) key commands on last line of screen
 set incsearch          " incremental searching
 set nohlsearch         " disable highlighting when searching (F3 toggles it)
 
@@ -36,6 +35,7 @@ set scrolloff=4        " vertical scrolling margin (top and bottom)
 set sidescrolloff=5    " horizontal scrolling margin
 set sidescroll=1       " scroll 1 char when scrolling horizontally (when nowrap)
 set ruler              " show row,columns in status line
+set showcmd            " show (partial) key commands on last line of screen
 set laststatus=2       " always show status line
 set history=200        " more command and search history (default: 50)
 
