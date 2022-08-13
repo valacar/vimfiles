@@ -71,7 +71,8 @@ set diffopt+=context:99999      " don't use folding in diff mode
 
 set mouse=nvi          " enable mouse in most modes
 set guioptions=Mci     " disable GUI, no menus.vim, console dialogs, use icon
-set guioptions+=d
+set guioptions+=d      " use dark GTK theme if available.
+set guioptions+=a      " copy visual selection to * register
 
 set synmaxcol=256      " limit highlighting to X columns
 
