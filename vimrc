@@ -641,6 +641,7 @@ let g:startify_padding_left = 3
 let g:startify_mapping_nowait = 0
 let g:startify_disable_at_vimenter = 1
 let g:startify_custom_header = []
+let g:startify_enable_special = 0
 let g:startify_bookmarks = [
       \ {22: '~/.vim/'},
       \ {33: '~/.vim/after/ftplugin'},
