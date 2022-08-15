@@ -565,6 +565,7 @@ nnoremap <Leader>tcd :tcd %:p:h<CR>:pwd<CR>
 " add blank line above and below current line
 nnoremap <Leader><Space><Space> m`o<Esc>kO<Esc>``
 nnoremap <Leader>s :browse oldfiles<cr>
+nnoremap <Leader>f <Cmd>Files<CR>
 
 "===============================================================================
 " :: Function Key Mappings
