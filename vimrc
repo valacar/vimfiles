@@ -699,7 +699,8 @@ let g:ale_type_map = {
       \}
 
 " --- fzf.vim ---
-let $FZF_DEFAULT_COMMAND = 'fd --type f --ignore-file ~/.config/fd/vim-ignore'
+let $FZF_DEFAULT_COMMAND =
+      \ 'fd --type f --hidden --ignore-file ~/.config/fd/vim-ignore'
 
 " --- netrw ---
 " more settings -> :h netrw-browser-options
