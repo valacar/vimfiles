@@ -819,8 +819,7 @@ if &term ==# 'xterm-kitty'
 endif
 
 " Add Alt-key support in linux terminals
-" Note: these are specific to only the keys I need (except <A-F1>,
-" which I can't figure out)
+" Note: these are specific to only the keys I need
 if has('linux') && !has('gui_running')
   for s:key in split('v:V:c:C:a:j:k:1:2:3:t:T:n:N:b:B:8:\', ':')
     execute "map <nowait> \e" . s:key '<A-' . s:key . '>'
@@ -828,6 +827,8 @@ if has('linux') && !has('gui_running')
   for s:key in split('v:V', ':')
     execute "map! <nowait> \e" . s:key '<A-' . s:key . '>'
   endfor
+  execute "map \e[1;3P <A-F1>"
+  execute "map \e[19;2~ <S-F8>"
 endif
 
 "===============================================================================
