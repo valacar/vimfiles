@@ -141,9 +141,8 @@ endif
 " enable true-color in terminals that support it
 if has('termguicolors') &&
       \ ($COLORTERM ==# 'truecolor' || has('vcon')
-      \ || $MSYSCON ==? 'mintty.exe')
-      \ || &term ==# 'st-256color'
       \ || &term ==# 'xterm-256color'
+      \ || $MSYSCON ==? 'mintty.exe')
   set termguicolors
 endif
 
@@ -540,16 +539,16 @@ xnoremap @ :<C-u>echo '@' . getcmdline()
 onoremap q i"
 onoremap Q i'
 
-" text object for numbers (ints and floats)
+" FIXME: text object for numbers (ints and floats)
 " cn, dn, yn, vn
-function! VisualNumber()
-  let start = search('\d\([^0-9\.]\|$\)', 'cW', line('.'))
-  if !start | return | endif
-  normal! v
-  call search('\(^\|[^0-9\.]\d\)', 'becW', line('.'))
-endfunction
-xnoremap n :<C-u>call VisualNumber()<CR>
-onoremap n :<C-u>normal! vn<CR>
+" function! VisualNumber()
+"   let start = search('\d\([^0-9\.]\|$\)', 'cW', line('.'))
+"   if !start | return | endif
+"   normal! v
+"   call search('\(^\|[^0-9\.]\d\)', 'becW', line('.'))
+" endfunction
+" xnoremap n :<C-u>call VisualNumber()<CR>
+" onoremap n :<C-u>normal! vn<CR>
 
 "===============================================================================
 " :: Leader Key Mappings
@@ -562,8 +561,6 @@ nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <Leader>lcd :lcd %:p:h<CR>:pwd<CR>
 nnoremap <Leader>tcd :tcd %:p:h<CR>:pwd<CR>
 
-" add blank line above and below current line
-nnoremap <Leader><Space><Space> m`o<Esc>kO<Esc>``
 nnoremap <Leader>s :browse oldfiles<cr>
 nnoremap <Leader>f <Cmd>Files<CR>
 
@@ -778,7 +775,6 @@ augroup END
 
 if &term ==# 'xterm-256color'
       \ || &term ==# 'rxvt-unicode-256color'
-      \ || &term ==# 'st-256color'
   " 2 = block cursor
   " 4 = underline cursor, 3 = underline blinking
   " 6 = vertical bar, 5 = vertical bar blinking
@@ -796,10 +792,6 @@ elseif &term ==# 'linux'
   let &t_SI = "\e[?2c"
   let &t_EI = "\e[?6c"
   let &t_SR = "\e[?3c"
-elseif &term ==# 'st-256color'
-  " enable true color support
-  let &t_8f = "\e[38;2;%lu;%lu;%lum"
-  let &t_8b = "\e[48;2;%lu;%lu;%lum"
 elseif $MSYSCON ==? 'mintty.exe'
   " Mode dependent cursor for mintty
   " https://github.com/mintty/mintty/wiki/Tips#mode-dependent-cursor-in-vim
