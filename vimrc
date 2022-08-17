@@ -539,16 +539,17 @@ xnoremap @ :<C-u>echo '@' . getcmdline()
 onoremap q i"
 onoremap Q i'
 
-" FIXME: text object for numbers (ints and floats)
-" cn, dn, yn, vn
-" function! VisualNumber()
-"   let start = search('\d\([^0-9\.]\|$\)', 'cW', line('.'))
-"   if !start | return | endif
-"   normal! v
-"   call search('\(^\|[^0-9\.]\d\)', 'becW', line('.'))
-" endfunction
-" xnoremap n :<C-u>call VisualNumber()<CR>
-" onoremap n :<C-u>normal! vn<CR>
+" text object for numbers (ints and floats)
+" cn, dn, yn, vn, vin
+function! s:VisualNumber()
+	if search('\d\%([^0-9\.]\|$\)', 'c', line('.'))
+    normal! v
+    call search('\%([^0-9\.]\d\)', 'bec', line('.'))
+  endif
+endfunction
+xnoremap in :<C-u>call <SID>VisualNumber()<CR>
+xnoremap n :<C-u>normal vin<CR>
+onoremap n :<C-u>normal vin<CR>
 
 "===============================================================================
 " :: Leader Key Mappings
@@ -565,7 +566,7 @@ nnoremap <Leader>s :browse oldfiles<cr>
 nnoremap <Leader>f <Cmd>Files<CR>
 
 "===============================================================================
-" :: Function Key Mappings
+" :: Function Key Mappings 0-9
 "===============================================================================
 
 " F1: (disabled)
