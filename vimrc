@@ -815,10 +815,10 @@ endif
 " Note: these are specific to only the keys I need
 if has('linux') && !has('gui_running')
   for s:key in split('v:V:c:C:a:j:k:1:2:3:t:T:n:N:b:B:8:\', ':')
-    execute "map <nowait> \e" . s:key '<A-' . s:key . '>'
+    execute "map \e" . s:key '<A-' . s:key . '>'
   endfor
   for s:key in split('v:V', ':')
-    execute "map! <nowait> \e" . s:key '<A-' . s:key . '>'
+    execute "map! \e" . s:key '<A-' . s:key . '>'
   endfor
   execute "map \e[1;3P <A-F1>"
   execute "map \e[19;2~ <S-F8>"
