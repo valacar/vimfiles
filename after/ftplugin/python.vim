@@ -6,7 +6,8 @@ setlocal shiftwidth=4
 setlocal expandtab
 setlocal autoindent
 setlocal smarttab
-setlocal formatoptions=croql
+setlocal textwidth=88
+setlocal formatoptions=crql
 
 if executable('black')
   if has('win32')
@@ -16,10 +17,12 @@ if executable('black')
   endif
 endif
 
-nnoremap <buffer> <silent> <LocalLeader>r :update<bar>make<bar>bot cwindow<CR>
+nnoremap <buffer> <silent> <F9> :update<bar>make<bar>bot cwindow<CR>
 
 compiler python
 
-let b:ale_python_flake8_options = '--max-line-length=88'
+let b:ale_python_flake8_options = '--max-line-length=88 --extend-ignore E402'
 
-let b:undo_ftplugin .= ' | setlocal tabstop< softtabstop< shiftwidth< expandtab< autoindent< smarttab< formatoptions< formatprg< makeprg< errorformat<'
+let b:undo_ftplugin .= ' | setlocal tabstop< softtabstop< shiftwidth< '
+      \ . 'expandtab< autoindent< smarttab< textwidth< formatoptions< '
+      \ . 'formatprg< makeprg< errorformat<'
