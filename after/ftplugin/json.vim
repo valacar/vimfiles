@@ -1,8 +1,9 @@
 " JSON 'after' ftplugin settings
 
-setlocal tabstop=2
-setlocal softtabstop=2
-setlocal shiftwidth=2
+setlocal tabstop=4
+setlocal softtabstop=4
+setlocal shiftwidth=4
+setlocal expandtab
 setlocal nowrap
 
 " format progs:
@@ -16,4 +17,5 @@ if executable('python')
 endif
 
 " allow vim to undo our settings when/if the file type changes
-let b:undo_ftplugin = b:undo_ftplugin . ' | setlocal tabstop< softtabstop< shiftwidth< wrap< formatprg<'
+let b:undo_ftplugin = b:undo_ftplugin . ' | setlocal tabstop< softtabstop< '
+      \ . 'shiftwidth< wrap< expandtab< formatprg<'
