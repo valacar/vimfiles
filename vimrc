@@ -236,6 +236,11 @@ let localmapleader = '\'
 
 packadd! matchit       " better matching with % key
 
+" Load man pages in Vim when pressing K
+" Note: pressing a number before K loads that man section, e.g. 3K
+source $VIMRUNTIME/ftplugin/man.vim
+let &keywordprg = ':Man'
+
 "===============================================================================
 " :: Commands
 "===============================================================================
