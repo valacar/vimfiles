@@ -15,3 +15,18 @@ function! myfunc#SynStack() abort
      \ ', FG: ' . synIDattr(synIDtrans(syntaxID_trans), 'fg#') .
      \ ', BG: ' . synIDattr(synIDtrans(syntaxID_trans), 'bg#')
 endfunc
+
+" Format json, and show errors in location window
+" Based on: https://stackoverflow.com/a/12702366
+" Note: although this isn't really specific to json, it prefixes the filename
+" to the error message, which I added in order to make python's json.tool
+" formatter work with the quickfix window.
+function! myfunc#FormatJsonPrg(...) abort
+   silent execute "'[,']!" . &formatprg
+   if v:shell_error != 0
+      let format_error = join(getline(line("'["), line("']")), "\n")
+      silent undo
+      lexpr '"' . expand('%:p') . '": ' . format_error
+      lopen 5
+    endif
+endfunc
