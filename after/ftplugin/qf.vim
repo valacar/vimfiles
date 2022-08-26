@@ -4,12 +4,11 @@
 setlocal conceallevel=2
 setlocal concealcursor+=n
 
-setlocal statusline=%t%{exists('w:quickfix_title')?\ '\ '.w:quickfix_title\ :\ ''}\ %=%13(%l/%L%)
+let &l:statusline = ''
 
-" Escape or q (or Q) to close quickfix window (when inside it)
-" TODO: make this work for location lists too
-nnoremap <silent> <buffer> <nowait> <Esc> :cclose<CR>
-nnoremap <silent> <buffer> q :cclose<CR>
+" Escape or q (or Q) to close quickfix or location window (when inside it)
+nnoremap <silent> <buffer> <nowait> <Esc> <Cmd>cclose \| :lclose<CR>
+nnoremap <silent> <buffer> q <Cmd>cclose \| :lclose<CR>
 nnoremap <silent> <buffer> Q
       \ :try <bar> cclose <bar> catch /E444/ <bar> quit! <bar> endtry<CR>
 
