@@ -7,32 +7,28 @@ setlocal shiftwidth=2
 setlocal nowrap
 " setlocal completefunc=htmlcomplete#CompleteTags
 
-" Tidy HTML 5 - https://github.com/htacg/tidy-html5
+" Format with Tidy HTML 5 - https://github.com/htacg/tidy-html5
 let &l:formatprg = 'tidy -quiet -utf8 -indent -wrap 0 --show-errors 0'
 
-" Type <// (in insert mode) to close last opened tag (using omni complete)
-inoremap <// </<C-x><C-o>
+" Ctrl-/ to insert closing tag.
+inoremap <buffer> <C-/> </<C-x><C-o>
 
-" Load current html file in new tab of browser
-" Note: this gives the browser window focus
-nnoremap <buffer> <silent> <LocalLeader>l
-      \ :!start %<CR>
-
+" F9: Save and reload browser's current tab without focusing window
 if exists(':ReloadFirefox')
-  " Save and reload browser's current tab
-  nnoremap <buffer> <silent> <LocalLeader>r
-        \ :update<CR>
-        \ :ReloadFirefox<CR>
-else
-  " Save and load in new tab of browser
-  nnoremap <buffer> <silent> <LocalLeader>r
-        \ :update<CR>
-        \ :!start %<CR>
+  for s:mode in split('niv', '\zs')
+    execute s:mode . 'noremap <buffer> <silent> <F9> '
+          \ . '<Cmd>update <bar> ReloadFirefox<CR>'
+  endfor
 endif
 
-" Build (unused)
-nnoremap <buffer> <silent> <LocalLeader>b
-      \ :echom "Use " . g:localmapleader . "r to run/reload"<CR>
+" F10: Open current html file in new browser tab (changing window focus)
+if has('unix') && executable('xdg-open')
+  for s:mode in split('niv', '\zs')
+    execute s:mode . 'noremap <buffer> <silent> <F10> '
+          \ . '<Cmd>call system("xdg-open " . fnameescape(expand("%")))<CR>'
+  endfor
+endif
 
 " allow vim to undo our settings when/if the file type changes
-let b:undo_ftplugin = b:undo_ftplugin . ' | setlocal tabstop< softtabstop< shiftwidth< wrap< formatprg<'
+let b:undo_ftplugin = b:undo_ftplugin . ' | setlocal tabstop< softtabstop< '
+      \ . 'shiftwidth< wrap< formatprg<'
