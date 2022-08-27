@@ -9,8 +9,6 @@ let &l:statusline = ''
 " Escape or q (or Q) to close quickfix or location window (when inside it)
 nnoremap <silent> <buffer> <nowait> <Esc> <Cmd>cclose \| :lclose<CR>
 nnoremap <silent> <buffer> q <Cmd>cclose \| :lclose<CR>
-nnoremap <silent> <buffer> Q
-      \ :try <bar> cclose <bar> catch /E444/ <bar> quit! <bar> endtry<CR>
 
 " filter quickfix with :Cfilter[!] /{pat}/
 if !exists(':Cfilter')
