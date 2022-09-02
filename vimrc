@@ -781,39 +781,32 @@ augroup END
 
 if &term ==# 'xterm-256color'
       \ || &term ==# 'rxvt-unicode-256color'
-  " 2 = block cursor
-  " 4 = underline cursor, 3 = underline blinking
-  " 6 = vertical bar, 5 = vertical bar blinking
-  " SI = start insert, EI = end insert, SR = start replace
+      \ || $MSYSCON ==? 'mintty.exe'
+  " 1 = blinking block,        2 = steady block
+  " 3 = blinking underline,    4 = steady underline
+  " 5 = blinking vertical bar, 6 = steady vertical bar
+  let &t_SI = "\e[5 q"   " cursor in insert mode
+  let &t_EI = "\e[2 q"   " cursor in normal mode
+  let &t_SR = "\e[3 q"   " cursor in replace mode
+  let &t_ti .= "\e[2 q"  " cursor when vim starts
+  let &t_te .= "\e[3 q"  " cursor when vim exits
   " \e]12;...\a (OSC 12) changes cursor color
-  let &t_SI = "\e[5 q"
-  let &t_EI = "\e[2 q"
-  let &t_SR = "\e[3 q"
-  " start and end termcap mode
-  let &t_ti .= "\e[2 q"
-  let &t_te .= "\e[0 q"
 elseif &term ==# 'linux'
-  " TODO: find out why these don't work
-  " ?2c = underline, ?3c = quarter block, ?6c = full block
+  " ?2c = underline, ?4c = half block, ?6c = full block
   let &t_SI = "\e[?2c"
-  let &t_EI = "\e[?6c"
-  let &t_SR = "\e[?3c"
-elseif $MSYSCON ==? 'mintty.exe'
-  " Mode dependent cursor for mintty
-  " https://github.com/mintty/mintty/wiki/Tips#mode-dependent-cursor-in-vim
-  let &t_SI = "\e[5 q"
-  let &t_EI = "\e[1 q"
-  let &t_ti .= "\e[1 q"
-  let &t_te .= "\e[0 q"
+  let &t_EI = "\e[?16;255c" " steady white solid block, text colors inverted
+  let &t_SR = "\e[?4c"
+  let &t_ti = "\e[?16;255c"
+  let &t_te = "\e[2J\e[H\e[?2c"
+  " remove cursor shape change from the following:
+  let &t_vi = "\e[?25l" " cursor visible
+  let &t_ve = "\e[?25h" " cursor invisible
+  let &t_vs = "\e[?25h" " cursor very visible
 endif
 
-if &term ==# 'xterm-kitty'
-  " Remove background erase in kitty
-  let &t_ut=''
-  " Change cursor shape
-  let &t_SI = "\e[5 q"
-  let &t_EI = "\e[2 q"
-  let &t_SR = "\e[3 q"
+" Disable background erase
+if &term ==# 'xterm-kitty' || &term ==# 'screen.xterm-256color'
+  let &t_ut = ''
 endif
 
 " Add Alt-key support in linux terminals
