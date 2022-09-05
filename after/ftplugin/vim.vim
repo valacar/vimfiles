@@ -28,4 +28,4 @@ endif
 " allow vim to undo our settings when/if the file type changes
 let b:undo_ftplugin = b:undo_ftplugin . ' | setlocal tabstop< shiftwidth< '
       \ . 'softtabstop< expandtab< wrap< formatoptions< '
-      \ . 'fileformat< keywordprg< <spellfile<'
+      \ . 'fileformat< keywordprg< spellfile<'
