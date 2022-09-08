@@ -16,9 +16,13 @@ if &spellfile !~# 'vim\.utf-8\.add'
 endif
 
 call matchadd('Todo', '\v" \zs(TODO|Note|FIXME|IMPORTANT|BUG|XXX)\ze: ')
-" Disable highlighting some stuff within vim comments
-highlight link vimCommentTitle vimComment
-highlight link vimCommentString vimComment
+
+" Disable some highlighting within vim comments
+augroup ColorOverrides | autocmd!
+    autocmd ColorScheme * highlight link vimCommentTitle comment
+    autocmd ColorScheme * highlight link vimCommentString comment
+augroup END
+doautocmd ColorOverrides ColorScheme
 
 " vint linter goes to 100% usages with vim9script, so disable ALE for the buffer
 if exists(':ALEDisableBuffer') && getline(1) =~# '^vim9script'
