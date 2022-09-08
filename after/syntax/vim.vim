@@ -1,1 +1,1 @@
-syntax keyword vimTodo contained WARN WARNING BUG
+syntax keyword vimTodo contained Note Todo IMPORTANT WARN WARNING BUG

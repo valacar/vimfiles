@@ -15,8 +15,6 @@ if &spellfile !~# 'vim\.utf-8\.add'
   setlocal spellfile+=~/.vim/spell/vim.utf-8.add
 endif
 
-call matchadd('Todo', '\v" \zs(TODO|Note|FIXME|IMPORTANT|BUG|XXX)\ze: ')
-
 " Disable some highlighting within vim comments
 augroup ColorOverrides | autocmd!
     autocmd ColorScheme * highlight link vimCommentTitle comment
