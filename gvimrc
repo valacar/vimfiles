@@ -48,12 +48,11 @@ set guicursor+=i-c-ci:ver25-iCursor-blinkon1000-blinkoff250,
 set guicursor+=r-cr:hor20-iCursor
 " set guicursor+=a:blinkon0
 
-" IMPORTANT: iCursor (insert mode cursor) highlight group needs to be set
-" somewhere.  Currently I put it in my modified colorscheme (wombat-mod), but
-" it should probably be put in vimrc using an autocmd that checks when the
-" color scheme is loaded...or maybe in the after directory (?).
-
-" highlight iCursor guibg=#ff0000
+" change insert mode gui cursor color (Note: must add iCursor to 'guicursor')
+highlight iCursor guibg=#ff0000
+augroup insert_mod_cursor | autocmd!
+  autocmd ColorScheme * highlight iCursor guibg=red
+augroup END
 
 " Fix white background when fullscreen or resized oddly
 " on Windows using wimproved plugin
