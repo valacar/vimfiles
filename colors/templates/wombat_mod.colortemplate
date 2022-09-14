@@ -1,0 +1,242 @@
+; Information
+; Mandatory
+Full name:     Wombat Mod
+Short name:    wombat_mod
+Author:        Valacar <valacar@users.noreply.github.com>
+Description:   A modification of the Wombat theme by Lars H. Nielsen
+Website:       https://github.com/valacar/vimfiles/tree/master/colors
+; Prefix for options: short name is used if this key is not present:
+Option Prefix: wombatmod
+
+
+; Documentation
+Include: _help.colortemplate
+
+
+; Common linked groups
+Boolean           -> Constant
+Character         -> Constant
+Conditional       -> Statement
+Debug             -> Special
+Define            -> PreProc
+Delimiter         -> Special
+Exception         -> Statement
+Float             -> Constant
+; Function          -> Identifier
+Include           -> PreProc
+; Keyword           -> Statement
+Label             -> Statement
+Macro             -> PreProc
+Number            -> Constant
+Operator          -> Statement
+PopupSelected     -> PmenuSel
+PreCondit         -> PreProc
+QuickFixLine      -> Search
+Repeat            -> Statement
+SpecialChar       -> Special
+SpecialComment    -> Special
+StorageClass      -> Type
+; String            -> Constant
+Structure         -> Type
+Tag               -> Special
+Typedef           -> Type
+lCursor           -> Cursor
+EndOfBuffer       -> NonText
+CurSearch         -> Search
+
+
+Background: dark
+
+; Color palette
+; Color  name         GUI     Base256 Base16 (optional)
+Color: black          #000000 ~       Black
+Color: red            #d28c83 ~       Red
+Color: orange         #ffcc99 ~       DarkYellow
+Color: yellow         #dddd77 ~       Yellow
+Color: lightyellow    #dddd77 ~       Yellow
+Color: green          #cae682 192     Green
+Color: cyan           #55d4cb ~       Cyan
+Color: blue           #8ac6f2 111     Blue
+Color: purple         #b984b1 ~       Magenta
+Color: orchid         #b984b1 ~       Magenta
+Color: gray1          #0c0c0c ~       Black
+Color: gray2          #111111 ~       Black
+Color: gray3          #1c1c1c ~       Black
+Color: gray4          #222222 ~       DarkGray
+Color: gray5          #2d2d2d ~       DarkGray
+Color: gray6          #333333 ~       DarkGray
+Color: gray7          #444444 ~       DarkGray
+Color: gray8          #5c5c5c ~       DarkGray
+Color: gray9          #777777 ~       DarkGray
+Color: gray10         #999999 ~       Gray
+Color: gray11         #bcbcbc ~       Gray
+Color: white          #ffffff ~       White
+Color: full_red       #ff0000 ~       Red
+Color: full_green     #00ff00 ~       Green
+Color: full_blue      #0000ff ~       Blue
+Color: full_yellow    #ffff00 ~       Yellow
+Color: full_pink      #ff00ff ~       Magenta
+Color: folded_fg      #a0a8b0 ~       Gray
+Color: folded_bg      #384048 ~       DarkGray
+Color: status_bg      #4e8cd6 33      DarkBlue
+Color: statusnc_bg    #333333 ~       DarkGray
+Color: tstatus_bg     #cae682 ~       Green
+Color: colorcol_bg    #990000 ~       DarkRed
+Color: warning_fg     #ff9933 ~       Brown
+Color: visual_fg      #000000 ~       Black
+Color: visual_bg      #999999 ~       Gray
+Color: difftext_bg    #669999 ~       DarkCyan
+Color: diffchange_bg  #336666 ~       Gray
+Color: diffdelete_bg  #663333 ~       DarkRed
+Color: diffadd_bg     #336633 ~       DarkGreen
+Color: spell_bad      #660000 ~       DarkRed
+Color: spell_bad_sp   #ff0000 ~       DarkRed
+Color: spell_cap      #004d80 ~       DarkBlue
+Color: spell_cap_sp   #56bcff ~       DarkBlue
+Color: spell_local    #006666 ~       Cyan
+Color: spell_local_sp #00ffff ~       Cyan
+Color: spell_rare     #660066 ~       Magenta
+Color: spell_rare_sp  #ff00ff ~       Magenta
+Color: debug_pc_bg    #263760 ~       DarkBlue
+Color: debug_bp_bg    #660000 ~       DarkRed
+Color: tc_0           #000000 ~       Black
+Color: tc_1           #aa0000 ~       Darkred
+Color: tc_2           #00aa00 ~       Darkgreen
+Color: tc_3           #aa5500 ~       Darkyellow
+Color: tc_4           #5c5cff ~       Darkblue
+Color: tc_5           #aa00aa ~       Darkmagenta
+Color: tc_6           #00aaaa ~       Darkcyan
+Color: tc_7           #b5b5b5 ~       Gray
+Color: tc_8           #555555 ~       Darkgray
+Color: tc_9           #ff5555 ~       Red
+Color: tc_10          #7ef27e ~       Green
+Color: tc_11          #ffff55 ~       Yellow
+Color: tc_12          #7575f0 ~       Blue
+Color: tc_13          #ff55ff ~       Magenta
+Color: tc_14          #55ffff ~       Cyan
+Color: tc_15          #ffffff ~       White
+
+
+; Terminal colors
+Term colors: tc_0 tc_1 tc_2 tc_3 tc_4 tc_5 tc_6 tc_7
+Term colors: tc_8 tc_9 tc_10 tc_11 tc_12 tc_13 tc_14 tc_15
+
+
+; Default highlight groups
+Variant: gui
+#if get(g:, '@optionprefix_transp_bg', 0) && !has('gui_running')
+Variant: 256 8
+#if get(g:, '@optionprefix_transp_bg', 0)
+Variant: gui 256 8
+    Normal             gray11      none
+    NonText            gray9       none
+    LineNr             gray8       none
+    SignColumn         gray7       none
+    Terminal           gray11      none
+#else
+    Normal             gray11      gray3
+    NonText            gray9       gray2
+    LineNr             gray8       gray2
+    SignColumn         gray7       gray1
+    Terminal           gray11      gray3
+#endif
+
+Terminal       gray11      gray3
+;Group             Foreground  Background    Attributes
+ColorColumn        fg          colorcol_bg
+Comment            gray9       none
+Conceal            none        none
+Constant           red         none
+Cursor             black       gray11
+CursorColumn       none        gray5
+CursorLine         none        gray4
+CursorLineSign     none        gray4
+CursorLineFold     none        gray4
+CursorLineNr       gray11      gray6
+DiffAdd            white       diffadd_bg
+DiffChange         white       diffchange_bg
+DiffDelete         white       diffdelete_bg
+DiffText           white       difftext_bg
+Directory          cyan        none
+Error              white       full_red
+ErrorMsg           full_red    none
+FoldColumn         gray7       black
+Folded             folded_fg   folded_bg
+Function           green       none
+Identifier         green       none
+Ignore             white       none
+IncSearch          none        none          t=reverse g=reverse
+Keyword            blue        none
+; LineNr             gray8       gray2
+LineNrAbove        gray7       gray2
+LineNrBelow        gray7       gray2
+MatchParen         none        none          t=reverse g=underline
+ModeMsg            white       none
+MoreMsg            white       none
+; NonText            gray9       gray2
+Number             red         none
+Pmenu              white       gray7
+PmenuSbar          full_red    gray6
+PmenuSel           black       green
+PmenuThumb         full_red    gray11
+PreProc            red         none
+Question           full_green  none          bold
+Search             black       gray10
+; SignColumn         gray7       gray1
+Special            blue        none
+SpecialKey         gray7       none
+SpellBad           white       spell_bad     s=spell_bad_sp   g=undercurl t=underline
+SpellCap           white       spell_cap     s=spell_cap_sp   g=undercurl t=underline
+SpellLocal         white       spell_local   s=spell_local_sp g=undercurl t=underline
+SpellRare          white       spell_rare    s=spell_rare_sp  g=undercurl t=underline
+Statement          blue        none
+StatusLine         white       status_bg     g=bold t=bold
+StatusLineNC       gray10      statusnc_bg
+StatusLineTerm     black       tstatus_bg    bold
+StatusLineTermNC   black       tstatus_bg
+String             orange      none
+TabLine            gray10      gray8
+TabLineFill        none        gray7
+TabLineSel         white       black
+Title              yellow      none          bold
+Todo               lightyellow gray5
+Type               green       none
+Underlined         blue        none
+User1              gray9       gray6
+VertSplit          gray6       gray4
+Visual             none        none          g=reverse t=reverse
+VisualNOS          none        none          underline
+WarningMsg         warning_fg  none
+WildMenu           black       full_yellow
+cFormat            orange      none          bold
+cSpecial           orange      none          bold
+debugBreakpoint    gray11      debug_bp_bg
+debugPC            none        debug_pc_bg
+diffRemoved        red         none
+diffSubname        orange      none
+gitcommitBranch    purple      none
+helpBacktick       blue        none
+helpCommand        blue        none
+helpExample        blue        none
+helpHeader         white       none
+helpHyperTextEntry orchid      none
+helpHyperTextJump  cyan        none
+helpNotVi          gray9       none
+helpOption         orange      none
+helpSpecial        orange      none
+helpStart          purple      none
+helpURL            red         none
+rcMainObject       white       none
+CursorIM           none        fg
+ToolbarLine        none        gray9         t=underline
+ToolbarButton      black       gray11        bold
+
+
+; Inverted visual selection doesn't work so well in Linux tty, so use something else
+Variant: 8
+Visual  black gray10
+
+
+; B/W variant
+Include: _bw.colortemplate
+
