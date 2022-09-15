@@ -600,41 +600,6 @@ nmap <silent> <S-F8> <Plug>(ale_previous_wrap)
 nnoremap <silent> <F12> :TagbarToggle<CR>
 
 "===============================================================================
-" :: Abbreviations
-"===============================================================================
-
-" Note: inoreabbrev <incorrect> <correct>
-" TODO: install vim-abolish, and move to another file?
-inoreabbrev seperate separate
-inoreabbrev seperated separated
-inoreabbrev seperating separating
-inoreabbrev definate definite
-inoreabbrev definately definitely
-inoreabbrev recieve receive
-inoreabbrev recieved received
-inoreabbrev truely truly
-inoreabbrev wierd weird
-inoreabbrev neccessary necessary
-inoreabbrev neccesary necessary
-inoreabbrev neccesarily necessarily
-inoreabbrev calender calendar
-inoreabbrev appearence appearance
-inoreabbrev embarass embarrass
-inoreabbrev embarassed embarrassed
-inoreabbrev dissapear disappear
-inoreabbrev dissapeared disappeared
-inoreabbrev accidently accidentally
-inoreabbrev refered referred
-inoreabbrev mispell misspell
-inoreabbrev boundry boundary
-inoreabbrev opposit opposite
-inoreabbrev hexidecimal hexadecimal
-inoreabbrev occuring occurring
-
-" Autocorrect :man to :help
-cnoreabbrev man <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'help' : 'man')<CR>
-
-"===============================================================================
 " :: Plugin settings
 "===============================================================================
 
