@@ -455,12 +455,8 @@ nnoremap <A-N> :cprevious<CR>
 " Backspace: switch to alternate buffer
 nnoremap <BS> <C-^>
 
-" Alt-b: view and switch buffers
-" Note: afterwards, type <Tab> to cycle (shown in wildmenu),
-"       or part of filename, or buffer number to switch
-nnoremap <A-b> :ls<CR>:b<Space>
-" Alt-Shift-B: view and switch buffers (including hidden)
-nnoremap <A-B> :ls!<CR>:b<Space>
+" Alt-b: Use FZF to list and switch buffers
+nnoremap <A-b> <Cmd>Buffers<CR>
 
 " Shift-Enter: un-join line (opposite of J)
 nnoremap <S-Enter> i<CR><Esc>
@@ -720,12 +716,6 @@ augroup vimrc
 
 " enable spell-check when doing a git commit
   autocmd BufReadPost COMMIT_EDITMSG,MERGE_MSG setlocal spell
-
-" Alt-b: if fzf.vim Buffers command is available, use it
-  autocmd VimEnter *
-        \   if exists(':Buffers')
-        \ |   nnoremap <A-b> :Buffers<CR>
-        \ | endif
 
 " Keep track for working directory changes for titlestring
   let g:cwd = getcwd()
