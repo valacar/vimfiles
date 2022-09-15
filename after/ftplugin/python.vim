@@ -17,7 +17,7 @@ if executable('black')
   endif
 endif
 
-nnoremap <buffer> <silent> <F9> :update<bar>make<bar>bot cwindow<CR>
+nnoremap <buffer> <silent> <F9> <cmd>update<bar>make<CR>
 
 compiler python
 
