@@ -115,8 +115,10 @@ if &lines > 37 || has('gui_running')
 endif
 
 if ! has('gui_running')
-  set ttimeout          " time out for key codes
-  set ttimeoutlen=100   " wait up to 100ms after Esc for special key
+  set timeout           " allow timing out halfway into a mapping
+  set timeoutlen=1000   " timeout on mapping after X milliseconds
+  set ttimeout          " allow timing out halfway into a key code
+  set ttimeoutlen=100   " timeout on key codes after X milliseconds
 endif
 
 " Delete old backup, and backup current file
@@ -394,15 +396,15 @@ command! HexView
 
 " Alt-v: Paste from system clipboard in normal, insert and command mode
 nnoremap <A-v> "+p
-nnoremap <A-S-v> "+P
 inoremap <A-v> <Esc>"+pa
-inoremap <A-S-v> <Esc>"+Pa
+nnoremap <A-V> "+P
+inoremap <A-V> <Esc>"+Pa
 cnoremap <A-v> <C-r>+
 
 " Alt-c: Copy using system clipboard (in normal mode and visual)
 nnoremap <A-c> "+y
 xnoremap <A-c> "+y
-nnoremap <A-S-c> "+y$
+nnoremap <A-C> "+y$
 
 " copy whole file to system clipboard
 nnoremap <A-a> :%y+<CR>
@@ -458,7 +460,7 @@ nnoremap <BS> <C-^>
 "       or part of filename, or buffer number to switch
 nnoremap <A-b> :ls<CR>:b<Space>
 " Alt-Shift-B: view and switch buffers (including hidden)
-nnoremap <A-S-b> :ls!<CR>:b<Space>
+nnoremap <A-B> :ls!<CR>:b<Space>
 
 " Shift-Enter: un-join line (opposite of J)
 nnoremap <S-Enter> i<CR><Esc>
@@ -807,12 +809,10 @@ endif
 
 " Add Alt-key support in linux terminals
 " Note: these are specific to only the keys I need
+" Note: don't use imap or cmap, or it'll break the timeouts
 if has('linux') && !has('gui_running')
-  for s:key in split('v:V:c:C:a:j:k:1:2:3:t:T:n:N:b:B:8:\', ':')
-    execute "map \e" . s:key '<A-' . s:key . '>'
-  endfor
-  for s:key in split('v:V', ':')
-    execute "map! \e" . s:key '<A-' . s:key . '>'
+  for s:key in split('vVcCajk123tTnNbB8\', '\zs')
+    execute 'set <A-' . s:key . ">=\e" . s:key
   endfor
   execute "map \e[1;3P <A-F1>"
   execute "map \e[19;2~ <S-F8>"
