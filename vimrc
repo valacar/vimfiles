@@ -455,9 +455,6 @@ nnoremap <A-N> :cprevious<CR>
 " Backspace: switch to alternate buffer
 nnoremap <BS> <C-^>
 
-" Alt-b: Use FZF to list and switch buffers
-nnoremap <A-b> <Cmd>Buffers<CR>
-
 " Shift-Enter: un-join line (opposite of J)
 nnoremap <S-Enter> i<CR><Esc>
 
@@ -566,7 +563,11 @@ nnoremap <Leader>lcd :lcd %:p:h<CR>:pwd<CR>
 nnoremap <Leader>tcd :tcd %:p:h<CR>:pwd<CR>
 
 nnoremap <Leader>s :browse oldfiles<cr>
+
+" FZF mappings
 nnoremap <Leader>f <Cmd>Files<CR>
+nnoremap <leader>b <Cmd>Buffers<CR>
+nnoremap <leader>v <Cmd>FZF ~/.vim/<CR>
 
 "===============================================================================
 " :: Function Key Mappings 0-9
@@ -766,7 +767,7 @@ endif
 " Note: these are specific to only the keys I need
 " Note: don't use imap or cmap, or it'll break the timeouts
 if has('linux') && !has('gui_running')
-  for s:key in split('vVcCajk123tTnNbB8\', '\zs')
+  for s:key in split('vVcCajk123tTnN8\', '\zs')
     execute 'set <A-' . s:key . ">=\e" . s:key
   endfor
   execute "map \e[1;3P <A-F1>"
