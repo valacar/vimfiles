@@ -1,8 +1,8 @@
 " JSON 'after' ftplugin settings
 
-setlocal tabstop=4
-setlocal softtabstop=4
-setlocal shiftwidth=4
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal shiftwidth=2
 setlocal expandtab
 setlocal nowrap
 
@@ -14,6 +14,7 @@ setlocal nowrap
 
 if executable('python')
   let &l:formatprg = 'python -m json.tool'
+  let &l:formatprg .= ' --indent ' . &l:tabstop
 endif
 
 " Note: not sure how to ignore things, so the char number is the error number
