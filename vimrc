@@ -255,9 +255,9 @@ command! ReduceBlankLines let b:tmpView = winsaveview() |
       \ keeppatterns %v/\S/,/\S/-j |
       \ call winrestview(b:tmpView)
 
-" get rid of all blank lines
-command! RemoveBlankLines keeppatterns v/\S/d
-command! DeleteBlankLines RemoveBlankLines
+" get rid of blank lines
+command! -range=% RemoveBlankLines :keeppatterns <line1>,<line2>v/\S/d
+command! -range=% DeleteBlankLines :keeppatterns <line1>,<line2>v/\S/d
 
 " Show diff between saved and unsaved changes of current buffer
 " Note: switch to scratch buffer and :bw (buffer wipe) to leave diff mode
