@@ -9,8 +9,8 @@ augroup file_tweaks
 
   " auto reload .Xresources after saving
   autocmd BufWritePost .Xresources
-        \ call system('xrdb -merge ' . expand('<afile>:p')) |
-        \ echo 'Running: xrdb -merge' expand('<afile>:p')
+        \ call system('xrdb ' . expand('<afile>:p')) |
+        \ echo 'Running: xrdb' expand('<afile>:p')
 
   " change .Xresources to use '!' for commenting
   autocmd BufRead,BufNewFile .Xresources
