@@ -620,8 +620,7 @@ let g:startify_bookmarks = [
       \ ]
 if $SHELL =~# 'bash$'
   call extend(g:startify_bookmarks, [
-        \ {77: '~/.bashrc'},
-        \ {88: '~/.profile'},
+        \ {77: '~/.bashrc'}
         \ ])
 endif
 let g:startify_session_autoload = 1
