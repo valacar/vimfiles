@@ -52,3 +52,4 @@ inoreabbrev hesitent hesitant
 
 " Autocorrect :man to :help
 cnoreabbrev man <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'help' : 'man')<CR>
+cnoreabbrev grep <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'silent grep' : 'grep')<CR>

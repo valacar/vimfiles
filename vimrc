@@ -102,10 +102,10 @@ set statusline+=%{&ft==''?'':&ft.':'}
 set statusline+=\%{&fileencoding?&fileencoding:&encoding}:%{&fileformat}
 set statusline+=\ %13(%l/%-5L%)
 
-set grepprg=grep\ -rnH\ --exclude-dir=.git\ --exclude='*.swp'\ --exclude=tags
+let &grepprg = "grep -rnH --exclude-dir=.git --exclude='*.swp' --exclude=tags"
 set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m
 if executable('rg')
-  set grepprg=rg\ --vimgrep\ --smart-case
+  let &grepprg = 'rg --vimgrep'
   set grepformat=%f:%l:%c:%m
 endif
 
@@ -354,9 +354,6 @@ endif
 command! CopyDirectory let @+ = expand('%:p:h')
 command! CopyFilename  let @+ = expand('%:p:t')
 command! CopyPath      let @+ = expand('%:p')
-
-command! -nargs=+ -bang Grep execute 'silent grep <args>' | redraw! |
-      \ if <bang>0 | cwindow | endif
 
 command! SynStack call myfunc#SynStack()
 
