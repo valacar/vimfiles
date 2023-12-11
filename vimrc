@@ -250,13 +250,16 @@ let &keywordprg = ':Man'
 " Redir, FixWhiteSpace, Dos2Unix, and more
 
 " reduce sequence of blank lines into just one
-command! ReduceBlankLines let b:tmpView = winsaveview() |
-      \ keeppatterns %v/\S/,/\S/-j |
-      \ call winrestview(b:tmpView)
+command! -range=% ReduceBlankLines
+      \ mark ` |
+      \ keeppatterns <line1>,<line2>v/\S/,/\S/-join |
+      \ normal! ``
 
 " get rid of blank lines
-command! -range=% RemoveBlankLines :keeppatterns <line1>,<line2>v/\S/d
-command! -range=% DeleteBlankLines :keeppatterns <line1>,<line2>v/\S/d
+command! -range=% DeleteBlankLines
+      \ mark ` |
+      \ keeppatterns <line1>,<line2>v/\S/delete |
+      \ normal! ``
 
 " Show diff between saved and unsaved changes of current buffer
 " Note: switch to scratch buffer and :bw (buffer wipe) to leave diff mode
