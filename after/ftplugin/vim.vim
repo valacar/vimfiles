@@ -7,7 +7,6 @@ setlocal expandtab          " convert new tabs to spaces
 setlocal nowrap
 setlocal formatoptions=crql " see :help fo-table
 setlocal textwidth=80
-setlocal fileformat=unix    " use linux line endings
 setlocal keywordprg=:help   " pressing K opens current word in :help
 
 if &spellfile !~# 'vim\.utf-8\.add'
@@ -30,4 +29,4 @@ endif
 " allow vim to undo our settings when/if the file type changes
 let b:undo_ftplugin = b:undo_ftplugin . ' | setlocal tabstop< shiftwidth< '
       \ . 'softtabstop< expandtab< wrap< formatoptions< '
-      \ . 'fileformat< keywordprg< spellfile<'
+      \ . 'keywordprg< spellfile<'
