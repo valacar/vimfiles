@@ -660,12 +660,10 @@ let g:ale_lint_delay = 1500
 let g:ale_linters = {
       \'javascript': ['my-eslint'],
       \'html': ['tidy', 'htmlhint'],
+      \'python': ['ruff'],
       \}
 let g:ale_fixers = {
       \'javascript': ['eslint']
-      \}
-let g:ale_type_map = {
-      \'flake8': {'ES': 'WS'},
       \}
 
 " --- fzf.vim ---
