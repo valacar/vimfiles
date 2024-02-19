@@ -147,61 +147,56 @@ if has('termguicolors') &&
   set termguicolors
 endif
 
-if ! has('nvim')
-  if has('unix')
-    " The following is based on archlinux.vim (which I removed)
-    " It makes backup, swap, and undo directories in ~/.cache/vim/
-    if exists('$XDG_CACHE_HOME')
-      let s:homecache = $XDG_CACHE_HOME
-    else
-      let s:homecache = $HOME . '/.cache'
-    endif
-    let &g:directory = s:homecache . '/vim/swap//'
-    let &g:backupdir = s:homecache . '/vim/backup//'
-    let &g:undodir   = s:homecache . '/vim/undo//'
-    if ! isdirectory(expand(&g:directory))
-      silent! call mkdir(expand(&g:directory), 'p', 0700)
-    endif
-    if ! isdirectory(expand(&g:backupdir))
-      silent! call mkdir(expand(&g:backupdir), 'p', 0700)
-    endif
-    if ! isdirectory(expand(&g:undodir))
-      silent! call mkdir(expand(&g:undodir), 'p', 0700)
-    endif
-
-    " .viminfo: directories to ignore
-    let s:ignored_dirs = [
-          \ '/tmp/',
-          \ expand('$VIMRUNTIME') . '/doc/',
-          \ ]
-    for s:dir in s:ignored_dirs
-      if &viminfo !~# s:dir
-        let &viminfo .= ',r' . s:dir
-      endif
-    endfor
-
-    " move viminfo to ~/.cache/vim/ (note: this option must be at the end)
-    let &viminfo .= ',n' . s:homecache . '/vim/.viminfo'
-  elseif has('win32')
-    silent! call mkdir($HOME . '/vimfiles/.swaps', 'p')
-    silent! call mkdir($HOME . '/vimfiles/.backups', 'p')
-    silent! call mkdir($HOME . '/vimfiles/.undos', 'p')
-
-    " keep .swp files in a subdirectory of vim's files (// = unique filename)
-    set directory=$HOME/vimfiles/.swaps//,.
-
-    " create backups (:help backup-table)
-    set backupdir=$HOME/vimfiles/.backups,.
-
-    " Where :mkview and :loadview stores/loads its files
-    set undodir=$HOME/vimfiles/.undos//
-
-    " Don't keep DVD drive files in the viminfo file
-    set viminfo+=rE:
+if has('unix')
+  " The following is based on archlinux.vim (from vim-runtime package)
+  " It makes swap, backup, and undo directories in ~/.cache/vim/
+  if exists('$XDG_CACHE_HOME')
+    let s:homecache = $XDG_CACHE_HOME
+  else
+    let s:homecache = $HOME . '/.cache'
   endif
-else
-  " Don't save backups to the current dir with NeoVim
-  set backupdir-=.
+  let &g:directory = s:homecache . '/vim/swap//'
+  let &g:backupdir = s:homecache . '/vim/backup//'
+  let &g:undodir   = s:homecache . '/vim/undo//'
+  if ! isdirectory(expand(&g:directory))
+    silent! call mkdir(expand(&g:directory), 'p', 0700)
+  endif
+  if ! isdirectory(expand(&g:backupdir))
+    silent! call mkdir(expand(&g:backupdir), 'p', 0700)
+  endif
+  if ! isdirectory(expand(&g:undodir))
+    silent! call mkdir(expand(&g:undodir), 'p', 0700)
+  endif
+
+  " .viminfo: directories to ignore
+  let s:ignored_dirs = [
+        \ '/tmp/',
+        \ expand('$VIMRUNTIME') . '/doc/',
+        \ ]
+  for s:dir in s:ignored_dirs
+    if &viminfo !~# s:dir
+      let &viminfo .= ',r' . s:dir
+    endif
+  endfor
+
+  " move viminfo to ~/.cache/vim/ (note: this option must be at the end)
+  let &viminfo .= ',n' . s:homecache . '/vim/.viminfo'
+elseif has('win32')
+  silent! call mkdir($HOME . '/vimfiles/.swaps', 'p')
+  silent! call mkdir($HOME . '/vimfiles/.backups', 'p')
+  silent! call mkdir($HOME . '/vimfiles/.undos', 'p')
+
+  " keep .swp files in a subdirectory of vim's files (// = unique filename)
+  set directory=$HOME/vimfiles/.swaps//,.
+
+  " create backups (:help backup-table)
+  set backupdir=$HOME/vimfiles/.backups,.
+
+  " Where :mkview and :loadview stores/loads its files
+  set undodir=$HOME/vimfiles/.undos//
+
+  " Don't keep DVD drive files in the viminfo file
+  set viminfo+=rE:
 endif
 
 if ! exists('g:syntax_on')
