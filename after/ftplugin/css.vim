@@ -23,4 +23,4 @@ endif
 command! -buffer SortCSSSelectors call mycommand#SortCSSSelectors()
 
 " allow vim to undo our settings when/if the file type changes
-let b:undo_ftplugin = b:undo_ftplugin . ' | setlocal tabstop< softtabstop< shiftwidth< wrap< iskeyword< formatprg< sections<'
+let b:undo_ftplugin = b:undo_ftplugin . ' | setlocal tabstop< softtabstop< shiftwidth< wrap< formatprg< sections<'
