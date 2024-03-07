@@ -729,6 +729,7 @@ augroup END
 
 if &term ==# 'xterm-256color'
       \ || &term ==# 'rxvt-unicode-256color'
+      \ || &term ==# 'alacritty'
       \ || $MSYSCON ==? 'mintty.exe'
   " 1 = blinking block,        2 = steady block
   " 3 = blinking underline,    4 = steady underline
