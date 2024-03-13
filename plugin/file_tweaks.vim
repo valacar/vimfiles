@@ -22,7 +22,7 @@ augroup file_tweaks
         \ syntax match ErrorMsg /(EE)/ |
         \ syntax match WarningMsg /(WW)/ |
         \ syntax match Comment /^\[.\{-}\]/ |
-        \ vimgrep /\(EE\|WW\)/ % | cwindow | wincmd p
+        \ vimgrep /\v^\[.{-}\] \((WW|EE)\)/ % | cwindow | wincmd p
 
   " Simple syntax highlighting for xsession-errors
   " and show warnings/errors in quickfix window
