@@ -7,5 +7,5 @@ if exists('syntax_on')
   syntax reset
 endif
 
-hi Normal guifg=#f0f0f0 guibg=#1c1c1c gui=NONE ctermfg=LightGray ctermbg=Black
+hi Normal guifg=#f0f0f0 guibg=#000000 gui=NONE ctermfg=LightGray ctermbg=Black
 hi ErrorMsg guifg=red guibg=NONE gui=NONE ctermfg=red ctermbg=NONE cterm=NONE term=NONE
