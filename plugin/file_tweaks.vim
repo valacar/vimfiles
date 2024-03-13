@@ -36,24 +36,8 @@ augroup file_tweaks
         \ syntax match Keyword "\v^\s*\zs(set|map|include)" |
         \ syntax keyword Boolean true false
 
-  "https://github.com/FreedomBen/awk-hack-the-planet
-  "
-  "Youtube:
-  "    Presentation https://youtu.be/43BNFcOdBlY
-  "    Exercises https://youtu.be/4UGLsRYDfo8
-
-  " Creates a local buffer mapping for \r that runs the awk script against the
-  " payroll.tsv file.
-  autocmd BufRead,BufNewFile */Projects/awk/awk-hack-the-planet/*.awk
-        \ nmap <buffer> <LocalLeader>r :update<bar>!clear;awk -f % payroll.tsv<CR>
-
-  " Set the tab stop for the payroll data file.
-  autocmd BufRead,BufNewFile */Projects/awk/awk-hack-the-planet/payroll.tsv
-        \ setlocal tabstop=19
-
   " auto restart tmux after saving
   autocmd BufWritePost .tmux.conf
         \ :call system('tmux source-file ~/.tmux.conf')
-
 
 augroup END
