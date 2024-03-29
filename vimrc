@@ -365,12 +365,8 @@ if ! has('gui_running')
 endif
 
 " Make a banner around a line, as seen in the section dividers in this vimrc
-" Note: must specify a width (minus 7); applies to first line only
-command! -nargs=1 -range=0 MakeBanner
-      \   s/.*/\=printf(' :: %-<args>s  ',getline('.'))/
-      \ | execute 'norm! YPVjr=p'
-      \ | -,+s/^/"/
-      \ | -,s/\s\+$//
+command! MakeBanner
+      \ normal! I" :: <Esc>O<Esc>79I=<Esc>I"<Esc>Yjp
 
 " Enable and apply modeline to current buffer
 command! Modeline
