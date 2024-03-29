@@ -372,11 +372,9 @@ command! -nargs=1 -range=0 MakeBanner
       \ | -,+s/^/"/
       \ | -,s/\s\+$//
 
-" Manually apply modeline for current buffer, and reload
-command! -bang Modeline
-      \   setlocal modeline modelineexpr
-      \ | edit<bang>
-      \ | setlocal modeline< modelineexpr<
+" Enable and apply modeline to current buffer
+command! Modeline
+      \ setlocal modeline modelineexpr | doautocmd BufEnter %
 
 " TODO: make this toggle, and restore filetype, and buftype
 command! HexView
