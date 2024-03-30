@@ -643,6 +643,7 @@ if &encoding ==# 'utf-8'
 endif
 
 " --- ale ---
+let g:ale_virtualtext_cursor = 0
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_delay = 1500
