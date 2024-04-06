@@ -319,7 +319,7 @@ command! PasteJavascript setfiletype javascript | normal! "+P
 command! PasteCSS setfiletype css | normal! "+P
 command! PasteHTML setfiletype html | normal! "+P
 command! PasteJSON setfiletype json | normal! "+PgqG``
-
+command! PastePython setfiletype python | normal! "+P
 command! PasteBookmarklet
       \ setfiletype javascript |
       \ normal! "+P`[v`]:DecodeURIComponent<CR>gvgq
