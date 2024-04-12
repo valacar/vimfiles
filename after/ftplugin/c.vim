@@ -12,6 +12,8 @@ setlocal cinoptions+==0          " don't indent next line after a case label
 setlocal commentstring=//\ %s    " C++-style single line comments
 setlocal complete-=i             " remove includes from tab completion (very slow sometimes)
 
+setlocal path&                   " reset path, which adds /usr/include/ on unix
+
 compiler gcc                     " set errorformat option
 
 " Mapping to run current file as an executable. The file's extension is stripped (on linux)
@@ -51,4 +53,4 @@ endif
 
 " allow vim to undo our settings when/if the file type changes
 let b:undo_ftplugin .= ' | setlocal formatprg< wrap< cindent< textwidth< formatoptions< '
-                   \ . 'autowrite< cinoptions< commentstring< complete<'
+                   \ . 'autowrite< cinoptions< commentstring< complete< path<'

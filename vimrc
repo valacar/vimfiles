@@ -124,6 +124,8 @@ endif
 set backup
 set writebackup
 
+set path=.,,            " just search current dir and relative to current file
+
 " characters to show when 'list' options is enabled
 if has('multi_byte') && &encoding ==# 'utf-8'
   let &listchars = "tab:\u00bb ,space:\u00b7,trail:\u25cf"
