@@ -662,6 +662,9 @@ let g:ale_fixers = {
 let $FZF_DEFAULT_COMMAND =
       \ 'fd --type f --hidden --ignore-file ~/.config/fd/vim-ignore'
 
+" --- vim-pasta ---
+let g:pasta_disabled_filetypes = ['tagbar']
+
 " --- netrw ---
 " more settings -> :h netrw-browser-options
 let g:netrw_winsize=50
