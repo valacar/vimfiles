@@ -635,7 +635,6 @@ let g:mucomplete#chains.c = ['c-n']
 let g:mucomplete#chains.html = ['omni', 'c-n']
 let g:mucomplete#chains.css = ['omni', 'c-n']
 let g:mucomplete#chains.javascript = ['omni', 'c-n']
-let g:mucomplete#chains.vimwiki = ['omni', 'c-n']
 
 " --- tagbar ---
 let g:tagbar_zoomwidth = 0
