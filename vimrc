@@ -78,6 +78,8 @@ set synmaxcol=256      " limit highlighting to X columns
 set nomodeline         " too much of a security risk (use :Modeline if needed)
 set nomodelineexpr     " in case modeline is turned on, don't use expressions
 
+set virtualedit=block  " move cursor freely in visual block mode
+
 " set number             " show line numbers
 " set relativenumber     " relative line numbers (e.g. 5k to go up 5 lines)
 
