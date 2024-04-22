@@ -18,7 +18,7 @@ set shortmess+=I       " disable Vim's intro screen
 set shortmess-=S       " show search count, .e.g. [1/5]
 
 set wildmenu           " enhanced command-line completion
-set wildmode=full      " default setting for wildmenu
+set wildmode=longest,full " command-line completion setting
 set wildignore=*.o,*.bin,*.so,*.dll,*.exe
 set wildignore+=*.jpg,*.png,*.gif,*.bmp,*.tga
 set suffixes+=/        " show directories after files in wildmenu
