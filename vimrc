@@ -172,7 +172,7 @@ if has('unix')
     silent! call mkdir(expand(&g:undodir), 'p', 0700)
   endif
 
-  " .viminfo: directories to ignore
+  " viminfo: directories to ignore
   let s:ignored_dirs = [
         \ '/tmp/',
         \ expand('$VIMRUNTIME') . '/doc/',
@@ -184,7 +184,7 @@ if has('unix')
   endfor
 
   " move viminfo to ~/.cache/vim/ (note: this option must be at the end)
-  let &viminfo .= ',n' . s:homecache . '/vim/.viminfo'
+  exec 'set viminfo+=' . 'n' . s:homecache . '/vim/viminfo'
 elseif has('win32')
   silent! call mkdir($HOME . '/vimfiles/.swaps', 'p')
   silent! call mkdir($HOME . '/vimfiles/.backups', 'p')
