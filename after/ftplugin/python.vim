@@ -13,7 +13,15 @@ if executable('ruff')
   let &l:formatprg = 'ruff format --silent -'
 endif
 
-nnoremap <buffer> <silent> <F9> <cmd>update<bar>make<CR>
+if exists(':Sh') " vim-shout
+  function! s:RunPython()
+    exec 'Sh python' expand('%:p')
+    call win_gotoid(b:shout_initial_winid)
+  endfunction
+  nnoremap <buffer> <F9> <Cmd>update<bar>call <SID>RunPython()<CR>
+else
+  nnoremap <buffer> <silent> <F9> <cmd>update<bar>make<CR>
+endif
 
 compiler python
 
