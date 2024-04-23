@@ -289,11 +289,11 @@ command! Hitrailingwhitespace execute !exists('b:hiTrail')
 
 command! Hitest runtime syntax/hitest.vim
 
-command! -nargs=1 Hicol
-      \ execute 'setlocal colorcolumn=' .
+command! -nargs=1 -bang Hicol
+      \ execute <bang>0 ? 'windo' : '' 'setlocal colorcolumn=' .
       \ (&cc != <q-args> || &cc == '' ? <q-args> : '')
-command! Hi80 Hicol80
-command! Hi88 Hicol88
+command! -bang Hi80 Hicol<bang>80
+command! -bang Hi88 Hicol<bang>88
 
 command! -nargs=1 -complete=highlight Hifilter
       \ execute 'filter /<args>/ highlight'
