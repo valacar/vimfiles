@@ -162,15 +162,9 @@ if has('unix')
   let &g:directory = s:homecache . '/vim/swap//'
   let &g:backupdir = s:homecache . '/vim/backup//'
   let &g:undodir   = s:homecache . '/vim/undo//'
-  if ! isdirectory(expand(&g:directory))
-    silent! call mkdir(expand(&g:directory), 'p', 0700)
-  endif
-  if ! isdirectory(expand(&g:backupdir))
-    silent! call mkdir(expand(&g:backupdir), 'p', 0700)
-  endif
-  if ! isdirectory(expand(&g:undodir))
-    silent! call mkdir(expand(&g:undodir), 'p', 0700)
-  endif
+  silent! call mkdir(expand(&g:directory), 'p', 0700)
+  silent! call mkdir(expand(&g:backupdir), 'p', 0700)
+  silent! call mkdir(expand(&g:undodir), 'p', 0700)
 
   " viminfo: directories to ignore
   let s:ignored_dirs = [
