@@ -384,6 +384,9 @@ command! HexView
 " After installing a plugin, this will add it to Vim's :help command
 command! UpdateHelp 11verbose helptags ALL
 
+command! CamelToSnake
+      \ exec "normal! ciw" . substitute(expand('<cword>'), '\u', '_\l&', "g")
+
 "===============================================================================
 " :: Copy/Paste with system clipboard
 "===============================================================================
