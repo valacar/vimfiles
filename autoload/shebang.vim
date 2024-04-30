@@ -6,6 +6,15 @@ let s:bangs = [
       \ '#!/usr/bin/env sh',
       \ ]
 
+" corresponding filetypes (needs to match s:bangs)
+let s:filetypes = [
+      \ 'bash',
+      \ 'python',
+      \ 'perl',
+      \ 'ruby',
+      \ 'sh'
+      \ ]
+
 " append menu item to edit this script at the end
 call add(s:bangs, 'Add another shebang')
 
@@ -34,8 +43,12 @@ function! shebang#ShebangMenuHandler(id, result)
     execute 'edit' s:script_path
   else
     mark `
-    0put =s:bangs[a:result - 1] . \"\n\n\"
+    let index = a:result - 1
+    0put =s:bangs[index] . \"\n\n\"
     normal! ``
+    if index < len(s:bangs) " ignore last item that edits the script
+      exec 'setf' s:filetypes[index]
+    endif
   endif
 endfunc
 
