@@ -290,9 +290,9 @@ command! -bang Hi80 Hicol<bang>80
 command! -bang Hi88 Hicol<bang>88
 
 " Resize Vim to fit two windows side-by-side, and equalize windows horizontally
-command! -nargs=1 -bang DoubleWide
-      \ exec 'set columns=' . (<args> * 2 + 1) |
-      \ horizontal wincmd =
+command! -nargs=? -bang DoubleWide
+      \ exec 'set columns=' . ((<q-args> ?? &l:textwidth) * 2 + 1) |
+      \ horizontal wincmd = |
 
 command! -nargs=1 -complete=highlight Hifilter
       \ execute 'filter /<args>/ highlight'
