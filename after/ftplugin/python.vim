@@ -19,6 +19,7 @@ if exists(':Sh') " vim-shout
     call win_gotoid(b:shout_initial_winid)
   endfunction
   nnoremap <buffer> <F9> <Cmd>update<bar>call <SID>RunPython()<CR>
+  inoremap <buffer> <F9> <Cmd>update<bar>call <SID>RunPython()<CR><Esc>
 else
   nnoremap <buffer> <silent> <F9> <cmd>update<bar>make<CR>
 endif
