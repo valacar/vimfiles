@@ -651,15 +651,8 @@ endif
 let g:ale_virtualtext_cursor = 0
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_delay = 1500
-let g:ale_linters = {
-      \'javascript': ['my-eslint'],
-      \'html': ['tidy', 'htmlhint'],
-      \'python': ['ruff'],
-      \}
-let g:ale_fixers = {
-      \'javascript': ['eslint']
-      \}
+let g:ale_lint_delay = 2000
+let g:ale_echo_msg_format = '%s [%linter% %severity% %code%]'
 
 " --- fzf.vim ---
 let $FZF_DEFAULT_COMMAND =

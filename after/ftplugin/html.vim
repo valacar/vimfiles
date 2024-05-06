@@ -29,6 +29,9 @@ if has('unix') && executable('xdg-open')
   endfor
 endif
 
+let b:ale_linters = []
+let b:ale_fixers = ['tidy', 'trim_whitespace']
+
 " allow vim to undo our settings when/if the file type changes
 let b:undo_ftplugin = b:undo_ftplugin . ' | setlocal tabstop< softtabstop< '
       \ . 'shiftwidth< wrap< formatprg<'

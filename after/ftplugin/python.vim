@@ -26,6 +26,9 @@ endif
 
 compiler python
 
+let b:ale_linters = ['ruff']
+let b:ale_fixers = ['trim_whitespace']
+
 let b:undo_ftplugin .= ' | setlocal tabstop< softtabstop< shiftwidth< '
       \ . 'expandtab< autoindent< smarttab< textwidth< formatoptions< '
       \ . 'formatprg< makeprg< errorformat<'
