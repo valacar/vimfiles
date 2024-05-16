@@ -8,7 +8,10 @@ setlocal nowrap
 " setlocal completefunc=htmlcomplete#CompleteTags
 
 " Format with Tidy HTML 5 - https://github.com/htacg/tidy-html5
-let &l:formatprg = 'tidy -quiet -utf8 -indent -wrap 0 --show-errors 0'
+" let &l:formatprg = 'tidy -quiet -utf8 -indent -wrap 0 --show-errors 0'
+
+" Format with Python's BeautifulSoup library
+let &l:formatprg = '~/.vim/after/ftplugin/html/html-indent.py --indent ' . &l:ts
 
 " Ctrl-/ to insert closing tag.
 inoremap <buffer> <C-/> </<C-x><C-o>
