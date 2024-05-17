@@ -29,6 +29,10 @@ compiler python
 let b:ale_linters = ['ruff']
 let b:ale_fixers = ['trim_whitespace']
 
+if exists('$VIRTUAL_ENV')
+  highlight StatusLine guibg=#324717
+endif
+
 let b:undo_ftplugin .= ' | setlocal tabstop< softtabstop< shiftwidth< '
       \ . 'expandtab< autoindent< smarttab< textwidth< formatoptions< '
       \ . 'formatprg< makeprg< errorformat<'
