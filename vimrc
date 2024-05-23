@@ -210,6 +210,7 @@ let mapleader = ','
 let localmapleader = '\'
 
 packadd! matchit       " better matching with % key
+packadd! comment       " toggle comments (:h comment.txt)
 
 " Load man pages in Vim when pressing K
 " Note: pressing a number before K loads that man section, e.g. 3K
@@ -457,10 +458,9 @@ nnoremap [A :first<CR>
 " 'smart' home, because I don't like pressing shift-6 (^)
 nnoremap <expr> 0 (col('.') == 1) ? '^' : '0'
 
-" --: comment line with vim-commentary
-" Note: nnoremap and xnoremap don't work in this case
-nmap -- <Plug>CommentaryLine
-xmap -- <Plug>Commentary
+" --: toggle comment
+nmap -- gcc
+xmap -- gc
 
 "===============================================================================
 " :: Insert Mode Mappings
