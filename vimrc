@@ -369,6 +369,10 @@ command! UpdateHelp 11verbose helptags ALL
 command! CamelToSnake
       \ exec "normal! ciw" . substitute(expand('<cword>'), '\u', '_\l&', "g")
 
+" Break line(s) into multiple lines of X maximum characters
+command! -nargs=1 -range HardBreak
+      \ exec 'keeppat <line1>,<line2>s/.\{' .. <args> .. '}/&\r/g'
+
 "===============================================================================
 " :: Copy/Paste with system clipboard
 "===============================================================================
