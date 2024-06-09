@@ -6,9 +6,13 @@ endif
 g:loaded_reddit_copy = 1
 
 # copy selection with all lines indented 4 spaces
-def RedditCopy()
+def RedditCopy(line1: number, line2: number)
   var _t = @t
-  silent normal! "ty
+  if mode() == "\<C-V>"
+    silent normal! "ty
+  else
+    exec printf('silent :%d,%dyank t', line1, line2)
+  endif
   silent new [RedditCopy]
   silent put! t
   silent :%s/^/    /
@@ -18,9 +22,8 @@ def RedditCopy()
   bwipe!
 enddef
 
-vnoremap <unique> <F5> <ScriptCmd>RedditCopy()<CR>
+vnoremap <unique> <F5> <ScriptCmd>RedditCopy(line('v'), line('.'))<CR>
 
-# Can't get this to work (problem with `"ty` yank):(
-# command! -range RedditCopy {
-#   RedditCopy()
-# }
+command! -range=% RedditCopy {
+  RedditCopy(<line1>, <line2>)
+}
