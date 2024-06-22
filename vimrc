@@ -698,11 +698,6 @@ augroup vimrc
   autocmd DirChanged * let g:cwd = expand("<afile>")
   autocmd TabEnter * let g:cwd = getcwd()
 
-" Remove quickfix lines ending in ^M
-"   autocmd BufReadPost quickfix setlocal modifiable
-"         \ | silent! execute 'g/^/s/\%x0d$//g'
-"         \ | setlocal nomodifiable
-
 augroup END
 
 "===============================================================================
