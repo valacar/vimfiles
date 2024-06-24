@@ -549,6 +549,7 @@ nnoremap <Leader>s :browse oldfiles<cr>
 " FZF mappings
 nnoremap <Leader>f <Cmd>Files<CR>
 nnoremap <leader>b <Cmd>Buffers<CR>
+nnoremap <leader>t <Cmd>Tags<CR>
 nnoremap <leader>v <Cmd>FZF ~/.vim/<CR>
 
 "===============================================================================
