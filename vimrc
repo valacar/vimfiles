@@ -755,6 +755,5 @@ nnoremap <A-8> *Ncgn
 " same as above, but without word boundaries
 nnoremap g<A-8> g*Ncgn
 
-" Space-Space: Cycle between buffers
-nnoremap <silent> <Space><Space> :bnext<CR>
-nnoremap <silent> <S-Space><S-Space> :bprevious<CR>
+" Space-Space: fuzzy find buffers
+nnoremap <silent> <Space><Space> <Cmd>Buffers<CR>
