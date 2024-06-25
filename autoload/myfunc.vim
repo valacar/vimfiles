@@ -1,9 +1,3 @@
-function! myfunc#ReloadConfig(filename) abort
-  execute 'source' a:filename
-  execute 'source' '~/.vim/after/ftplugin/vim.vim'
-  doautocmd ColorScheme 
-endfunction
-
 " Show syntax highlighting groups for what's under the cursor
 function! myfunc#SynStack() abort
   let col = col('.')
