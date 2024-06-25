@@ -206,7 +206,7 @@ filetype on            " enable file type detection
 filetype plugin on     " enable loading plugins for specific file types
 filetype indent on     " load indent file for specific file types
 
-let mapleader = ','
+let mapleader = "\<Space>"
 let localmapleader = '\'
 
 packadd! matchit       " better matching with % key
