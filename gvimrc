@@ -24,6 +24,10 @@ endif
 nnoremap <S-ScrollWheelDown> zL
 nnoremap <S-ScrollWheelUp> zH
 
+augroup gvimrc | autocmd!
+  autocmd BufWritePost $MYGVIMRC
+        \ source $MYGVIMRC
+augroup END
 
 set columns=141     " adjust GUI window width
 set lines=44        " adjust GUI window height

@@ -678,13 +678,9 @@ let g:loaded_zipPlugin= 1
 " :: Auto commands
 "===============================================================================
 
-augroup vimrc
-  autocmd!
-  autocmd BufWritePost $MYVIMRC,~/.vim/vimrc
+augroup vimrc | autocmd!
+  autocmd BufWritePost $MYVIMRC
         \ source $MYVIMRC
-
-  autocmd BufWritePost $MYGVIMRC,~/.vim/gvimrc
-        \ source $MYGVIMRC
 
 " reload color scheme after writing
   autocmd BufWritePost */.vim/colors/*.vim :execute 'colo' expand("<afile>:t:r")
