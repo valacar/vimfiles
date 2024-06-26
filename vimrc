@@ -679,29 +679,34 @@ let g:loaded_zipPlugin= 1
 "===============================================================================
 
 augroup vimrc | autocmd!
+" Auto reload vimrc when it changes
   autocmd BufWritePost $MYVIMRC
         \ source $MYVIMRC
 
 " reload color scheme after writing
-  autocmd BufWritePost */.vim/colors/*.vim :execute 'colo' expand("<afile>:t:r")
+  autocmd BufWritePost */.vim/colors/*.vim
+        \ execute 'colorscheme' expand("<afile>:t:r")
 
 " always make insert mode cursor red in GVim
   highlight! iCursor guibg=red
-  autocmd ColorScheme * highlight iCursor guibg=red
+  autocmd ColorScheme *
+        \ highlight iCursor guibg=red
 
 " Up/Down: jump between different sections of this vimrc
   autocmd BufReadPost $MYVIMRC,~/.vim/vimrc
-        \ nnoremap <silent> <buffer> <Down> :let @/ = '^" :: '<cr>nzt|
+        \ nnoremap <silent> <buffer> <Down> :let @/ = '^" :: '<cr>nzt |
         \ nnoremap <silent> <buffer> <Up> :let @/ = '^" :: '<cr>Nzt
 
 " enable spell-check when doing a git commit
-  autocmd BufReadPost COMMIT_EDITMSG,MERGE_MSG setlocal spell
+  autocmd BufReadPost COMMIT_EDITMSG,MERGE_MSG
+        \ setlocal spell
 
 " Keep track for working directory changes for titlestring
   let g:cwd = getcwd()
-  autocmd DirChanged * let g:cwd = expand("<afile>")
-  autocmd TabEnter * let g:cwd = getcwd()
-
+  autocmd DirChanged *
+        \ let g:cwd = expand("<afile>")
+  autocmd TabEnter *
+        \ let g:cwd = getcwd()
 augroup END
 
 "===============================================================================
