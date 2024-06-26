@@ -48,12 +48,6 @@ set guicursor+=i-c-ci:ver25-iCursor-blinkon1000-blinkoff250,
 set guicursor+=r-cr:hor20-iCursor
 " set guicursor+=a:blinkon0
 
-" change insert mode gui cursor color (Note: must add iCursor to 'guicursor')
-highlight iCursor guibg=#ff0000
-augroup insert_mod_cursor | autocmd!
-  autocmd ColorScheme * highlight iCursor guibg=red
-augroup END
-
 " Fix white background when fullscreen or resized oddly
 " on Windows using wimproved plugin
 if exists('g:loaded_wimproved_plugin')

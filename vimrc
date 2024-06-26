@@ -689,6 +689,10 @@ augroup vimrc
 " reload color scheme after writing
   autocmd BufWritePost */.vim/colors/*.vim :execute 'colo' expand("<afile>:t:r")
 
+" always make insert mode cursor red in GVim
+  highlight! iCursor guibg=red
+  autocmd ColorScheme * highlight iCursor guibg=red
+
 " Up/Down: jump between different sections of this vimrc
   autocmd BufReadPost $MYVIMRC,~/.vim/vimrc
         \ nnoremap <silent> <buffer> <Down> :let @/ = '^" :: '<cr>nzt|
