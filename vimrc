@@ -678,7 +678,8 @@ let g:loaded_zipPlugin= 1
 augroup vimrc | autocmd!
 " Auto reload vimrc when it changes
   autocmd BufWritePost $MYVIMRC
-        \ source $MYVIMRC
+        \ source $MYVIMRC |
+        \ setf vim
 
 " reload color scheme after writing
   autocmd BufWritePost */.vim/colors/*.vim
