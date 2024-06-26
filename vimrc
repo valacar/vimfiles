@@ -438,9 +438,6 @@ nnoremap <A-N> :cprevious<CR>
 " Backspace: switch to alternate buffer
 nnoremap <BS> <C-^>
 
-" Shift-Enter: un-join line (opposite of J)
-nnoremap <S-Enter> i<CR><Esc>
-
 " Ctrl-z: open terminal instead of minimizing GVim
 if has('gui_running')
   if has('terminal')
