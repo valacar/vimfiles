@@ -692,8 +692,8 @@ augroup vimrc | autocmd!
 
 " Up/Down: jump between different sections of this vimrc
   autocmd BufReadPost $MYVIMRC,~/.vim/vimrc
-        \ nnoremap <silent> <buffer> <Down> :let @/ = '^" :: '<cr>nzt |
-        \ nnoremap <silent> <buffer> <Up> :let @/ = '^" :: '<cr>Nzt
+        \ nnoremap <buffer> <Down> <Cmd>call search('^" :: ', 'W')<CR>zt|
+        \ nnoremap <buffer> <Up> <Cmd>call search('^" :: ', 'bW')<CR>zt
 
 " enable spell-check when doing a git commit
   autocmd BufReadPost COMMIT_EDITMSG,MERGE_MSG
