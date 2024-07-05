@@ -74,16 +74,6 @@ function! mycommand#RebuildSpellFiles() abort
 endfunction
 
 
-" Toggle GUI menu
-function! mycommand#ToggleMenu() abort
-  if &guioptions =~# 'm'
-    set guioptions-=m
-  else
-    set guioptions+=m
-  endif
-endfunction
-
-
 " Open Vim's changelog using curl (in a scratch buffer)
 function! mycommand#VimChangelog() abort
   let l:ver = v:version / 100 . '.' . v:version % 100
