@@ -322,12 +322,6 @@ command! ReloadAsCodePage437 edit ++enc=cp437
 " Save with sudo and re-edit
 command! SudoSave execute 'write !sudo tee % > /dev/null' | edit!
 
-" Redirect :global results to a scratch buffer. Accepts pattern, otherwise
-" uses last search. e.g. :Filter red\|blue
-" WARN: Overwrites @t register
-command! -nargs=? Filter let @t='' |
-      \ execute 'g/<args>/y T' | new | setlocal buftype=nofile | put! t
-
 " align words in table format, using external linux column command
 if executable('column')
   command! -range Align
