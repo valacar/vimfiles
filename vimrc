@@ -488,8 +488,8 @@ xnoremap <silent> * :call <SID>setSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap <silent> # :call <SID>setSearch()<CR>?<C-R>=@/<CR><CR>
 
 " p: Keep unnamed register (") when pasting in visual mode
-xnoremap p pgvy
-xnoremap P Pgvy
+" xnoremap p pgvy
+" xnoremap P Pgvy
 
 " @: Run macro on selected lines only
 xnoremap @ :<C-u>echo '@' . getcmdline()
