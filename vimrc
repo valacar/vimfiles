@@ -474,11 +474,6 @@ inoremap jj <Esc>
 " :: Visual Mode Mappings
 "===============================================================================
 
-" > to indent
-xnoremap > >gv
-" < to unindent
-xnoremap < <gv
-
 " Space / Shift-Space: indent/unindent with a space in visual block mode
 vnoremap <expr> <Space>   (mode() == "\<C-V>") ? 'I<Space><Esc>gv' : ''
 vnoremap <expr> <S-Space> (mode() == "\<C-V>") ? '"_xgv' : ''
