@@ -422,9 +422,6 @@ nnoremap <A-T> :tabclose<CR>
 " Alt-F1: Show syntax highlighting groups for word under cursor
 nnoremap <A-F1> :SynStack<CR>
 
-" gV: visual select previously inserted/changed/yanked text
-nnoremap <expr> gV (&modified) ? '`[v`]zz' : ''
-
 " section jumping with scroll adjustment
 nnoremap ]] ]]zt
 nnoremap [[ [[zt
