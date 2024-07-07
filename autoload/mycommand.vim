@@ -64,7 +64,7 @@ endfunction
 
 function! mycommand#RebuildSpellFiles() abort
   for f in glob('~/.vim/spell/*.add', 1, 1)
-    execute 'mkspell!' f
+    execute 'verbose mkspell!' f
   endfor
   " re-enable spell option so it uses the updated spell file
   if &spell
