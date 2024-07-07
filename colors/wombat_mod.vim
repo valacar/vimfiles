@@ -98,7 +98,7 @@ hi PreProc guifg=#d28c83 guibg=NONE gui=NONE cterm=NONE
 hi Question guifg=#00ff00 guibg=NONE gui=bold cterm=bold
 hi Search guifg=#000000 guibg=#999999 gui=NONE cterm=NONE
 hi Special guifg=#8ac6f2 guibg=NONE gui=NONE cterm=NONE
-hi SpecialKey guifg=#444444 guibg=NONE gui=NONE cterm=NONE
+hi SpecialKey guifg=#555555 guibg=NONE gui=NONE cterm=NONE
 hi SpellBad guifg=#ffffff guibg=#660000 guisp=#ff0000 gui=undercurl cterm=underline
 hi SpellCap guifg=#ffffff guibg=#004d80 guisp=#56bcff gui=undercurl cterm=underline
 hi SpellLocal guifg=#ffffff guibg=#006666 guisp=#00ffff gui=undercurl cterm=underline
