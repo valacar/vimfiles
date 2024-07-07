@@ -721,6 +721,11 @@ if &term ==# 'xterm-kitty' || &term ==# 'screen.xterm-256color'
   let &t_ut = ''
 endif
 
+" linux virtual console reports 8 colors, but 16 works
+if &t_Co == 8
+  set t_Co=16
+endif
+
 " Add Alt-key support in linux terminals
 " Note: these are specific to only the keys I need
 " Note: don't use imap or cmap, or it'll break the timeouts
