@@ -308,7 +308,7 @@ if s:t_Co >= 8
   hi SpellRare ctermfg=White ctermbg=Magenta cterm=underline
   hi Statement ctermfg=Blue ctermbg=NONE cterm=NONE
   hi StatusLine ctermfg=White ctermbg=DarkBlue cterm=bold
-  hi StatusLineNC ctermfg=Gray ctermbg=DarkGray cterm=NONE
+  hi StatusLineNC ctermfg=DarkGray ctermbg=DarkBlue cterm=NONE
   hi StatusLineTerm ctermfg=Black ctermbg=Green cterm=bold
   hi StatusLineTermNC ctermfg=Black ctermbg=Green cterm=NONE
   hi String ctermfg=DarkYellow ctermbg=NONE cterm=NONE
