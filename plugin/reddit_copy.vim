@@ -22,7 +22,7 @@ def RedditCopy(line1: number, line2: number)
   bwipe!
 enddef
 
-vnoremap <unique> <F5> <ScriptCmd>RedditCopy(line('v'), line('.'))<CR>
+xnoremap <unique> <F5> <ScriptCmd>RedditCopy(line('v'), line('.'))<CR>
 
 command! -range=% RedditCopy {
   RedditCopy(<line1>, <line2>)

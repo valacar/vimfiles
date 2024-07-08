@@ -1,6 +1,6 @@
 " Enter key follows a hyperlink tag in :help
 nnoremap <buffer> <CR> <c-]>
-vnoremap <buffer> <CR> <c-]>
+xnoremap <buffer> <CR> <c-]>
 
 " Backspace or Mouse4 to navigate tags backwards, Mouse5 to go forward
 nnoremap <buffer> <BS> <Cmd>pop<CR>
