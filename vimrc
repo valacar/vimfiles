@@ -20,7 +20,7 @@ set shortmess-=S       " show search count, .e.g. [1/5]
 set wildmenu           " enhanced command-line completion
 set wildmode=longest,full " command-line completion setting
 set wildignore=*.o,*.bin,*.so,*.dll,*.exe
-set wildignore+=*.jpg,*.png,*.gif,*.bmp,*.tga
+set wildignore+=*.jpg,*.JPG,*.png,*.gif,*.bmp,*.tga
 set suffixes+=/        " show directories after files in wildmenu
 
 set incsearch          " incremental searching
@@ -72,6 +72,7 @@ set mouse=nvi          " enable mouse in most modes
 set guioptions=Mci     " disable GUI, no menus.vim, console dialogs, use icon
 set guioptions+=d      " use dark GTK theme if available.
 set guioptions+=a      " copy visual selection to * register
+set guioptions+=!      " don't use dumb terminal with :shell in GVim
 
 set synmaxcol=256      " limit highlighting to X columns
 
@@ -748,3 +749,6 @@ nnoremap g<A-8> g*Ncgn
 
 " Space-Space: fuzzy find buffers
 nnoremap <silent> <Space><Space> <Cmd>Buffers<CR>
+
+command! -nargs=+ -complete=file LS
+      \ !ls <q-args>
