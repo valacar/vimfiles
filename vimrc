@@ -137,9 +137,7 @@ let &fillchars = "vert:\u2591"
 let &showbreak = "\u21aa "
 
 if $TERM ==# 'linux' || $TERM ==# 'screen.linux'
-  let &listchars = 'tab:> ,space:.,trail:.'
-  let &listchars .= ',extends:>,precedes:<,nbsp:+'
-  " let &listchars .= ",eol:$"
+  let &listchars = 'tab:> ,space:.,trail:.,extends:>,precedes:<,nbsp:+'
   let &showbreak = '> '
 endif
 
@@ -243,17 +241,20 @@ command! DiffOrig
       \ diffthis | wincmd p | diffthis
 
 " Toggle diff between currently visible windows
-command! Diff execute 'windo diff' . (&diff ? 'off' : 'this')
+command! Diff
+      \ execute 'windo diff' . (&diff ? 'off' : 'this')
 
 " Make visible windows scroll together
-command! ScrollLock windo set scrollbind!
+command! ScrollLock
+      \ windo set scrollbind!
 
 " Toggle Theme (between a dark and light theme)
 command! TT execute &bg == 'dark'
       \ ? 'set bg=light | colo gruvbox'
       \ : 'set bg=dark | colo wombat_mod'
 
-command! FontSelect set guifont=*
+command! FontSelect
+      \ set guifont=*
 
 command! Hitab execute !exists('b:hiTab')
       \ ? 'let b:hiTab = matchadd("Error", "\\t") | set list'
@@ -263,7 +264,8 @@ command! Hitrailingwhitespace execute !exists('b:hiTrail')
       \ ? 'let b:hiTrail = matchadd("Error", "\\s\\+$") | set list'
       \ : 'call matchdelete(b:hiTrail) | unlet b:hiTrail| set nolist'
 
-command! Hitest runtime syntax/hitest.vim
+command! Hitest
+      \ runtime syntax/hitest.vim
 
 command! -nargs=1 -bang Hicol
       \ execute <bang>0 ? 'windo' : '' 'setlocal colorcolumn=' .
@@ -280,7 +282,8 @@ command! -nargs=1 -complete=highlight Hifilter
       \ execute 'filter /<args>/ highlight'
 
 " print 'runtimepath' one line at a time
-command! RTP call map(split(&rtp, ','),
+command! RTP
+      \ call map(split(&rtp, ','),
       \ {_,path -> execute('echo'.
       \ string(substitute(tr(path,'\','/'), $HOME, '~', '')), '')})
 
@@ -320,7 +323,8 @@ command! ReloadAsUnicode16 edit ++enc=utf-16le
 command! ReloadAsCodePage437 edit ++enc=cp437
 
 " Save with sudo and re-edit
-command! SudoSave execute 'write !sudo tee % > /dev/null' | edit!
+command! SudoSave
+      \ execute 'write !sudo tee % > /dev/null' | edit!
 
 " align words in table format, using external linux column command
 if executable('column')
@@ -332,7 +336,8 @@ command! CopyDirectory let @+ = expand('%:p:h')
 command! CopyFilename  let @+ = expand('%:p:t')
 command! CopyPath      let @+ = expand('%:p')
 
-command! SynStack call myfunc#SynStack()
+command! SynStack
+      \ call myfunc#SynStack()
 
 " Make background transparent in terminal
 " Note: if something goes wrong, reload colorscheme with :Transparent!
@@ -352,7 +357,8 @@ command! Modeline
       \ setlocal modeline modelineexpr | doautocmd BufEnter %
 
 " After installing a plugin, this will add it to Vim's :help command
-command! UpdateHelp 11verbose helptags ALL
+command! UpdateHelp
+      \ 11verbose helptags ALL
 
 command! CamelToSnake
       \ exec "normal! ciw" . substitute(expand('<cword>'), '\u', '_\l&', "g")
@@ -742,6 +748,3 @@ nnoremap g<A-8> g*Ncgn
 
 " Space-Space: fuzzy find buffers
 nnoremap <silent> <Space><Space> <Cmd>Buffers<CR>
-
-command! -nargs=+ -complete=file LS
-      \ !ls <q-args>
