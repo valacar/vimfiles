@@ -130,17 +130,16 @@ set writebackup
 set path=.,,            " just search current dir and relative to current file
 
 " characters to show when 'list' options is enabled
-if has('multi_byte') && &encoding ==# 'utf-8'
-  let &listchars = "tab:\u00bb ,space:\u00b7,trail:\u25cf"
-  let &listchars .= ",extends:\u203a,precedes:\u2039,nbsp:+"
-  " let &listchars .= ",eol:\u21b5"
-  let &fillchars = 'vert:░,stl: ,stlnc: ,fold:-,diff:-'
-  let &showbreak = '↪ '
-else
+let &listchars = "tab:\u00bb ,space:\u00b7,trail:\u25cf"
+let &listchars .= ",extends:\u203a,precedes:\u2039,nbsp:+"
+" let &listchars .= ",eol:\u21b5"
+let &fillchars = "vert:\u2591"
+let &showbreak = "\u21aa "
+
+if $TERM ==# 'linux' || $TERM ==# 'screen.linux'
   let &listchars = 'tab:> ,space:.,trail:.'
   let &listchars .= ',extends:>,precedes:<,nbsp:+'
   " let &listchars .= ",eol:$"
-  let &fillchars = 'vert:|,stl: ,stlnc: ,fold:-,diff:-'
   let &showbreak = '> '
 endif
 
