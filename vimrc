@@ -352,12 +352,6 @@ command! MakeBanner
 command! Modeline
       \ setlocal modeline modelineexpr | doautocmd BufEnter %
 
-" TODO: make this toggle, and restore filetype, and buftype
-command! HexView
-      \ silent! execute '%!xxd -g1' |
-      \ setlocal filetype=xxd buftype=nofile cursorline nowrap |
-      \ keeppat %s/^/\=(line('.')%17==0?"\n":'')/g | 1
-
 " After installing a plugin, this will add it to Vim's :help command
 command! UpdateHelp 11verbose helptags ALL
 
