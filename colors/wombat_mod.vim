@@ -262,6 +262,8 @@ if s:t_Co >= 8
     hi SignColumn ctermfg=DarkGray ctermbg=Black cterm=NONE
     hi Terminal ctermfg=Gray ctermbg=Black cterm=NONE
   endif
+  hi EndOfBuffer ctermbg=Black
+  hi NonText ctermbg=Blue ctermfg=Cyan
   hi Terminal ctermfg=Gray ctermbg=Black cterm=NONE
   hi ColorColumn ctermfg=fg ctermbg=DarkRed cterm=NONE
   hi Comment ctermfg=DarkGray ctermbg=NONE cterm=NONE
@@ -316,7 +318,7 @@ if s:t_Co >= 8
   hi TabLineFill ctermfg=NONE ctermbg=DarkGray cterm=NONE
   hi TabLineSel ctermfg=White ctermbg=Black cterm=NONE
   hi Title ctermfg=Yellow ctermbg=NONE cterm=bold
-  hi Todo ctermfg=Yellow ctermbg=DarkGray cterm=NONE
+  hi Todo ctermfg=Yellow ctermbg=Black cterm=NONE
   hi Type ctermfg=Green ctermbg=NONE cterm=NONE
   hi Underlined ctermfg=Blue ctermbg=NONE cterm=NONE
   hi User1 ctermfg=DarkGray ctermbg=DarkGray cterm=NONE
