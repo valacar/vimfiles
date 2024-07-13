@@ -288,7 +288,6 @@ command! RTP
       \ string(substitute(tr(path,'\','/'), $HOME, '~', '')), '')})
 
 " Swap single and double quotes within selection, or current line
-" WARNING: might use previous selection (gv) when nothing selected
 command! -range SwapQuotes
       \ let vis = <range> ? '\%V' : '' |
       \ execute 'keeppat <line1>,<line2>s/' . vis .
@@ -296,7 +295,6 @@ command! -range SwapQuotes
 " "test quotes" 'test quotes' "test quotes" 'test quotes'
 
 " Swap '/' and '\' within selection, or current line
-" WARNING: might use previous selection (gv) when nothing selected
 command! -range SwapSlashes
       \ let vis = <range> ? '\%V' : '' |
       \ execute 'keeppat <line1>,<line2>s_' . vis .
