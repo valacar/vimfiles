@@ -36,7 +36,7 @@ set sidescrolloff=5    " horizontal scrolling margin
 set ruler              " show row,columns in status line
 set showcmd            " show (partial) key commands on last line of screen
 set laststatus=2       " always show status line
-set history=200        " more command and search history (default: 50)
+set history=1000       " more command-line and search history (default: 50)
 
 set splitbelow         " create new window below when splitting
 
