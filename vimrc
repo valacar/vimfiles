@@ -165,6 +165,7 @@ silent! call mkdir(expand(&g:undodir), 'p', 0700)
 " viminfo: directories to ignore
 let s:ignored_dirs = [
       \ '/tmp/',
+      \ '/data/disk2/',
       \ expand('$VIMRUNTIME') . '/doc/',
       \ ]
 for s:dir in s:ignored_dirs
