@@ -26,8 +26,13 @@ let b:current_syntax = 'myC'
 " e.g. guibg=#1c1c1c guifg=bcbcbc
 hi default mycString guifg=Bisque
 hi default mycCharacter guifg=Bisque
-hi default mycKeyword guifg=LightGrey gui=bold
+hi default mycKeyword gui=bold
 hi default mycOperator guifg=LightBlue
-hi default mycComment guifg=#666666
+hi default mycComment guifg=#777777
 hi default link mycCommentMulti mycComment
 hi default link mycCommentSingle mycComment
+
+hi mycOperator guifg=#a0bcbc
+hi mycString guifg=#c0b0aa
+hi mycCharacter guifg=#c0b0aa
+hi mycComment guifg=#777777
