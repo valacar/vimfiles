@@ -292,15 +292,21 @@ command! RTP
 command! -range SwapQuotes
       \ let vis = <range> ? '\%V' : '' |
       \ execute 'keeppat <line1>,<line2>s/' . vis .
-      \         '[\''\"]/\=tr(submatch(0), "''\"", "\"''")/g'
+      \         '[\''\"]/\=tr(submatch(0), "''\"", "\"''")/ge'
 " "test quotes" 'test quotes' "test quotes" 'test quotes'
 
 " Swap '/' and '\' within selection, or current line
 command! -range SwapSlashes
       \ let vis = <range> ? '\%V' : '' |
       \ execute 'keeppat <line1>,<line2>s_' . vis .
-      \         '[/\\]_\=tr(submatch(0), "/\\", "\\/")_g'
+      \         '[/\\]_\=tr(submatch(0), "/\\", "\\/")_ge'
 " /test/slash/test/slash/
+
+" Convert unicode quotes to ASCII quotes within selection or current line
+command! -range FixQuotes
+      \ let vis = <range> ? '\%V' : '' |
+      \ execute 'keeppat <line1>,<line2>s/' . vis . "[\u2018\u2019]/'/ge" |
+      \ execute 'keeppat <line1>,<line2>s/' . vis . "[\u201C\u201D]/\"/ge"
 
 command! PasteJavascript setfiletype javascript | normal! "+P
 command! PasteCSS setfiletype css | normal! "+P
