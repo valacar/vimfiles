@@ -18,6 +18,8 @@ command! -narg=0 ZoomOut call <SID>AdjustFontSize(-1)
 " Same mapping as web browsers, Ctrl-= and Ctrl--
 nnoremap <unique> <C-=> <Cmd>ZoomIn<CR>
 nnoremap <unique> <C-_> <Cmd>ZoomOut<CR>
+nnoremap <unique> <C-ScrollWheelUp> <Cmd>ZoomIn<CR>
+nnoremap <unique> <C-ScrollWheelDown> <Cmd>ZoomOut<CR>
 
 let s:minfontsize = 8
 let s:maxfontsize = 24
