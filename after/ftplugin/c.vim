@@ -25,7 +25,7 @@ else
 endif
 
 " Mapping to build with :make and open/close quickfix depending on whether errors are found
-nnoremap <buffer> <silent> <LocalLeader>b :update <bar> make <bar> botright cwindow<CR>
+nnoremap <buffer> <silent> <LocalLeader>b :update <bar> silent make <bar> redraw! <bar> botright cwindow <CR>
 
 " Mapping to toggle spell checking
 nnoremap <buffer> <silent> <LocalLeader>s :setlocal spell!<CR>
