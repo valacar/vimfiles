@@ -251,7 +251,7 @@ command! ScrollLock
 
 " Toggle Theme (between a dark and light theme)
 command! TT execute &bg == 'dark'
-      \ ? 'set bg=light | colo gruvbox'
+      \ ? 'set bg=light | colo iceberg'
       \ : 'set bg=dark | colo wombat_mod'
 
 command! FontSelect
