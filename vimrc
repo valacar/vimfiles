@@ -686,7 +686,7 @@ augroup vimrc | autocmd!
 " Keep track for working directory changes for titlestring
   let g:cwd = getcwd()
   autocmd DirChanged *
-        \ let g:cwd = expand("<afile>")
+        \ let g:cwd = getcwd()
   autocmd TabEnter *
         \ let g:cwd = getcwd()
 augroup END
