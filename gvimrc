@@ -7,19 +7,13 @@ elseif has('x11') " Athena
   " set guifont=-*-gohufont-bold-r-normal--14-*-*-*-*-*-*
   " set guifont=-*-terminus-medium-r-normal--14-*-*-*-*-*-*
   " set guifont=-*-courier-medium-r-normal-*-*-100-*-*-m-*-*
-elseif has('win32')
-  set guifont=Consolas:h13
-  " set guifont=Droid_Sans_Mono_Slashed:h13
-  " set guifont=Source_Code_Pro_Medium:h12
 endif
 
 " :; ,. il1!| O0 S$ ~ ` ' " ^ @ # % & * [] () {} ({}) 
 " + - _ = ++ -- == -= += *= \ / // \\ (< >) 0123456789 pgyq ft
 
-if has('unix')
-  map <S-Insert> <MiddleMouse>
-  map! <S-Insert> <MiddleMouse>
-endif
+map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse>
 
 nnoremap <S-ScrollWheelDown> zL
 nnoremap <S-ScrollWheelUp> zH
@@ -52,39 +46,17 @@ set guicursor+=i-c-ci:ver25-iCursor-blinkon1000-blinkoff250,
 set guicursor+=r-cr:hor20-iCursor
 " set guicursor+=a:blinkon0
 
-" Fix white background when fullscreen or resized oddly
-" on Windows using wimproved plugin
-if exists('g:loaded_wimproved_plugin')
-  augroup wimproved
-    autocmd!
-    autocmd ColorScheme * silent! WFixWindowBG
-    autocmd GUIEnter * silent! WFixWindowBG
-  augroup END
-endif
-
 " TODO: find a way to change these dynamically when the colorscheme changes
-" Note: For GTK3 Linux build, create the file
+" Note: For GTK3 build, create the file
 " ~/.config/gtk-3.0/gtk.css with the content:
 "
 " window#vim-main-window {
 "     background-color: #1c1c1c;
 " }
 
-" Note: For GTK2 Linux build, create the file
+" Note: For GTK2 build, create the file
 " ~/.gtkrc-2.0 with the content:
 " style "vimfix" {
 "   bg[NORMAL] = "#1c1c1c" # this matches my gvim theme 'Normal' bg color.
 " }
 " widget "vim-main-window.*GtkForm" style "vimfix"
-
-" Use DirectWrite on Windows for better font rendering
-if has('directx')
-  set renderoptions=type:directx
-  set renderoptions+=gamma:1.0
-  set renderoptions+=contrast:0.5
-  set renderoptions+=level:0.3     " Saturation of the blue/orange fringes with ClearType
-  set renderoptions+=geom:1        " RGB pixel stripe ordering
-  set renderoptions+=renmode:5     " Natural symmetric antialiasing in both vertical and horizontal directions
-  set renderoptions+=taamode:1     " ClearType
-endif
-

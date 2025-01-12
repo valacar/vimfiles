@@ -25,7 +25,7 @@ if exists(':ReloadFirefox')
 endif
 
 " F10: Open current html file in new browser tab (changing window focus)
-if has('unix') && executable('xdg-open')
+if executable('xdg-open')
   for s:mode in split('niv', '\zs')
     execute s:mode . 'noremap <buffer> <silent> <F10> '
           \ . '<Cmd>call system("xdg-open " . fnameescape(expand("%")))<CR>'

@@ -16,13 +16,8 @@ setlocal path+=/usr/include/     " append /usr/include/ to path
 
 compiler gcc                     " set errorformat option
 
-" Mapping to run current file as an executable. The file's extension is stripped (on linux)
-" or replaced with '.exe (on Windows)
-if has('win32')
-  nnoremap <buffer> <silent> <LocalLeader>r !start cmd /c "%:p:r:s,$,.exe," & pause<CR>
-else
-  nnoremap <buffer> <silent> <LocalLeader>r :!clear;%:p:r<CR>
-endif
+" Mapping to run current file as an executable.
+nnoremap <buffer> <silent> <LocalLeader>r :!clear;%:p:r<CR>
 
 " Mapping to build with :make and open/close quickfix depending on whether errors are found
 nnoremap <buffer> <silent> <LocalLeader>b :update <bar> silent make <bar> redraw! <bar> botright cwindow <CR>
@@ -43,12 +38,7 @@ endif
 
 " Mapping to create ctags
 if executable('ctags')
-  "TODO: will '.' be what :cd reports?  Maybe use %:p:h but we're using -R, so I dunno.
-  if has ('win32')
-    nnoremap <buffer> <silent> <LocalLeader>c :!start ctags -R . <bar> redraw!<CR>
-  else
-    nnoremap <buffer> <silent> <LocalLeader>c :!ctags -R .<CR>
-  endif
+  nnoremap <buffer> <silent> <LocalLeader>c :!ctags -R .<CR>
 endif
 
 " allow vim to undo our settings when/if the file type changes

@@ -12,8 +12,6 @@ set breakindent        " word wrap indents to same number of spaces
 set linebreak          " don't chop words in half when wrapping is on
 set nojoinspaces       " use only one space after joining sentences.
 
-set fileformats=unix,dos " prefer unix line endings when editing new buffer
-
 set shortmess+=I       " disable Vim's intro screen
 set shortmess-=S       " show search count, .e.g. [1/5]
 
@@ -143,9 +141,8 @@ endif
 
 " enable true-color in terminals that support it
 if has('termguicolors') &&
-      \ ($COLORTERM ==# 'truecolor' || has('vcon')
-      \ || &term ==# 'xterm-256color'
-      \ || $MSYSCON ==? 'mintty.exe')
+      \ ($COLORTERM ==# 'truecolor'
+      \ || &term ==# 'xterm-256color')
   set termguicolors
 endif
 
@@ -322,8 +319,6 @@ command! ClearCommandHistory call histdel(':')
 command! ClearLetterRegisters
       \ for r in range(97,122) | call setreg(nr2char(r),[]) | endfor
 
-" Reload file as UTF-16LE
-command! ReloadAsUnicode16 edit ++enc=utf-16le
 " Reload file as DOS code page 437
 command! ReloadAsCodePage437 edit ++enc=cp437
 
@@ -331,7 +326,7 @@ command! ReloadAsCodePage437 edit ++enc=cp437
 command! SudoSave
       \ execute 'write !sudo tee % > /dev/null' | edit!
 
-" align words in table format, using external linux column command
+" align words in table format, using external column command
 if executable('column')
   command! -range Align
         \ :'<,'>!column -t -o ' '
@@ -698,7 +693,6 @@ augroup END
 if &term ==# 'xterm-256color'
       \ || &term ==# 'rxvt-unicode-256color'
       \ || &term ==# 'alacritty'
-      \ || $MSYSCON ==? 'mintty.exe'
   " 1 = blinking block,        2 = steady block
   " 3 = blinking underline,    4 = steady underline
   " 5 = blinking vertical bar, 6 = steady vertical bar
@@ -734,7 +728,7 @@ endif
 " Add Alt-key support in linux terminals
 " Note: these are specific to only the keys I need
 " Note: don't use imap or cmap, or it'll break the timeouts
-if has('linux') && !has('gui_running')
+if !has('gui_running')
   for s:key in split('vVcCajk123tTnN8\', '\zs')
     execute 'set <A-' . s:key . ">=\e" . s:key
   endfor
