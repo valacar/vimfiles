@@ -12,7 +12,7 @@ setlocal cinoptions+==0          " don't indent next line after a case label
 setlocal commentstring=//\ %s    " C++-style single line comments
 setlocal complete-=i             " remove includes from tab completion (very slow sometimes)
 
-setlocal path&                   " reset path, which adds /usr/include/ on unix
+setlocal path+=/usr/include/     " append /usr/include/ to path
 
 compiler gcc                     " set errorformat option
 
