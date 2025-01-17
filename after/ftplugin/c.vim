@@ -16,6 +16,9 @@ setlocal path+=/usr/include/     " append /usr/include/ to path
 
 compiler gcc                     " set errorformat option
 
+" just use gcc/clang for linting
+let b:ale_linters = {'c': ['cc']}
+
 " Mapping to run current file as an executable.
 nnoremap <buffer> <silent> <LocalLeader>r :!clear;%:p:r<CR>
 
