@@ -117,6 +117,8 @@ HiLink ZimwikiEmoticons Character
 HiLink ZimwikiTodo Todo
 HiLink ZimwikiComment Comment
 HiLink ZimwikiHTMLtag SpecialKey
+HiLink ZimwikiPre helpStart
+
 
 let b:current_syntax = 'zimwiki'
 
