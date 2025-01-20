@@ -1,4 +1,3 @@
-command! -buffer Tidy :%!tidy -xml -q -i -w 0 --show-errors 0
 setlocal tabstop=2
 setlocal softtabstop=2
 setlocal shiftwidth=2
