@@ -12,8 +12,8 @@ if ! has('gui_running')
   finish
 endif
 
-command! -narg=0 ZoomIn  call <SID>AdjustFontSize(1)
-command! -narg=0 ZoomOut call <SID>AdjustFontSize(-1)
+command! -nargs=0 ZoomIn  call <SID>AdjustFontSize(1)
+command! -nargs=0 ZoomOut call <SID>AdjustFontSize(-1)
 
 " Same mapping as web browsers, Ctrl-= and Ctrl--
 nnoremap <unique> <C-=> <Cmd>ZoomIn<CR>

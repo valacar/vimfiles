@@ -577,8 +577,8 @@ let g:startify_bookmarks = [
       \ {33: '~/.vim/after/ftplugin'},
       \ {44: '~/.vim/vimrc'},
       \ {45: '~/.vim/gvimrc'},
-      \ {55: '~/.vim/colors/wombat_mod.vim'},
-      \ {66: '~/.vim/plugin'},
+      \ {55: '~/.vim/plugin'},
+      \ {66: '$VIMRUNTIME'},
       \ ]
 if $SHELL =~# 'bash$'
   call extend(g:startify_bookmarks, [
