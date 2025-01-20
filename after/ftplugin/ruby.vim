@@ -1,4 +1,3 @@
-" Ruby 'after' ftplugin settings
 scriptencoding utf-8
 
 setlocal nowrap

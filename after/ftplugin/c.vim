@@ -1,5 +1,3 @@
-" C 'after' ftplugin settings
-
 setlocal nowrap                  " no word wrapping
 setlocal textwidth=0             " don't break long lines
 setlocal cindent                 " enable C program indenting

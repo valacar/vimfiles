@@ -1,5 +1,3 @@
-" Quickfix 'after' ftplugin settings
-
 " make sure concealed syntax is actually hidden
 setlocal conceallevel=2
 setlocal concealcursor+=n

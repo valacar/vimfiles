@@ -1,5 +1,3 @@
-" reStructuredText 'after' ftplugin settings
-
 setlocal spell
 
 if &spellfile !~# 'rst\.utf-8\.add'

@@ -1,5 +1,3 @@
-" Vim 'after' ftplugin settings
-
 setlocal tabstop=2          " how many columns a tab counts for
 setlocal shiftwidth=2       " spaces to use for <<, >>, and auto indenting
 setlocal softtabstop=2      " treat spaces like tabs when backspacing

@@ -1,5 +1,3 @@
-" dwarffortress 'after' ftplugin settings
-
 setlocal wrap
 setlocal linebreak
 

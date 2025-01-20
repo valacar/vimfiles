@@ -1,5 +1,3 @@
-" Netrw 'after' ftplugin settings
-
 " Escape or q to close netrw window
 nnoremap <silent> <buffer> <nowait> <Esc> :bwipeout<CR>
 nnoremap <silent> <buffer> <nowait> q :bwipeout<CR>
