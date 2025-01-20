@@ -367,6 +367,10 @@ command! CamelToSnake
 command! -nargs=1 -range HardBreak
       \ exec 'keeppat <line1>,<line2>s/.\{' .. <args> .. '}/&\r/g'
 
+command! FZFVim
+      \ call fzf#run(fzf#wrap(
+      \   {'source': 'fd . ~/.vim/ --type f --no-ignore-vcs'}))
+
 "===============================================================================
 " :: Copy/Paste with system clipboard
 "===============================================================================
@@ -530,7 +534,7 @@ nnoremap <Leader>s :browse oldfiles<cr>
 nnoremap <Leader>f <Cmd>Files<CR>
 nnoremap <leader>b <Cmd>Buffers<CR>
 nnoremap <leader>t <Cmd>Tags<CR>
-nnoremap <leader>v <Cmd>FZF ~/.vim/<CR>
+nnoremap <leader>v <Cmd>FZFVim<CR>
 
 "===============================================================================
 " :: Function Key Mappings 0-9
@@ -573,18 +577,22 @@ let g:startify_disable_at_vimenter = 1
 let g:startify_custom_header = []
 let g:startify_enable_special = 0
 let g:startify_bookmarks = [
-      \ {22: '~/.vim/'},
-      \ {33: '~/.vim/after/ftplugin'},
       \ {44: '~/.vim/vimrc'},
       \ {45: '~/.vim/gvimrc'},
-      \ {55: '~/.vim/plugin'},
-      \ {66: '$VIMRUNTIME'},
       \ ]
 if $SHELL =~# 'bash$'
   call extend(g:startify_bookmarks, [
-        \ {77: '~/.bashrc'}
+        \ {55: '~/.bashrc'}
         \ ])
 endif
+
+let g:startify_commands = [
+    \ {66: ['FZF ~/.vim/', 'FZFVim']},
+    \ {67: ['FZF Vim Runtime', 'FZF $VIMRUNTIME']},
+    \ {77: ['Vim Functions', 'help function-list']},
+    \ {78: ['Ex Commands', 'help ex-cmd-index']},
+    \ ]
+
 let g:startify_session_autoload = 1
 let g:startify_skiplist = [
       \ '^/usr/share/vim/',
