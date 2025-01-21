@@ -2,7 +2,6 @@ vim9script
 # Commands here are a little too big to put in my vimrc, and not quite long or
 # complex enough to be real plugins. Any key mappings should be placed in vimrc.
 
-
 # Remove trailing whitespace
 def FixWhitespace(line1: number, line2: number)
   var save_cursor = getpos('.')
@@ -19,6 +18,7 @@ enddef
 command! -range=% FixWhitespace FixWhitespace(<line1>, <line2>)
 command! -range=% RemoveTrailingWhiteSpace FixWhitespace
 
+# ------------------------------------------------------------------------------
 
 # Redirect a command to a scratch buffer
 # Based on https://gist.github.com/romainl/eae0a260ab9c135390c30cd370c20cd7
@@ -45,6 +45,7 @@ enddef
 
 command! -nargs=1 -complete=command Redir silent Redir(<f-args>)
 
+# ------------------------------------------------------------------------------
 
 def RebuildSpellFiles()
   for f in glob('~/.vim/spell/*.add', 1, 1)
@@ -60,6 +61,7 @@ enddef
 command! RebuildSpellFiles RebuildSpellFiles()
 command! SpellRebuild RebuildSpellFiles
 
+# ------------------------------------------------------------------------------
 
 # Show syntax highlighting groups for what's under the cursor
 def SynStack()
@@ -90,6 +92,7 @@ enddef
 
 command! SynStack SynStack()
 
+# ------------------------------------------------------------------------------
 
 # Toggle current word
 # stolen from habamax's config at:
@@ -113,8 +116,10 @@ enddef
 
 command! ToggleWord ToggleWord()
 
+# ------------------------------------------------------------------------------
 
-# copy selection with all lines indented 4 spaces
+# Copy selection with all lines indented 4 spaces
+# Note: key map supports Ctrl-v selection, but not :RedditCopy
 def RedditCopy(line1: number, line2: number)
   var _t = @t
   if mode() == "\<C-V>"
@@ -131,9 +136,15 @@ def RedditCopy(line1: number, line2: number)
   bwipe!
 enddef
 
-command! -range=% RedditCopy RedditCopy(<line1>, <line2>)
+# map a key in vimrc
+xnoremap <Plug>(RedditCopy) <ScriptCmd>RedditCopy(line('v'), line('.'))<CR>
 
+command! -range=% RedditCopy {
+  RedditCopy(<line1>, <line2>)
+}
 
-# Requires xdotool to be installed.
+# ------------------------------------------------------------------------------
+
+# Reload Firefox. Requires xdotool to be installed.
 command! FirefoxReload system('xdotool search "Mozilla Firefox" key F5')
 command! ReloadFirefox FirefoxReload

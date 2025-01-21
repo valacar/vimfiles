@@ -495,6 +495,9 @@ xnoremap <silent> # :call <SID>setSearch()<CR>?<C-R>=@/<CR><CR>
 xnoremap @ :<C-u>echo '@' . getcmdline()
       \ <bar> execute ":'<,'>normal! @" . nr2char(getchar())<CR>
 
+" Alt-r: copy selected lines with indenting for preformatted text on Reddit
+xnoremap <A-r> <Plug>(RedditCopy)
+
 "===============================================================================
 " :: Operator Pending Mappings
 "===============================================================================
