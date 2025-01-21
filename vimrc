@@ -217,8 +217,7 @@ let &keywordprg = ':Man'
 " :: Commands
 "===============================================================================
 
-" Note: more complex commands are in ~/.vim/plugin/commands
-" Redir, FixWhiteSpace, Dos2Unix, and more
+" Note: Slighty more complex commands are in ~/.vim/plugin/commands.vim
 
 " reduce sequence of blank lines into just one
 command! -range=% ReduceBlankLines
@@ -335,9 +334,6 @@ endif
 command! CopyDirectory let @+ = expand('%:p:h')
 command! CopyFilename  let @+ = expand('%:p:t')
 command! CopyPath      let @+ = expand('%:p')
-
-command! SynStack
-      \ call myfunc#SynStack()
 
 " Make background transparent in terminal
 " Note: if something goes wrong, reload colorscheme with :Transparent!
