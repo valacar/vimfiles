@@ -451,6 +451,9 @@ xmap -- gc
 " Ctrl-BackButton: pop tag stack
 nnoremap <C-X1Mouse> <C-t>
 
+" LocalLeader t: toggle word (e.g. true -> false)
+nnoremap <LocalLeader>t <Cmd>ToggleWord<CR>
+
 "===============================================================================
 " :: Insert Mode Mappings
 "===============================================================================
