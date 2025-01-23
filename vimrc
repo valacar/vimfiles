@@ -365,7 +365,7 @@ command! -nargs=1 -range HardBreak
 
 command! FZFVim
       \ call fzf#run(fzf#wrap(
-      \   {'source': 'fd . ~/.vim/ --type f --no-ignore-vcs'}))
+      \   {'source': 'fd --type f --no-ignore-vcs . ~/.vim/'}))
 
 "===============================================================================
 " :: Copy/Paste with system clipboard
