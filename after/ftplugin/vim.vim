@@ -7,11 +7,6 @@ setlocal formatoptions=crql " see :help fo-table
 setlocal textwidth=80
 setlocal keywordprg=:help   " pressing K opens current word in :help
 
-if &spellfile !~# 'vim\.utf-8\.add'
-  " add vim-related word here when typing 2zg (the 2 specifies this dictionary)
-  setlocal spellfile+=~/.vim/spell/vim.utf-8.add
-endif
-
 " Disable some highlighting within vim comments
 augroup ColorOverrides | autocmd!
     autocmd ColorScheme * highlight link vimCommentTitle comment
@@ -27,4 +22,4 @@ endif
 " allow vim to undo our settings when/if the file type changes
 let b:undo_ftplugin = b:undo_ftplugin . ' | setlocal tabstop< shiftwidth< '
       \ . 'softtabstop< expandtab< wrap< formatoptions< '
-      \ . 'keywordprg< spellfile<'
+      \ . 'keywordprg<'
