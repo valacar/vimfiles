@@ -217,7 +217,7 @@ let &keywordprg = ':Man'
 " :: Commands
 "===============================================================================
 
-" Note: Slighty more complex commands are in ~/.vim/plugin/commands.vim
+" Note: Slightly more complex commands are in ~/.vim/plugin/commands.vim
 
 " reduce sequence of blank lines into just one
 command! -range=% ReduceBlankLines
