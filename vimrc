@@ -72,7 +72,7 @@ set guioptions+=d      " use dark GTK theme if available.
 set guioptions+=a      " copy visual selection to * register
 set guioptions+=!      " don't use dumb terminal with :shell in GVim
 
-set synmaxcol=256      " limit highlighting to X columns
+set synmaxcol=500      " limit highlighting to X columns
 
 set nomodeline         " too much of a security risk (use :Modeline if needed)
 set nomodelineexpr     " in case modeline is turned on, don't use expressions
