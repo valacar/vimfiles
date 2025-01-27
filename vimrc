@@ -367,6 +367,10 @@ command! FZFVim
       \ call fzf#run(fzf#wrap(
       \   {'source': 'fd --type f --no-ignore-vcs . ~/.vim/'}))
 
+" Edit a register in the command-line window
+command! -nargs=1 RegEdit
+      \ call feedkeys($":let @{<q-args>} = \"\<C-r>{<q-args>}\"\<C-f>\<Left>")
+
 "===============================================================================
 " :: Copy/Paste with system clipboard
 "===============================================================================
