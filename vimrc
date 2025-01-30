@@ -636,6 +636,8 @@ let g:ale_echo_msg_format = '%s [%linter% %severity% %code%]'
 " --- fzf.vim ---
 let $FZF_DEFAULT_COMMAND =
       \ 'fd --type f --hidden --ignore-file ~/.config/fd/vim-ignore'
+let $FZF_DEFAULT_OPTS =
+      \ '--preview-window top'
 
 " --- vim-pasta ---
 let g:pasta_disabled_filetypes = ['tagbar']
