@@ -542,6 +542,9 @@ nnoremap <leader>b <Cmd>Buffers<CR>
 nnoremap <leader>t <Cmd>Tags<CR>
 nnoremap <leader>v <Cmd>FZFVim<CR>
 
+" Ctrl-x Ctrl-f: complete paths with FZF
+inoremap <C-x><C-f> <plug>(fzf-complete-path)
+
 "===============================================================================
 " :: Function Key Mappings 0-9
 "===============================================================================
