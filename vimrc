@@ -724,13 +724,13 @@ if &term ==# 'xterm-256color'
   let &t_ti .= "\e[2 q"  " cursor when vim starts
   let &t_te .= "\e[3 q"  " cursor when vim exits
   " \e]12;...\a (OSC 12) changes cursor color
-elseif &term ==# 'linux'
+elseif &term =~# 'linux$'
   " ?2c = underline, ?4c = half block, ?6c = full block
   let &t_SI = "\e[?2c"
   let &t_EI = "\e[?16;255c" " steady white solid block, text colors inverted
   let &t_SR = "\e[?4c"
   let &t_ti = "\e[?16;255c"
-  let &t_te = "\e[2J\e[H\e[?2c"
+  let &t_te = "\e[?2c"
   " remove cursor shape change from the following:
   let &t_vi = "\e[?25l" " cursor visible
   let &t_ve = "\e[?25h" " cursor invisible
@@ -742,9 +742,21 @@ if &term ==# 'xterm-kitty' || &term ==# 'screen.xterm-256color'
   let &t_ut = ''
 endif
 
-" linux virtual console reports 8 colors, but 16 works
-if &t_Co == 8
+" linux virtual console
+if &term =~# 'linux$'
+  " Force 16 colors
   set t_Co=16
+  " Change color palette to some wombat_mod colors
+  let &t_ti .= "\e]P01c1c1c" "black
+  let &t_ti .= "\e]P3ffcc99" "orange
+  let &t_ti .= "\e]PC8ac6f2" "light blue
+  let &t_ti .= "\e]PAcae682" "light green
+  let &t_ti .= "\e]P9d28c83" "light red
+  let &t_ti .= "\e]PDb984b1" "light purple
+  let &t_ti .= "\e]P4333333" "dark blue -> dark gray
+  " Restore colors and clear screen on exit
+  " TODO: restore more colors
+  let &t_te .= "\e]P0000000\e[2J\e[H"
 endif
 
 " Add Alt-key support in linux terminals
@@ -769,3 +781,4 @@ nnoremap g<A-8> g*Ncgn
 
 " Space-Space: fuzzy find buffers
 nnoremap <silent> <Space><Space> <Cmd>Buffers<CR>
+
