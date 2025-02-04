@@ -5,12 +5,6 @@ Short name:    wombat_mod
 Author:        Valacar <valacar@users.noreply.github.com>
 Description:   A modification of the Wombat theme by Lars H. Nielsen
 Website:       https://github.com/valacar/vimfiles/tree/master/colors
-; Prefix for options: short name is used if this key is not present:
-Option Prefix: wombatmod
-
-
-; Documentation
-Include: _help.colortemplate
 
 
 ; Common linked groups
@@ -22,9 +16,7 @@ Define            -> PreProc
 Delimiter         -> Special
 Exception         -> Statement
 Float             -> Constant
-; Function          -> Identifier
 Include           -> PreProc
-; Keyword           -> Statement
 Label             -> Statement
 Macro             -> PreProc
 Number            -> Constant
@@ -36,13 +28,12 @@ Repeat            -> Statement
 SpecialChar       -> Special
 SpecialComment    -> Special
 StorageClass      -> Type
-; String            -> Constant
 Structure         -> Type
 Tag               -> Special
 Typedef           -> Type
 lCursor           -> Cursor
 EndOfBuffer       -> NonText
-CurSearch         -> Search
+IncSearch         -> Search
 
 
 Background: dark
@@ -83,8 +74,10 @@ Color: statusnc_bg    #333333 ~       DarkGray
 Color: tstatus_bg     #cae682 ~       Green
 Color: colorcol_bg    #990000 ~       DarkRed
 Color: warning_fg     #ff9933 ~       Brown
-Color: visual_fg      #000000 ~       Black
-Color: visual_bg      #999999 ~       Gray
+Color: visual_fg      #ffffff ~       White
+Color: visual_bg      #003388 ~       DarkBlue
+Color: search_fg      #000000 ~       Black
+Color: search_bg      #999999 ~       Gray
 Color: difftext_bg    #669999 ~       DarkCyan
 Color: diffchange_bg  #336666 ~       Gray
 Color: diffdelete_bg  #663333 ~       DarkRed
@@ -122,27 +115,14 @@ Term colors: tc_0 tc_1 tc_2 tc_3 tc_4 tc_5 tc_6 tc_7
 Term colors: tc_8 tc_9 tc_10 tc_11 tc_12 tc_13 tc_14 tc_15
 
 
-; Default highlight groups
-Variant: gui
-#if get(g:, '@optionprefix_transp_bg', 0) && !has('gui_running')
-Variant: 256 8
-#if get(g:, '@optionprefix_transp_bg', 0)
 Variant: gui 256 8
-    Normal             gray11      none
-    NonText            gray9       none
-    LineNr             gray8       none
-    SignColumn         gray7       none
-    Terminal           gray11      none
-#else
-    Normal             gray11      gray3
-    NonText            gray9       gray2
-    LineNr             gray8       gray2
-    SignColumn         gray7       gray1
-    Terminal           gray11      gray3
-#endif
-
-Terminal       gray11      gray3
 ;Group             Foreground  Background    Attributes
+Normal             gray11      gray3
+NonText            gray9       gray2
+LineNr             gray8       gray2
+SignColumn         gray7       gray1
+Terminal           gray11      gray3
+
 ColorColumn        fg          colorcol_bg
 Comment            gray9       none
 Conceal            none        none
@@ -162,10 +142,13 @@ Error              white       full_red
 ErrorMsg           full_red    none
 FoldColumn         gray7       black
 Folded             folded_fg   folded_bg
-Function           green       none
+Function           purple      none
 Identifier         green       none
 Ignore             white       none
-IncSearch          none        none          t=reverse g=reverse
+Search             search_fg   search_bg
+IncSearch          none        none
+CurSearch          black       yellow
+Visual             visual_fg   visual_bg
 Keyword            blue        none
 ; LineNr             gray8       gray2
 LineNrAbove        gray7       gray2
@@ -181,10 +164,9 @@ PmenuSel           black       green
 PmenuThumb         full_red    gray11
 PreProc            red         none
 Question           full_green  none          bold
-Search             black       gray10
 ; SignColumn         gray7       gray1
 Special            blue        none
-SpecialKey         gray7       none
+SpecialKey         gray8       none
 SpellBad           white       spell_bad     s=spell_bad_sp   g=undercurl t=underline
 SpellCap           white       spell_cap     s=spell_cap_sp   g=undercurl t=underline
 SpellLocal         white       spell_local   s=spell_local_sp g=undercurl t=underline
@@ -204,7 +186,6 @@ Type               green       none
 Underlined         blue        none
 User1              gray9       gray6
 VertSplit          gray6       gray4
-Visual             none        none          g=reverse t=reverse
 VisualNOS          none        none          underline
 WarningMsg         warning_fg  none
 WildMenu           black       full_yellow
@@ -231,11 +212,9 @@ CursorIM           none        fg
 ToolbarLine        none        gray9         t=underline
 ToolbarButton      black       gray11        bold
 
-
-; Inverted visual selection doesn't work so well in Linux tty, so use something else
+; Override non-active statusline in 8 color
 Variant: 8
-Visual  black gray10
-
+StatusLineNC       gray10      status_bg
 
 ; B/W variant
 Include: _bw.colortemplate
