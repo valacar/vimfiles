@@ -339,7 +339,7 @@ command! CopyPath      let @+ = expand('%:p')
 " Note: if something goes wrong, reload colorscheme with :Transparent!
 if ! has('gui_running')
   command! -bang Transparent
-        \ for s:grp in ['Normal', 'NonText', 'LineNr', 'SignColumn'] |
+        \ for s:grp in ['Normal', 'NonText', 'LineNr', 'SignColumn', 'Terminal'] |
         \ execute 'highlight' s:grp 'ctermbg=NONE guibg=NONE' | endfor |
         \ if <bang>0 | execute 'colorscheme' g:colors_name | endif
 endif
