@@ -212,6 +212,19 @@ CursorIM           none        fg
 ToolbarLine        none        gray9         t=underline
 ToolbarButton      black       gray11        bold
 
+StartifyNumber white none
+StartifyBracket gray10 none
+StartifySelect yellow none
+StartifySpecial white none
+StartifyPath blue none
+StartifyFile purple none
+StartifySlash gray11 none
+StartifySection green none
+StartifyHeader gray9 none
+StartifyFooter gray9 none
+StartifyVar cyan none
+StartifySpecial gray9 none
+
 ; Override non-active statusline in 8 color
 Variant: 8
 StatusLineNC       gray10      status_bg
