@@ -145,6 +145,32 @@ command! -range=% RedditCopy {
 
 # ------------------------------------------------------------------------------
 
+# Make background transparent in terminal
+# Note:
+# - Add bang to disable.
+# - With alacritty terminal, specify opacity as first argument 0 to 100
+def Transparent(bang: string, opacity: number = 90)
+  for grp in ['Normal', 'NonText', 'LineNr', 'SignColumn', 'Terminal']
+    execute 'highlight' grp 'ctermbg=NONE guibg=NONE'
+  endfor
+  if executable('alacritty')
+    var percent = opacity / 100.0
+    if !!bang || opacity < 0 || opacity > 100
+      percent = 1.0
+    endif
+    call system($"alacritty msg config 'window.opacity = {percent}'")
+  endif
+  if !!bang
+    execute 'colorscheme' g:colors_name
+  endif
+enddef
+
+if ! has('gui_running')
+  command! -bang -nargs=? Transparent Transparent("<bang>", <args>)
+endif
+
+# ------------------------------------------------------------------------------
+
 # Reload Firefox. Requires xdotool to be installed.
 command! FirefoxReload system('xdotool search "Mozilla Firefox" key F5')
 command! ReloadFirefox FirefoxReload

@@ -335,15 +335,6 @@ command! CopyDirectory let @+ = expand('%:p:h')
 command! CopyFilename  let @+ = expand('%:p:t')
 command! CopyPath      let @+ = expand('%:p')
 
-" Make background transparent in terminal
-" Note: if something goes wrong, reload colorscheme with :Transparent!
-if ! has('gui_running')
-  command! -bang Transparent
-        \ for s:grp in ['Normal', 'NonText', 'LineNr', 'SignColumn', 'Terminal'] |
-        \ execute 'highlight' s:grp 'ctermbg=NONE guibg=NONE' | endfor |
-        \ if <bang>0 | execute 'colorscheme' g:colors_name | endif
-endif
-
 " Make a banner around a line, as seen in the section dividers in this vimrc
 command! MakeBanner
       \ normal! I" :: <Esc>O<Esc>79I=<Esc>I"<Esc>Yjp
