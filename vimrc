@@ -500,10 +500,29 @@ xnoremap <A-r> <Plug>(RedditCopy)
 " :: Operator Pending Mappings
 "===============================================================================
 
-" shorten ci"  to just cq (for double quotes) and cQ (single quotes)
-" dq, dQ, yq, yQ also work
-onoremap q i"
-onoremap Q i'
+" return i" or i' depending on which quote is closest to cursor
+function! s:InnerQuote()
+    let line = getline('.')
+    let cursor_pos = col('.') - 1
+    let max_distance = len(line)
+    for distance in range(0, max_distance)
+        let left_index = cursor_pos - distance
+        if left_index >= 0
+        \ && (line[left_index] == "'" || line[left_index] == '"')
+            return 'i' .. line[left_index]
+        endif
+        let right_index = cursor_pos + distance
+        if right_index < len(line)
+        \ && (line[right_index] == "'" || line[right_index] == '"')
+            return 'i' .. line[right_index]
+        endif
+    endfor
+    return "iX" " invalid text object to do nothing
+endfunction
+
+" shorten ci" and ci' to just cq (depending on which quote is closest)
+" dq, yq, also work
+onoremap <expr> q <SID>InnerQuote() 
 
 " text object for numbers (ints and floats)
 " cn, dn, yn, vn, vin
