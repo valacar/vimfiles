@@ -34,6 +34,8 @@ Typedef           -> Type
 lCursor           -> Cursor
 EndOfBuffer       -> NonText
 IncSearch         -> Search
+qfError           -> Error
+qfHide            -> NonText
 
 
 Background: dark
@@ -211,6 +213,13 @@ rcMainObject       white       none
 CursorIM           none        fg
 ToolbarLine        none        gray9         t=underline
 ToolbarButton      black       gray11        bold
+
+QuickFixLine none gray7
+qfFileName   green none
+qfLineNr     purple none
+qfSeparator1 blue none
+qfSeparator2 blue none
+qfText       gray11 none
 
 StartifyNumber white none
 StartifyBracket gray10 none
