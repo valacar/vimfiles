@@ -56,7 +56,7 @@ hi Terminal guifg=#bcbcbc guibg=#1c1c1c gui=NONE cterm=NONE
 hi ColorColumn guifg=fg guibg=#990000 gui=NONE cterm=NONE
 hi Comment guifg=#777777 guibg=NONE gui=NONE cterm=NONE
 hi Conceal guifg=NONE guibg=NONE gui=NONE ctermfg=NONE ctermbg=NONE cterm=NONE
-hi Constant guifg=#d28c83 guibg=NONE gui=NONE cterm=NONE
+hi Constant guifg=#d47f7f guibg=NONE gui=NONE cterm=NONE
 hi Cursor guifg=#000000 guibg=#bcbcbc gui=NONE cterm=NONE
 hi CursorColumn guifg=NONE guibg=#2d2d2d gui=NONE cterm=NONE
 hi CursorLine guifg=NONE guibg=#222222 gui=NONE cterm=NONE
@@ -85,12 +85,12 @@ hi LineNrBelow guifg=#444444 guibg=#111111 gui=NONE cterm=NONE
 hi MatchParen guifg=NONE guibg=NONE gui=underline ctermfg=NONE ctermbg=NONE cterm=reverse
 hi ModeMsg guifg=#ffffff guibg=NONE gui=NONE cterm=NONE
 hi MoreMsg guifg=#ffffff guibg=NONE gui=NONE cterm=NONE
-hi Number guifg=#d28c83 guibg=NONE gui=NONE cterm=NONE
+hi Number guifg=#d47f7f guibg=NONE gui=NONE cterm=NONE
 hi Pmenu guifg=#ffffff guibg=#444444 gui=NONE cterm=NONE
 hi PmenuSbar guifg=#ff0000 guibg=#333333 gui=NONE cterm=NONE
 hi PmenuSel guifg=#000000 guibg=#cae682 gui=NONE cterm=NONE
 hi PmenuThumb guifg=#ff0000 guibg=#bcbcbc gui=NONE cterm=NONE
-hi PreProc guifg=#d28c83 guibg=NONE gui=NONE cterm=NONE
+hi PreProc guifg=#d47f7f guibg=NONE gui=NONE cterm=NONE
 hi Question guifg=#00ff00 guibg=NONE gui=bold cterm=bold
 hi Special guifg=#8ac6f2 guibg=NONE gui=NONE cterm=NONE
 hi SpecialKey guifg=#5c5c5c guibg=NONE gui=NONE cterm=NONE
@@ -120,7 +120,7 @@ hi cFormat guifg=#ffcc99 guibg=NONE gui=bold cterm=bold
 hi cSpecial guifg=#ffcc99 guibg=NONE gui=bold cterm=bold
 hi debugBreakpoint guifg=#bcbcbc guibg=#660000 gui=NONE cterm=NONE
 hi debugPC guifg=NONE guibg=#263760 gui=NONE cterm=NONE
-hi diffRemoved guifg=#d28c83 guibg=NONE gui=NONE cterm=NONE
+hi diffRemoved guifg=#d47f7f guibg=NONE gui=NONE cterm=NONE
 hi diffSubname guifg=#ffcc99 guibg=NONE gui=NONE cterm=NONE
 hi gitcommitBranch guifg=#b984b1 guibg=NONE gui=NONE cterm=NONE
 hi helpBacktick guifg=#8ac6f2 guibg=NONE gui=NONE cterm=NONE
@@ -133,7 +133,7 @@ hi helpNotVi guifg=#777777 guibg=NONE gui=NONE cterm=NONE
 hi helpOption guifg=#ffcc99 guibg=NONE gui=NONE cterm=NONE
 hi helpSpecial guifg=#ffcc99 guibg=NONE gui=NONE cterm=NONE
 hi helpStart guifg=#b984b1 guibg=NONE gui=NONE cterm=NONE
-hi helpURL guifg=#d28c83 guibg=NONE gui=NONE cterm=NONE
+hi helpURL guifg=#d47f7f guibg=NONE gui=NONE cterm=NONE
 hi rcMainObject guifg=#ffffff guibg=NONE gui=NONE cterm=NONE
 hi CursorIM guifg=NONE guibg=fg gui=NONE cterm=NONE
 hi ToolbarLine guifg=NONE guibg=#777777 gui=NONE cterm=underline
@@ -470,7 +470,7 @@ endif
 
 " Background: dark
 " Color: black          #000000 ~       Black
-" Color: red            #d28c83 ~       Red
+" Color: red            #d47f7f ~       Red
 " Color: orange         #ffcc99 ~       DarkYellow
 " Color: yellow         #dddd77 ~       Yellow
 " Color: lightyellow    #dddd77 ~       Yellow
