@@ -761,7 +761,7 @@ if &term =~# 'linux$'
   let &t_ti .= "\e]P3ffcc99" "orange
   let &t_ti .= "\e]PC8ac6f2" "light blue
   let &t_ti .= "\e]PAcae682" "light green
-  let &t_ti .= "\e]P9d28c83" "light red
+  let &t_ti .= "\e]P9d47f7f" "light red
   let &t_ti .= "\e]PDb984b1" "light purple
   let &t_ti .= "\e]P4333333" "dark blue -> dark gray
   " Restore colors and clear screen on exit
