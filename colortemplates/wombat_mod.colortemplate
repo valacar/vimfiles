@@ -1,5 +1,3 @@
-; Information
-; Mandatory
 Full name:     Wombat Mod
 Short name:    wombat_mod
 Author:        Valacar <valacar@users.noreply.github.com>
@@ -7,7 +5,7 @@ Description:   A modification of the Wombat theme by Lars H. Nielsen
 Website:       https://github.com/valacar/vimfiles/tree/master/colors
 
 
-; Common linked groups
+;Linked groups
 Boolean           -> Constant
 Character         -> Constant
 Conditional       -> Statement
@@ -35,22 +33,26 @@ lCursor           -> Cursor
 EndOfBuffer       -> NonText
 IncSearch         -> Search
 qfError           -> Error
-qfHide            -> NonText
+qfHide            -> Conceal
 
 
 Background: dark
 
-; Color palette
-; Color  name         GUI     Base256 Base16 (optional)
+;Color palette
+;Color name           GUI     Base256 Base16 (optional)
 Color: black          #000000 ~       Black
 Color: red            #d47f7f ~       Red
 Color: orange         #ffcc99 ~       DarkYellow
+Color: orange_darker  #b38c66 ~       DarkYellow
 Color: yellow         #dddd77 ~       Yellow
 Color: lightyellow    #dddd77 ~       Yellow
 Color: green          #cae682 192     Green
+Color: green_darker   #92a859 ~       Green
 Color: cyan           #55d4cb ~       Cyan
 Color: blue           #8ac6f2 111     Blue
+Color: blue_darker    #5a9fbf ~       Blue
 Color: purple         #b984b1 ~       Magenta
+Color: purple_darker  #8a6284 ~       Magenta
 Color: orchid         #b984b1 ~       Magenta
 Color: gray1          #0c0c0c ~       Black
 Color: gray2          #111111 ~       Black
@@ -113,8 +115,8 @@ Color: tc_14          #55ffff ~       Cyan
 Color: tc_15          #ffffff ~       White
 
 
-; Terminal colors
-Term colors: tc_0 tc_1 tc_2 tc_3 tc_4 tc_5 tc_6 tc_7
+;Terminal colors
+Term colors: tc_0 tc_1 tc_2  tc_3  tc_4  tc_5  tc_6  tc_7
 Term colors: tc_8 tc_9 tc_10 tc_11 tc_12 tc_13 tc_14 tc_15
 
 
@@ -125,7 +127,6 @@ NonText            gray9       gray2
 LineNr             gray8       gray2
 SignColumn         gray7       gray1
 Terminal           gray11      gray3
-
 ColorColumn        fg          colorcol_bg
 Comment            gray9       none
 Conceal            none        none
@@ -153,13 +154,13 @@ IncSearch          none        none
 CurSearch          black       yellow
 Visual             visual_fg   visual_bg
 Keyword            blue        none
-; LineNr             gray8       gray2
+;LineNr            gray8       gray2
 LineNrAbove        gray7       gray2
 LineNrBelow        gray7       gray2
-MatchParen         none        none          t=reverse g=underline
+MatchParen         none        none          t=reverse        g=underline
 ModeMsg            white       none
 MoreMsg            white       none
-; NonText            gray9       gray2
+;NonText           gray9       gray2
 Number             red         none
 Pmenu              white       gray7
 PmenuSbar          full_red    gray6
@@ -167,7 +168,7 @@ PmenuSel           black       green
 PmenuThumb         full_red    gray11
 PreProc            red         none
 Question           full_green  none          bold
-; SignColumn         gray7       gray1
+;SignColumn        gray7       gray1
 Special            blue        none
 SpecialKey         gray8       none
 SpellBad           white       spell_bad     s=spell_bad_sp   g=undercurl t=underline
@@ -175,7 +176,7 @@ SpellCap           white       spell_cap     s=spell_cap_sp   g=undercurl t=unde
 SpellLocal         white       spell_local   s=spell_local_sp g=undercurl t=underline
 SpellRare          white       spell_rare    s=spell_rare_sp  g=undercurl t=underline
 Statement          blue        none
-StatusLine         white       status_bg     g=bold t=bold
+StatusLine         white       status_bg     g=bold           t=bold
 StatusLineNC       gray10      statusnc_bg
 StatusLineTerm     black       tstatus_bg    bold
 StatusLineTermNC   black       tstatus_bg
@@ -192,53 +193,67 @@ VertSplit          gray6       gray4
 VisualNOS          none        none          underline
 WarningMsg         warning_fg  none
 WildMenu           black       full_yellow
-cFormat            orange      none          bold
-cSpecial           orange      none          bold
 debugBreakpoint    gray11      debug_bp_bg
 debugPC            none        debug_pc_bg
 diffRemoved        red         none
-diffSubname        orange      none
-gitcommitBranch    purple      none
+CursorIM           none        fg
+ToolbarLine        none        gray9         t=underline
+ToolbarButton      black       gray11        bold
+QuickFixLine       none        gray7
+
 helpBacktick       blue        none
 helpCommand        blue        none
 helpExample        blue        none
 helpHeader         white       none
 helpHyperTextEntry orchid      none
-helpHyperTextJump  cyan        none
+helpHyperTextJump  red         none
 helpNotVi          gray9       none
-helpOption         orange      none
+helpOption         green       none
 helpSpecial        orange      none
 helpStart          purple      none
 helpURL            red         none
-rcMainObject       white       none
-CursorIM           none        fg
-ToolbarLine        none        gray9         t=underline
-ToolbarButton      black       gray11        bold
+helpHeadline       yellow      none
+helpSectionDelim   white       none
 
-QuickFixLine none gray7
-qfFileName   green none
-qfLineNr     purple none
-qfSeparator1 blue none
-qfSeparator2 blue none
-qfText       gray11 none
+qfFileName         green       none
+qfLineNr           purple      none
+qfSeparator1       blue        none
+qfSeparator2       blue        none
+qfText             gray11      none
 
-StartifyNumber white none
-StartifyBracket gray10 none
-StartifySelect yellow none
-StartifySpecial white none
-StartifyPath blue none
-StartifyFile purple none
-StartifySlash gray11 none
-StartifySection green none
-StartifyHeader gray9 none
-StartifyFooter gray9 none
-StartifyVar cyan none
-StartifySpecial gray9 none
+vimBracket         blue_darker none
 
-; Override non-active statusline in 8 color
+StartifyNumber     white       none
+StartifyBracket    gray10      none
+StartifySelect     yellow      none
+StartifySpecial    white       none
+StartifyPath       blue        none
+StartifyFile       purple      none
+StartifySlash      gray11      none
+StartifySection    green       none
+StartifyHeader     gray9       none
+StartifyFooter     gray9       none
+StartifyVar        cyan        none
+StartifySpecial    gray9       none
+
+cFormat            orange      none          bold
+cSpecial           orange      none          bold
+diffSubname        orange      none
+gitcommitBranch    purple      none
+
+xmlTag             blue_darker none
+xmlTagname         blue        none
+xmlAttrib          green       none
+xmlString          orange      none
+
+shQuote            orange      none
+
+
+;Override non-active statusline in 8 color
 Variant: 8
 StatusLineNC       gray10      status_bg
 
-; B/W variant
+
+;B/W variant
 Include: _bw.colortemplate
 
