@@ -328,7 +328,7 @@ command! SudoSave
 " align words in table format, using external column command
 if executable('column')
   command! -range Align
-        \ :'<,'>!column -t -o ' '
+        \ :'<,'>!column -t -L -o ' '
 endif
 
 command! CopyDirectory let @+ = expand('%:p:h')
@@ -522,7 +522,7 @@ endfunction
 
 " shorten ci" and ci' to just cq (depending on which quote is closest)
 " dq, yq, also work
-onoremap <expr> q <SID>InnerQuote() 
+onoremap <expr> q <SID>InnerQuote()
 
 " text object for numbers (ints and floats)
 " cn, dn, yn, vn, vin
