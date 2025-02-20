@@ -710,7 +710,7 @@ augroup vimrc | autocmd!
   autocmd BufReadPost COMMIT_EDITMSG,MERGE_MSG
         \ setlocal spell
 
-" Keep track for working directory changes for titlestring
+" Keep track of working directory changes for titlestring
   let g:cwd = getcwd()
   autocmd DirChanged *
         \ let g:cwd = getcwd()
