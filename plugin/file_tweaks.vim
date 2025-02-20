@@ -40,4 +40,8 @@ augroup file_tweaks
   autocmd BufWritePost .tmux.conf
         \ :call system('tmux source-file ~/.tmux.conf')
 
+  " auto fix trailing whitespace for my vim dot files
+  autocmd BufWritePre ~/dotfiles/vim/.vim/*.{vim,colortemplate},~/dotfiles/vim/.vim/{vimrc*,gvimrc}
+        \ silent FixWhitespace
+
 augroup END
