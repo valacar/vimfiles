@@ -1,1 +1,1 @@
-![vimrc-screenshot](https://user-images.githubusercontent.com/8539935/146833122-ba4a2970-c82b-4901-aa06-a24203b51c5d.png)
+<img src="https://github.com/user-attachments/assets/2da3fe01-3470-4c49-a510-e7823c346375" width="804" height="530" alt="Vim Screenshot 2025-02-21">
