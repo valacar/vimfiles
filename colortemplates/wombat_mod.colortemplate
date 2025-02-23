@@ -246,8 +246,14 @@ xmlTagname         blue        none
 xmlAttrib          green       none
 xmlString          orange      none
 
-shQuote            orange      none
+htmlTag             blue_darker none
+htmlEndTag          blue_darker none
+htmlTagName         blue        none
+htmlArg             green       none
+htmlString          orange      none
+htmlSpecialChar     purple      none
 
+shQuote            orange      none
 
 ;Override non-active statusline in 8 color
 Variant: 8
