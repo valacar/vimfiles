@@ -44,4 +44,8 @@ augroup file_tweaks
   autocmd BufWritePre ~/dotfiles/vim/.vim/*.{vim,colortemplate},~/dotfiles/vim/.vim/{vimrc*,gvimrc}
         \ silent FixWhitespace
 
+  " In Vim's source code, set tabs like it is in the modeline
+  autocmd BufReadPost */compile/vim/*.[ch]
+        \ setlocal ts=8 sts=4 sw=4 noet
+
 augroup END
