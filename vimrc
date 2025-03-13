@@ -554,6 +554,7 @@ nnoremap <Leader>f <Cmd>Files<CR>
 nnoremap <leader>b <Cmd>Buffers<CR>
 nnoremap <leader>t <Cmd>Tags<CR>
 nnoremap <leader>v <Cmd>FZFVim<CR>
+nnoremap <leader>V <Cmd>FZF $VIMRUNTIME<CR>
 
 "===============================================================================
 " :: Function Key Mappings 0-9
