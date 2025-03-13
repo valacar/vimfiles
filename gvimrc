@@ -9,7 +9,7 @@ elseif has('x11') " Athena
   " set guifont=-*-courier-medium-r-normal-*-*-100-*-*-m-*-*
 endif
 
-" :; ,. il1!| O0 S$ ~ ` ' " ^ @ # % & * [] () {} ({}) 
+" :; ,. il1!| O0 S$ ~ ` ' " ^ @ # % & * [] () {} ({})
 " + - _ = ++ -- == -= += *= \ / // \\ (< >) 0123456789 pgyq ft
 
 map <S-Insert> <MiddleMouse>
@@ -42,9 +42,8 @@ set winaltkeys=no   " don't use Alt keys for menu (allows mapping Alt-F, etc)
 set guicursor=n-v-sm:block-Cursor-blinkon0,
 set guicursor+=ve:ver35-Cursor,
 set guicursor+=o:hor50-Cursor,
-set guicursor+=i-c-ci:ver25-iCursor-blinkon1000-blinkoff250,
-set guicursor+=r-cr:hor20-iCursor
-" set guicursor+=a:blinkon0
+set guicursor+=i-c-ci:ver25-lCursor-blinkon1000-blinkoff250,
+set guicursor+=r-cr:hor20-lCursor
 
 " TODO: find a way to change these dynamically when the colorscheme changes
 " Note: For GTK3 build, create the file

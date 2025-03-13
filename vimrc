@@ -696,10 +696,10 @@ augroup vimrc | autocmd!
   autocmd BufWritePost */.vim/colors/*.vim
         \ execute 'colorscheme' expand("<afile>:t:r")
 
-" always make insert mode cursor red in GVim
-  highlight! iCursor guibg=red
+" always make insert/command mode cursor red in GVim
+  highlight! lCursor guibg=red
   autocmd ColorScheme *
-        \ highlight iCursor guibg=red
+        \ highlight lCursor guifg=NONE guibg=red
 
 " Up/Down: jump between different sections of this vimrc
   autocmd BufReadPost $MYVIMRC,~/.vim/vimrc
