@@ -214,6 +214,9 @@ helpStart          purple      none
 helpURL            red         none
 helpHeadline       yellow      none
 helpSectionDelim   white       none
+helpBar            gray7       none
+helpStar           gray7       none
+helpBacktick       gray7       none
 
 qfFileName         green       none
 qfLineNr           purple      none
