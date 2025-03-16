@@ -12,3 +12,17 @@ nnoremap <buffer> <X2Mouse> <C-]>
 
 " q to close help window
 nnoremap <buffer> q <C-w>c
+
+function! s:SkipGroup()
+  let grp = synIDattr(synID(line('.'), col('.'), 0), 'name')
+  " skip anything that's not one of these highlight-groups
+  return grp != 'helpStar'
+    \ && grp != 'helpBar'
+    \ && grp != 'helpBacktick'
+    \ && grp != 'helpOption'
+    \ && grp != 'helpSpecial'
+endfunction
+
+" Tab/Shift-Tab to jump to pretty much anything highlighted
+nnoremap <buffer> <Tab>   <Cmd>call search('\([*<bar>''`]\).\{-}\1\<bar>{.\{-}}\<bar><lt>.\{-}>\<bar>\[.\{-}\]\<bar>CTRL-.', 'W',  0, 0, function('<SID>SkipGroup'))<CR>
+nnoremap <buffer> <S-Tab> <Cmd>call search('\([*<bar>''`]\).\{-}\1\<bar>{.\{-}}\<bar><lt>.\{-}>\<bar>\[.\{-}\]\<bar>CTRL-.', 'Wb', 0, 0, function('<SID>SkipGroup'))<CR>
