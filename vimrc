@@ -717,6 +717,12 @@ augroup vimrc | autocmd!
         \ let g:cwd = getcwd()
   autocmd TabEnter *
         \ let g:cwd = getcwd()
+
+" Force hlsearch when seaching in order to see incsearch highlight
+  autocmd CmdLineEnter /
+        \ let hls = &hlsearch | set hlsearch
+  autocmd CmdLineLeave /
+        \ execute 'set' hls ? 'hlsearch' : 'nohlsearch' | unlet hls
 augroup END
 
 "===============================================================================
